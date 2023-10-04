@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LOOK, A TABLE!</title>
+    <title>LOOK, TABLES AND LISTS!</title>
   </head>
 
   <body>
+    <h2>Look, some page navigation!</h2>
+    <ol type="1">
+      <li>
+        <a href="#table1">Super-informative table</a>
+      </li>
+      <li>
+        <a href="#table2">Life expectancy table</a>
+      </li>
+      <li>
+        <a href="#table3">Favorites table</a>
+      </li>
+      <li>
+        <a href="#list1">Ordered list</a>
+      </li>
+      <li>
+        <a href="#list2">Unordered list</a>
+      </li>
+      <li>
+        <a href="#list3">Description list</a>
+      </li>
+      <li>
+        <a href="#pretag">A &lt;pre&gt; tag</a>
+      </li>
+    </ol>
+    <hr>
+
     <h2>Look, some tables!</h2>
 
-    <table border="3">
+    <table
+      id="table1"
+      border="3"
+    >
       <caption>
         The most informative table ever...
       </caption>
@@ -38,7 +67,10 @@
     <br>
     <hr>
 
-    <table border="1">
+    <table
+      id="table2"
+      border="1"
+    >
       <caption>Life expectancy by current age</caption>
       <thead>
         <tr>
@@ -69,7 +101,10 @@
     <br>
     <hr>
 
-    <table border="1">
+    <table
+      id="table3"
+      border="1"
+    >
       <caption>
         Favorite and least favorite things
       </caption>
@@ -113,7 +148,10 @@
 
     <div>
       Here&apos;s an ordered list:
-      <ol type="I">
+      <ol
+        id="list1"
+        type="I"
+      >
         <li>Ice cream</li>
         <li>Bananas</li>
         <li>Tofu</li>
@@ -125,7 +163,10 @@
 
     <div>
       And here&apos;s an unordered list:
-      <ul type="circle">
+      <ul
+        id="list2"
+        type="circle"
+      >
         <li>Squirrels</li>
         <li>Fly Kites</li>
         <li>List Item</li>
@@ -138,7 +179,7 @@
     </div>
     <hr>
 
-    <dl>
+    <dl id="list3">
       <dt>Football</dt>
         <dd>Touchdown = 6 points</dd>
         <dd>Extra point = 1 or 2 points</dd>
