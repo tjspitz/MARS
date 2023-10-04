@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LOOK, TABLES AND LISTS!</title>
+  </head>
+
+  <body>
+    <h2>Look, some page navigation!</h2>
+    <nav>
+      <ol type="1">
+        <li>
+          <a href="#table1">Super-informative table</a>
+        </li>
+        <li>
+          <a href="#table2">Life expectancy table</a>
+        </li>
+        <li>
+          <a href="#table3">Favorites table</a>
+        </li>
+        <li>
+          <a href="#list1">Ordered list</a>
+        </li>
+        <li>
+          <a href="#list2">Unordered list</a>
+        </li>
+        <li>
+          <a href="#list3">Description list</a>
+        </li>
+        <li>
+          <a href="#pretag">A &lt;pre&gt; tag</a>
+        </li>
+      </ol>
+    </nav>
+    <hr>
+
+    <h2>Look, some tables!</h2>
+
+    <table
+      id="table1"
+      border="3"
+    >
+      <caption>
+        The most informative table ever...
+      </caption>
+      <thead>
+        <tr>
+          <th colspan="2">Name</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Country</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Steve</td>
+          <td>Pantsersson</td>
+          <td>Skagway</td>
+          <td>Alaska</td>
+          <td>United States</td>
+        </tr>
+        <tr>
+          <td>Billy-bob</td>
+          <td>Badoozles</td>
+          <td>Kalamazoo</td>
+          <td>Alabama</td>
+          <td>United States</td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+
+    <table
+      id="table2"
+      border="1"
+    >
+      <caption>Life expectancy by current age</caption>
+      <thead>
+        <tr>
+          <th colspan="2">65</th>
+          <th colspan="2">40</th>
+          <th colspan="2">20</th>
+        </tr>
+        <tr>
+          <th>Men</th>
+          <th>Women</th>
+          <th>Men</th>
+          <th>Women</th>
+          <th>Men</th>
+          <th>Women</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>82</td>
+          <td>85</td>
+          <td>78</td>
+          <td>82</td>
+          <td>77</td>
+          <td>81</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <hr>
+
+    <table
+      id="table3"
+      border="1"
+    >
+      <caption>
+        Favorite and least favorite things
+      </caption>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Bob</th>
+          <th>Alice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th rowspan="2">Favorite</th>
+          <th>Color</th>
+          <td>Blue</td>
+          <td>Purple</td>
+        </tr>
+        <tr>
+          <th>Flavor</th>
+          <td>Banana</td>
+          <td>Chocolate</td>
+        </tr>
+        <tr>
+          <th rowspan="2">Least Favorite</th>
+          <th>Color</th>
+          <td>Yellow</td>
+          <td>Pink</td>
+        </tr>
+        <tr>
+          <th>Flavor</th>
+          <td>Mint</td>
+          <td>Walnut</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <hr>
+
+    <h2>Look, some lists!</h2>
+
+    <div>
+      Here&apos;s an ordered list:
+      <ol
+        id="list1"
+        type="I"
+      >
+        <li>Ice cream</li>
+        <li>Bananas</li>
+        <li>Tofu</li>
+        <li>Potato chips</li>
+        <li>Llamas</li>
+      </ol>
+    </div>
+    <hr>
+
+    <div>
+      And here&apos;s an unordered list:
+      <ul
+        id="list2"
+        type="circle"
+      >
+        <li>Squirrels</li>
+        <li>Fly Kites</li>
+        <li>List Item</li>
+        <li>Strawberries</li>
+        <li>Hula Hoops</li>
+      </ul>
+    </div>
+    <div>
+      Also, a description list:
+    </div>
+    <hr>
+
+    <dl id="list3">
+      <dt>Football</dt>
+        <dd>Touchdown = 6 points</dd>
+        <dd>Extra point = 1 or 2 points</dd>
+        <dd>Field Goal = 3 points</dd>
+        <dd>Field Goal = 3 points</dd>
+        <dd>Foul = yardage deducted/added</dd>
+      <dt>Hockey</dt>
+        <dd>Goal = 1 point</dd>
+        <dd>Foul = time in penalty box</dd>
+    </dl>
+    <hr>
+
+    <h2>Here's a &lt;pre&gt; tag:</h2>
+    <pre id="pretag">
+      It renders exactly how
+            you enter it in the
+        code editor      .
+
+
+      Pretty cool, Batman!
+    </pre>
+    <hr>
+    
+    <footer>
+      <a href="#">Back to top</a>
+    </footer>
+  </body>
+</html>
+
