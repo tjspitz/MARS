@@ -68,3 +68,31 @@ button:hover {
 .to-home {
   background-color: #baafaf;
 }
+
+.git-table {
+  border: #474757 solid 0.2rem;
+  border-collapse: collapse;
+}
+
+.git-cap {
+  margin-bottom: 0.3rem;
+  font-style: italic;
+}
+
+.git-head {
+  text-align: left;
+}
+
+.git-head > tr > th {
+  padding: 0.8rem 0.4rem;
+}
+
+.git-table > tbody > tr > td {
+  border-top: #474757 dotted 0.2rem;
+  padding: 0.8rem 0.4rem;
+}
+
+.git-pic {
+  border: transparent;
+  border-radius: 50%;
+}
