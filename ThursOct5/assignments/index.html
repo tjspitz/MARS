@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <title>Hero Application</title>
+  </head>
+
+  <body>
+    <h2>Welcome to the Hero Application form!</h2>
+    <p>
+      We&apos;re glad you feel you are suitable to be a professional hero. Before we allow you to slay dragons&comma; demons&comma; and the like&comma; please fill fill out and submit the application below.
+    </p>
+
+    <form action="./form-data.html" method="post">
+      <fieldset>
+        <legend>Personal Details</legend>
+        <table class="pers-det">
+          <thead>
+            <tr>
+              <th><label for="real-name">Real name</label></th>
+              <th><label for="hero-name">Heroic name</label></th>
+              <th><label for="home-planet">Home planet</label></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  id="real-name"
+                  name="real-name"
+                  placeholder="E.g. &quot;Bruce Wayne&quot;"
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="hero-name"
+                  name="hero-name"
+                  placeholder="E.g. &quot;Batman&quot;"
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  list="planets"
+                  id="home-planet"
+                  name="home-planet"
+                  required
+                />
+                  <datalist id="planets">
+                    <option value="other" selected>Other</option>
+                    <option value="mercury">Mercury</option>
+                    <option value="venus">Venus</option>
+                    <option value="earth">Earth</option>
+                    <option value="mars">Mars</option>
+                    <option value="jupiter">Jupiter</option>
+                    <option value="saturn">Saturn</option>
+                    <option value="neptune">Neptune</option>
+                    <option value="krypton">Krypton</option>
+                  </datalist>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+
+      <fieldset>
+        <legend>Physical Attributes</legend>
+        <table class="phys-attr">
+          <thead>
+            <tr>
+              <th><label for="height">Height</label></th>
+              <th><label for="weight">Weight</label></th>
+              <th><label for="teeth">Dental Hygiene</label></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  id="height"
+                  name="height"
+                  placeholder="E.g. &quot;6'3&quot;"
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="weight"
+                  name="weight"
+                  placeholder="E.g. &quot;126&quot;"
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  type="range"
+                  id="teeth"
+                  min="0"
+                  max="10"
+                  step="1"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+
+      <fieldset>
+        <legend>Superpowers</legend>
+        <table class="superpowers">
+          <tbody>
+            <tr>
+              <td>
+                <label for="superpowers">Select all which you currently posess:</label>
+              </td>
+              <td>
+                <select id="superpowers" name="superpowers" multiple>
+                  <option value="invisibility">Invisibility</option>
+                  <option value="super-strength">Super Strength</option>
+                  <option value="telekinesis">Telekinesis</option>
+                  <option value="telepathy">Telepathy</option>
+                  <option value="flight">Flight</option>
+                  <option value="time travel">Time Travel</option>
+                  <option value="shapeshifting">Shapeshifting</option>
+                  <option value="super-speed">Super Speed</option>
+                  <option value="healing-factor">Healing Factor</option>
+                  <option value="mind-control">Mind Control</option>
+                  <option value="teleportation">Teleportation</option>
+                  <option value="pyrokinesis">Pyrokinesis</option>
+                  <option value="cryokinesis">Cryokinesis</option>
+                  <option value="electrokinesis">Electrokinesis</option>
+                  <option value="x-ray-vision">X-ray Vision</option>
+                  <option value="super-intelligence">Super Intelligence</option>
+                  <option value="elasticity">Elasticity</option>
+                  <option value="force-fields">Force Fields</option>
+                  <option value="time-manipulation">Time Manipulation</option>
+                  <option value="super-senses">Super Senses</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+      <fieldset>
+        <legend>Heroic tendencies</legend>
+        <div class="tendencies">
+          <p>Please select any statements that apply to your character:</p>
+          <div>
+            <input
+              type="checkbox"
+              id="rescue-building"
+              name="tendencies"
+              value="rescue-building"
+            />
+            <label for="rescue"
+            >Rescue citizens from a burning building
+          </label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="rescue-villain"
+              name="tendencies"
+              value="rescue-villain"
+            />
+            <label for="rescue">
+              Rescue citizens from a rampaging supervillain
+            </label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="sacrifice-self"
+              name="tendencies"
+              value="sacrifice-self"
+            />
+            <label for="sacrifice-self">
+              Sacrifice oneself for the cause
+            </label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="collateral-damage"
+              name="tendencies"
+              value="collateral-damage"
+            />
+            <label for="collateral-damage">
+              Stop the villains regardless of collateral damage
+            </label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="choose-villain"
+              name="tendencies"
+              value="choose-villain"
+            />
+            <label for="choose-villain">
+              Stop the villain at the expense of an innocent bystander
+            </label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="choose-bystander"
+              name="tendencies"
+              value="choose-bystander"
+            />
+            <label for="choose-bystander">
+              Save an innocent bystander at the expense of letting a villain escape
+            </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Finalize your application</legend>
+        <label for="essay">
+          Please write a brief essay (100-500 words) describing why you should be recognized as an official&comma; professional Hero:
+        </label>
+        <hr>
+        <textarea
+          id="essay"
+          name="essay"
+          rows="5"
+          cols="45"
+          placeholder="E.g. &quot;Over the course of my heroic career...&quot;"
+          minlength="100"
+          maxlength="500"
+          required
+        /></textarea>
+        <input type="submit" value="Submit Application"/>
+      </fieldset>
+
+    </form>
+
+  </body>
+  </html>
