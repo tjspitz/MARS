@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <title>Forms and such</title>
   </head>
 
   <body>
     <h1>Here's a form...</h1>
-    <form action="./index.html" method="post">
+    <form action="./tables.html" method="post">
       <fieldset>
         <legend>Personal information</legend>
         <table>
@@ -54,10 +55,6 @@
             </tr>
           </tbody>
         </table>
-        <!-- <input
-          type="submit"
-          value="Sign In"
-        /> -->
       </fieldset>
 
       <fieldset>
@@ -120,12 +117,49 @@
                 />
               </td>
             </tr>
+            <tr>
+              <td>
+                <label for="essay">Personal essay:</label>
+              </td>
+              <td>
+                <textarea name="essay" cols="20" rows="5"></textarea>
+              </td>
+            </tr>
           </tbody>
         </table>
       </fieldset>
       <fieldset>
+        <legend>Lists, datalists, and sliders</legend>
+        <tr>
+          <td>
+            <label for="browsers">Web Browsers:</label>
+          </td>
+          <td>
+            <input list="browser" name="browsers"/>
+              <datalist id="browser">
+                <option value="Chrome">Chrome</option>
+                <option value="Mozilla">Mozilla</option>
+                <option value="Internet Explorer">Internet Explorer</option>
+                <option value="Safari">Safari</option>
+              </datalist>
+          </td>
+        </tr>
+        <!-- <br> -->
+        <tr>
+          <td>
+            <label for="mood">How are you feeling?</label>
+          </td>
+          <td>
+            <input type="range" name="mood"/>
+          </td>
+        </tr>
+      </fieldset>
+      <fieldset>
         <legend>Sign In</legend>
-        <button type="submit">Sign In</button>
+          <input
+            type="submit"
+            value="Sign In"
+          />
       </fieldset>
     </form>
 
