@@ -27,6 +27,7 @@ figcaption {
   font-size: 0.8rem;
   text-align: center;
 }
+
 footer {
   display: flex;
   justify-content: space-between;
@@ -46,6 +47,10 @@ button:hover {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   transform: scale(1.1);
 
+}
+
+table {
+  width: 100%;
 }
 
 .main-content {
@@ -84,7 +89,6 @@ button:hover {
 .git-table {
   border: #474757 solid 0.2rem;
   border-collapse: collapse;
-  width: 100%;
 }
 
 .git-cap {
