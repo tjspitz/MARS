@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms and such</title>
+  </head>
+
+  <body>
+    <h1>Here's a form...</h1>
+    <form action="./index.html" method="post">
+      <fieldset>
+        <legend>Personal information</legend>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <label for="username">Username:</label>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Enter Username..."
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="password">Password:</label>
+              </td>
+              <td>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter password..."
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="dob">Date of Birth:</label>
+              </td>
+              <td>
+                <input
+                  type="date"
+                  name="dob"
+                  max="2020-08-27"
+                  required
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <input
+          type="submit"
+          value="Sign In"
+        /> -->
+      </fieldset>
+
+      <fieldset>
+        <legend>Other information</legend>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <label for="hobbies">Hobbies:</label>
+              </td>
+              <td>
+                <input
+                  type="radio"
+                  name="hobby"
+                  value="reading"
+                  required
+                />
+                Reading
+              </td>
+              <td>
+                <input
+                  type="radio"
+                  name="hobby"
+                  value="music"
+                />
+                Music
+              </td>
+              <td>
+                <input
+                  type="radio"
+                  name="hobby"
+                  value="video-games"
+                />
+                Video Games
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="vehicles">Vehicle:</label>
+              </td>
+              <td>
+                <select name="vehicle">
+                  <option value="na" selected>n/a</option>
+                  <option value="ford">Ford</option>
+                  <option value="chevy">Chevy</option>
+                  <option value="toyota">Toyota</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="email">Email:</label>
+              </td>
+              <td>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter email..."
+                  required
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+      <fieldset>
+        <legend>Sign In</legend>
+        <button type="submit">Sign In</button>
+      </fieldset>
+    </form>
+
+  </body>
+</html>
