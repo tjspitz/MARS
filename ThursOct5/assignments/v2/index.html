@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <title>FIT Food - Order</title>
+  </head>
+
+  <body>
+    <h3>======&nbsp;Price list&nbsp;======</h3>
+
+    <table name="pricelist" class="pricelist">
+      <thead>
+        <tr>
+          <th>Food Item</th>
+          <th></th>
+          <th>Price &#40;USD&#41;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Buffalo Chicken Pizza</td>
+          <td>-----</td>
+          <td>17.00</td>
+        </tr>
+        <tr>
+          <td>Vegetable Pizza</td>
+          <td>-----</td>
+          <td>15.00</td>
+        </tr>
+        <tr>
+          <td>Spaghetti &amp; Meatballs</td>
+          <td>-----</td>
+          <td>13.50</td>
+        </tr>
+        <tr>
+          <td>Blueberry Pancakes</td>
+          <td>-----</td>
+          <td>12.50</td>
+        </tr>
+        <tr>
+          <td>Mango Lassi</td>
+          <td>-----</td>
+          <td>2.75</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <form action="./form-data.html" method="post" name="fit-order">
+      <h1>FIT Food - Order Form</h1>
+      <table name="user-details" class="user-details" border="1">
+        <tbody>
+          <tr>
+            <td>
+              <label for="branch">Branch:</label>
+            </td>
+            <td>
+              <!-- We could add `value="--Select Item--"` in the input tag for a default display... -->
+              <!-- But it would hamper the user's ability to see all available options -->
+              <input list="branches" id="branch" name="branch" />
+              <datalist id="branches">
+                <option value="--Select Item--">--Select Item--</option>
+                <option value="Tree Branch">Tree Branch</option>
+                <option value="Bush Branch">Bush Branch</option>
+                <option value="Bank Branch">Bank Branch</option>
+                <option value="Corporate Branch">Corporate Branch</option>
+                <option value="Git Branch">Git Branch</option>
+              </datalist>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="username">Username:</label>
+            </td>
+            <td>
+              <input type="text" id="username" name="username" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="phone">Phone &#35;:</label>
+            </td>
+            <td>
+              <input type="text" id="phone" name="phone" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+
+      <table name="food-items" class="food-items">
+        <thead>
+          <tr>
+            <th>Food Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <label for="item1">Item 1:</label>
+              <!-- We could add `value="--Select Item--"` in the input tag for a default display... -->
+              <!-- But it would hamper the user's ability to see all available options -->
+              <input list="foods1" id="item1" name="item1" />
+              <datalist id="foods1">
+                <option value="--Select Item--" selected>
+                  --Select Item--
+                </option>
+                <option value="Buffalo Chicen Pizza">
+                  Buffalo Chicen Pizza
+                </option>
+                <option value="Vegetable Pizza">Vegetable Pizza</option>
+                <option value="Spaghetti &amp; Meatballs">
+                  Spaghetti &amp; Meatballs
+                </option>
+                <option value="Blueberry Pancakes">Blueberry Pancakes</option>
+                <option value="Mango Lassi">Mango Lassi</option>
+              </datalist>
+            </td>
+            <td>
+              <input
+                type="number"
+                id="item1-qty"
+                name="item1-qty"
+                placeholder="0"
+              />
+            </td>
+            <td>
+              <!-- We would use JavaScript to dynamically populate this field with the user's selections -->
+              <input type="text" id="item1-price" name="item1-price" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="item2">Item 2:</label>
+              <!-- We could add `value="--Select Item--"` in the input tag for a default display... -->
+              <!-- But it would hamper the user's ability to see all available options -->
+              <input list="foods2" id="item2" name="item2" />
+              <datalist id="foods2">
+                <option value="--Select Item--">--Select Item--</option>
+                <option value="Buffalo Chicen Pizza">
+                  Buffalo Chicen Pizza
+                </option>
+                <option value="Vegetable Pizza">Vegetable Pizza</option>
+                <option value="Spaghetti &amp; Meatballs">
+                  Spaghetti &amp; Meatballs
+                </option>
+                <option value="Blueberry Pancakes">Blueberry Pancakes</option>
+                <option value="Mango Lassi">Mango Lassi</option>
+              </datalist>
+            </td>
+            <td>
+              <input
+                type="number"
+                id="item2-qty"
+                name="item2-qty"
+                placeholder="0"
+              />
+            </td>
+            <td>
+              <!-- We would use JavaScript to dynamically populate this field with the user's selections -->
+              <input type="text" id="item2-price" name="item2-price" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="item3">Item 3:</label>
+              <!-- We could add `value="--Select Item--"` in the input tag for a default display... -->
+              <!-- But it would hamper the user's ability to see all available options -->
+              <input list="foods3" id="item3" name="item3" />
+              <datalist id="foods3">
+                <option value="--Select Item--">--Select Item--</option>
+                <option value="Buffalo Chicen Pizza">
+                  Buffalo Chicen Pizza
+                </option>
+                <option value="Vegetable Pizza">Vegetable Pizza</option>
+                <option value="Spaghetti &amp; Meatballs">
+                  Spaghetti &amp; Meatballs
+                </option>
+                <option value="Blueberry Pancakes">Blueberry Pancakes</option>
+                <option value="Mango Lassi">Mango Lassi</option>
+              </datalist>
+            </td>
+            <td>
+              <input
+                type="number"
+                id="item3-qty"
+                name="item3-qty"
+                placeholder="0"
+              />
+            </td>
+            <td>
+              <!-- We would use JavaScript to dynamically populate this field with the user's selections -->
+              <input type="text" id="item3-price" name="item3-price" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="item4">Item 4:</label>
+              <!-- We could add `value="--Select Item--"` in the input tag for a default display... -->
+              <!-- But it would hamper the user's ability to see all available options -->
+              <input list="foods4" id="item4" name="item4" />
+              <datalist id="foods4">
+                <option value="--Select Item--">--Select Item--</option>
+                <option value="Buffalo Chicen Pizza">
+                  Buffalo Chicen Pizza
+                </option>
+                <option value="Vegetable Pizza">Vegetable Pizza</option>
+                <option value="Spaghetti &amp; Meatballs">
+                  Spaghetti &amp; Meatballs
+                </option>
+                <option value="Blueberry Pancakes">Blueberry Pancakes</option>
+                <option value="Mango Lassi">Mango Lassi</option>
+              </datalist>
+            </td>
+            <td>
+              <input
+                type="number"
+                id="item4-qty"
+                name="item4-qty"
+                placeholder="0"
+              />
+            </td>
+            <td>
+              <!-- We would use JavaScript to dynamically populate this field with the user's selections -->
+              <input type="text" id="item4-price" name="item4-price" />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td>
+              <input type="submit" value="Submit Order" />
+            </td>
+            <td>
+              <input type="reset" value="Clear Order" />
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </form>
+  </body>
+</html>
