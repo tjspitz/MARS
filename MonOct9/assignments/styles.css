@@ -1,0 +1,86 @@
+/* ========== Umbrella Selectors ========== */
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #ebe1cb;
+}
+
+body > * {
+  width: max-content;
+  margin: auto;
+}
+
+/* ========== Tag/Element Selectors ========== */
+a {
+  color: #006400;
+  text-decoration: none;
+}
+
+caption {
+  border: 0.2rem solid #906508;
+  border-bottom: none;
+  border-right: none;
+  border-radius: 1rem 8rem;
+  margin-bottom: 1rem;
+  padding: 0.3rem 1rem;
+  font-style: italic;
+}
+
+header {
+  font-size: 0.6rem;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: 'Rubik', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+hr {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+p,
+li,
+dd {
+  line-height: 1.4rem;
+}
+
+p {
+  padding: 0 0.5rem;
+}
+
+p:nth-child(even) {
+  background-color: #a6caa6;
+  border-radius: 2rem;;
+}
+
+table {
+  border-top: 0.2rem solid #906508;
+  border-collapse: collapse;
+  width: 75%;
+  text-align: center;
+}
+
+tr {
+  border-top: 0.1rem solid #906508;
+
+}
+
+th {
+  text-transform: capitalize;
+}
+
+/* ========== Class Selectors ========== */
+.col-header {
+  border-right: 0.1rem solid #906508;
+}
+
+.shadowed {
+  text-shadow: 0.3rem 0.3rem 0.7rem #906508;
+}
