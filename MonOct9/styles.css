@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+caption {
+  border: 0.2rem solid #7022b9;
+  border-radius: 1rem;
+  padding: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+table {
+  margin: auto;
+}
+
+thead,
+th {
+  background-color: #7022b9;
+  color: #acd8fe;
+}
