@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+header {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
 caption {
   border: 0.2rem solid #7022b9;
   border-radius: 1rem;
