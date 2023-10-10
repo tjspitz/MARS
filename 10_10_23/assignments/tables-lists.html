@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&family=Rubik:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link href="./styles.css" rel="stylesheet" type="text/css" />
+    <title>LOOK&comma; TABLES AND LISTS!</title>
+  </head>
+
+  <body>
+    <button type="button">
+      <a href="./index.html" class="link to-home">
+        Back to the home page!
+      </a>
+    </button>
+
+    <h2>Look&comma; some page navigation!</h2>
+    <nav>
+      <ol type="1">
+        <li>
+          <a href="#table1" class="link">Super-informative table</a>
+        </li>
+        <li>
+          <a href="#table2" class="link">Life expectancy table</a>
+        </li>
+        <li>
+          <a href="#table3" class="link">Favorites table</a>
+        </li>
+        <li>
+          <a href="#list1" class="link">Ordered list</a>
+        </li>
+        <li>
+          <a href="#list2" class="link">Unordered list</a>
+        </li>
+        <li>
+          <a href="#list3" class="link">Description list</a>
+        </li>
+        <li>
+          <a href="#pretag" class="link">A &lt;pre&gt; tag</a>
+        </li>
+      </ol>
+    </nav>
+    <hr>
+
+    <h2>Look&comma; some tables!</h2>
+
+    <table
+      id="table1"
+      border="3"
+    >
+      <caption>
+        The most informative table ever...
+      </caption>
+      <thead>
+        <tr>
+          <th colspan="2">Name</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Country</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Steve</td>
+          <td>Pantsersson</td>
+          <td>Skagway</td>
+          <td>Alaska</td>
+          <td>United States</td>
+        </tr>
+        <tr>
+          <td>Billy-bob</td>
+          <td>Badoozles</td>
+          <td>Kalamazoo</td>
+          <td>Alabama</td>
+          <td>United States</td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+
+    <table
+      id="table2"
+      border="1"
+    >
+      <caption>Life expectancy by current age</caption>
+      <thead>
+        <tr>
+          <th colspan="2">65</th>
+          <th colspan="2">40</th>
+          <th colspan="2">20</th>
+        </tr>
+        <tr>
+          <th>Men</th>
+          <th>Women</th>
+          <th>Men</th>
+          <th>Women</th>
+          <th>Men</th>
+          <th>Women</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>82</td>
+          <td>85</td>
+          <td>78</td>
+          <td>82</td>
+          <td>77</td>
+          <td>81</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <hr>
+
+    <table
+      id="table3"
+      border="1"
+    >
+      <caption>
+        Favorite and least favorite things
+      </caption>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Bob</th>
+          <th>Alice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th rowspan="2">Favorite</th>
+          <th>Color</th>
+          <td>Blue</td>
+          <td>Purple</td>
+        </tr>
+        <tr>
+          <th>Flavor</th>
+          <td>Banana</td>
+          <td>Chocolate</td>
+        </tr>
+        <tr>
+          <th rowspan="2">Least Favorite</th>
+          <th>Color</th>
+          <td>Yellow</td>
+          <td>Pink</td>
+        </tr>
+        <tr>
+          <th>Flavor</th>
+          <td>Mint</td>
+          <td>Walnut</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <hr>
+
+    <h2>Look&comma; some lists!</h2>
+
+    <div>
+      Here&apos;s an ordered list:
+      <ol
+        id="list1"
+        type="I"
+      >
+        <li>Ice cream</li>
+        <li>Bananas</li>
+        <li>Tofu</li>
+        <li>Potato chips</li>
+        <li>Llamas</li>
+      </ol>
+    </div>
+    <hr>
+
+    <div>
+      And here&apos;s an unordered list:
+      <ul
+        id="list2"
+        type="circle"
+      >
+        <li>Squirrels</li>
+        <li>Fly Kites</li>
+        <li>List Item</li>
+        <li>Strawberries</li>
+        <li>Hula Hoops</li>
+      </ul>
+    </div>
+    <div>
+      Also&comma; a description list:
+    </div>
+    <hr>
+
+    <dl id="list3">
+      <dt>Football</dt>
+        <dd>Touchdown = 6 points</dd>
+        <dd>Extra point = 1 or 2 points</dd>
+        <dd>Field Goal = 3 points</dd>
+        <dd>Field Goal = 3 points</dd>
+        <dd>Foul = yardage deducted/added</dd>
+      <dt>Hockey</dt>
+        <dd>Goal = 1 point</dd>
+        <dd>Foul = time in penalty box</dd>
+    </dl>
+    <hr>
+
+    <h2>Here&apos;s a &lt;pre&gt; tag:</h2>
+    <pre id="pretag">
+      It renders exactly how
+            you enter it in the
+        code editor      .
+
+
+      Pretty cool, Batman!
+    </pre>
+    <hr>
+
+    <footer>
+      <a href="#" class="link to-top">Back to top</a>
+    </footer>
+  </body>
+</html>
+
