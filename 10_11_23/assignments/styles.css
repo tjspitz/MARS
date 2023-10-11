@@ -95,18 +95,6 @@ dd:last-of-type > ul {
   padding: 0.5rem 1rem;
 }
 
-.people-list > li::before {
-  margin: 2vw;
-}
-
-.people-list > li:nth-of-type(odd):before {
-  content: '😎';
-}
-
-.people-list > li:nth-of-type(even):before {
-  content: '🥳';
-}
-
 .tab {
   border-right: 0.1rem solid var(--darkBread);
   border-bottom: 0.1rem solid var(--darkBread);
