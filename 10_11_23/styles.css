@@ -1,0 +1,88 @@
+/* ========== Umbrellas ==========  */
+* {
+  box-sizing: border-box;
+  background-color: rgb(230, 224, 216);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 auto;
+  padding: 2rem 0 1rem 0;
+  background-image: url("https://image.freepik.com/free-vector/hand-drawn-wallpaper-background-various-sandwiches_54006-787.jpg");
+}
+
+/* ========== Elements ========== */
+a:visited {
+  color: #4d056e;
+}
+
+dd::before {
+  content: '🥪';
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: 3rem auto 1rem auto;
+  padding: 0.7rem;
+}
+
+footer,
+.title {
+  border: 0.25rem solid #8b4513;
+  border-radius: 1rem 3rem;
+  font-family: 'Rubik', sans-serif;
+}
+
+ul {
+  padding-bottom: 1rem;
+  border-bottom: 0.1rem dashed #8b4513;
+}
+
+ul:last-of-type {
+  border: none;
+}
+
+/* ========== Classes ========== */
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #ff6347;
+}
+
+.main-content {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  padding: 1rem 1.8rem;
+  margin: 0.5rem auto;
+  border: 0.2rem solid #4d4d94;
+  border-radius: 2rem;
+}
+
+.people-list > li::before {
+  margin: 2vw;
+}
+
+.people-list > li:nth-of-type(odd):before {
+  content: '😎';
+}
+
+.people-list > li:nth-of-type(even):before {
+  content: '🥳';
+}
+
+.title {
+  max-width: max-content;
+  margin: 0 auto 1rem auto;
+  padding: 0.5rem 2rem;
+  font-style: italic;
+}
