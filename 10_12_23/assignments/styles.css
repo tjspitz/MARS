@@ -1,0 +1,146 @@
+/* ========== Umbrellas ==========  */
+:root {
+  --lightBread: #e6e0d8;
+  --mediumBread: #b3896c;
+  --darkBread: #8b4513;
+}
+
+* {
+  box-sizing: border-box;
+  background-color: var(--lightBread);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 auto;
+  padding: 2rem 0 1rem 0;
+  background-image: url("https://image.freepik.com/free-vector/hand-drawn-wallpaper-background-various-sandwiches_54006-787.jpg");
+}
+
+/* ========== Elements ========== */
+article {
+  max-width: 80%;
+}
+
+dd::before {
+  content: '🥪';
+}
+
+dd:last-of-type > ul {
+  border-bottom: none;
+}
+
+details {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+footer {
+  width: max-content;
+  margin: 3rem auto 1rem auto;
+  padding: 0.7rem;
+  font: italic 1rem 'Rubik', sans-serif;
+}
+
+footer,
+header {
+  border: 0.25rem solid var(--darkBread);
+  border-radius: 1rem 3rem;
+}
+
+header {
+  max-width: max-content;
+  margin: 0 auto 1rem auto;
+  padding: 0.5rem 2rem;
+  font: 600 2rem 'Rubik', sans-serif;
+}
+
+main,
+.flex-container {
+  background: transparent;
+}
+
+summary {
+  font-size: 1.1rem;
+  font-variant: small-caps;
+  list-style: '🥪';
+  margin-left: 0.8rem;
+
+}
+
+summary:hover {
+  cursor: pointer;
+  text-shadow: 0.5rem 0.5rem 1rem var(--mediumBread);
+}
+
+/* ========== Classes ========== */
+
+
+.article-img {
+  max-width: 30%;
+  border: transparent;
+  border-radius: 2rem;
+  margin: 1rem 0;
+}
+
+.flex-container {
+  display: flex;
+  margin: 0 0.5rem;
+}
+
+.flex-cols {
+  flex-direction: column;
+}
+
+.img-container {
+  justify-content: space-around;
+}
+
+.indent {
+  margin-left: 1rem;
+}
+
+.main-content {
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+}
+
+.main-content,
+.secondary-content {
+  border: 0.25rem solid var(--mediumBread);
+  border-radius: 1rem;
+  padding: 0 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+}
+
+.pacman {
+  width: 50px;
+  height: auto;
+  background-color: transparent;
+  position: fixed;
+  animation: scroll 5s linear infinite;
+}
+
+.secondary-content {
+  margin-right: 1rem;
+  max-height: calc();
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+/* ========== Queries & misc. ========== */
+@keyframes scroll {
+  0% {
+    transform: translateX(-10vw);
+  }
+  100% {
+    transform: translateX(98vw);
+  }
+}
