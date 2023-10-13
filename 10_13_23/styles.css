@@ -16,28 +16,41 @@ body {
   background-image: url("https://image.freepik.com/free-vector/hand-drawn-wallpaper-background-various-sandwiches_54006-787.jpg");
 }
 
-header,
-footer,
-.main-content,
-.secondary-content {
-  background-color: var(--lightBread);
-  z-index: 2;
-}
-
 /* ========== Elements ========== */
-main,
-.flex-container {
-  background: transparent;
+img {
+  max-width: 25vw;
+  border: transparent;
+  border-radius: 1rem;
 }
 
 /* ========== Classes ========== */
-.flex-container {
-  display: flex;
-  margin: 0 0.5rem;
+.grid-container-parent {
+  display: grid;
+  background: transparent;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+  "header header header"
+  "sidebar content content"
+  "sidebar content content";
+  grid-auto-rows: 20vh;
+  gap: 0.4rem;
+  border: 0.3rem solid var(--mediumBread);
+  border-radius: 1.5rem;
 }
 
-.flex-cols {
-  flex-direction: column;
+.grid-item {
+  background-color: var(--lightBread);
+  padding: 0.4rem;
+  border: transparent;
+  border-radius: 1rem;
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
 }
 
 /* ========== Queries & misc. ========== */
