@@ -1,0 +1,140 @@
+/* ========== Umbrellas ==========  */
+:root {
+  --lightBread: #e6e0d8;
+  --mediumBread: #b3896c;
+  --darkBread: #8b4513;
+}
+
+* {
+  box-sizing: border-box;
+  background-color: var(--lightBread);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 auto;
+  padding: 2rem 0 1rem 0;
+  background-image: url("https://image.freepik.com/free-vector/hand-drawn-wallpaper-background-various-sandwiches_54006-787.jpg");
+}
+
+/* ========== Elements ========== */
+a:visited {
+  color: inherit;
+}
+
+dd::before {
+  content: '🥪';
+}
+
+footer {
+  width: max-content;
+  margin: 3rem auto 1rem auto;
+  padding: 0.7rem;
+}
+
+footer,
+.title {
+  border: 0.25rem solid var(--darkBread);
+  border-radius: 1rem 3rem;
+  font-family: 'Rubik', sans-serif;
+}
+
+ul {
+  padding-bottom: 1rem;
+  border-bottom: 0.1rem dashed var(--darkBread);
+}
+
+dd:last-of-type > ul {
+  border-bottom: none;
+}
+
+/* ========== IDs ========== */
+#active-tab {
+  color: var(--lightBread);
+  background-color: var(--darkBread);
+}
+
+#active-tab:hover,
+.tab:hover {
+  background-color: var(--mediumBread);
+}
+/* ========== Classes ========== */
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #ff6347;
+}
+
+.main-content,
+.nav-tabs {
+  display: flex;
+}
+
+.main-content {
+  flex-direction: column;
+  max-width: 800px;
+  font-size: 1.4rem;
+  border: 0.2rem solid #4d4d94;
+  border-radius: 2rem;
+  padding: 1rem 1.8rem;
+  margin: auto;
+}
+
+.nav-tabs {
+  justify-content: space-between;
+  font-size: 1rem;
+  font-variant: small-caps;
+  padding: 0.5rem 1rem;
+}
+
+.pacman {
+  width: 50px;
+  height: auto;
+  background-color: transparent;
+  position: fixed;
+  animation: scroll 5s linear infinite;
+}
+
+.tab {
+  border-right: 0.1rem solid var(--darkBread);
+  border-bottom: 0.1rem solid var(--darkBread);
+  border-radius: 4rem 5rem;
+  padding: 0.3rem 0.8rem;
+  color: inherit;
+  text-decoration: none;
+  transition-duration: 750ms;
+}
+
+.tab > a:visited {
+  color: inherit;
+}
+
+.title {
+  max-width: max-content;
+  margin: 0 auto 1rem auto;
+  padding: 0.5rem 2rem;
+  font-style: italic;
+}
+
+.to-top {
+  background-color: transparent;
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
+  font-size: 3rem;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(-10vw);
+  }
+  100% {
+    transform: translateX(98vw);
+  }
+}

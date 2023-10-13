@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&family=Rubik:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link href="./styles.css" rel="stylesheet" type="text/css" />
+    <title>Sandwiches&comma; I guess</title>
+  </head>
+
+  <body>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png" alt="nom nom" class="pacman" />
+
+    <h2 class="title">All sandwiches. All the time.</h2>
+
+    <div class="main-content">
+      <nav class="nav-tabs">
+        <!-- Give the ./index 'tab' an id to mock that it is in-use -->
+        <a href="./index.html" id="active-tab" class="tab">Cheese-Based Sandwiches</a>
+        <a href="./mockTab2.html" class="tab">Horseradish-Based Sandwiches</a>
+        <a href="./mockTab3.html" class="tab">Rye Bread-Based Sandwiches</a>
+      </nav>
+
+      <dl>
+        <dt>Sandwiches typically made with cheese:</dt>
+        <dd>
+          Grilled Cheese Sandwich
+          <ul>
+            <li>
+              A classic comfort food made with slices of cheese (usually cheddar&comma; American&comma; or Swiss) between two slices of buttered and toasted bread.
+            </li>
+          </ul>
+        </dd>
+        <dd>
+          BLT Sandwich
+          <ul>
+            <li>
+              A bacon&comma; lettuce&comma; and tomato sandwich that often includes a slice of cheese&comma; such as American or Swiss&comma; to add creaminess and flavor.
+            </li>
+          </ul>
+        </dd>
+        <dd>
+          Philly Cheesesteak
+          <ul>
+            <li>
+              A famous sandwich featuring thinly sliced beefsteak&comma; often with saut&eacute;ed onions and bell peppers&comma; served on a long roll and topped with melted cheese&comma; typically provolone or American.
+            </li>
+          </ul>
+        </dd>
+        <dd>
+          Caprese Sandwich
+          <ul>
+            <li>
+              A light and refreshing sandwich made with fresh mozzarella cheese&comma; tomato slices&comma; basil leaves&comma; and drizzled with balsamic glaze or vinaigrette&comma; usually served on a baguette or ciabatta bread.
+            </li>
+          </ul>
+        </dd>
+        <dd>
+          Reuben Sandwich
+          <ul>
+            <li>
+              A deli classic that includes corned beef&comma; sauerkraut&comma; Swiss cheese&comma; and Russian or Thousand Island dressing&comma; grilled between slices of rye bread.
+            </li>
+          </ul>
+        </dd>
+      </dl>
+      <!--
+        If we were actually rendering different tabs on a single page,
+        we would include the additional <dl> trees here. The 'inactive' tabs would
+        be conditionally rendered and/or have "display:none" styling conditionally applied,
+        which would toggle upon clicking the corresponding tab.
+        For now, they're mocked as separate HTML pages.
+      -->
+    </div>
+
+    <a href="#" class="link to-top">⬆️</a>
+
+    <footer>
+      &copy; Wednesday, October 11th, 2023, by Snuffleupagus
+    </footer>
+  </body>
+</html>
