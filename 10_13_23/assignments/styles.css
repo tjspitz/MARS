@@ -1,0 +1,43 @@
+/* ========== Umbrellas ==========  */
+:root {
+  --lightBread: #e6e0d8;
+  --mediumBread: #b3896c;
+  --darkBread: #8b4513;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 auto;
+  padding: 2rem 0 1rem 0;
+  background-image: url("https://image.freepik.com/free-vector/hand-drawn-wallpaper-background-various-sandwiches_54006-787.jpg");
+}
+
+header,
+footer,
+.main-content,
+.secondary-content {
+  background-color: var(--lightBread);
+  z-index: 2;
+}
+
+/* ========== Elements ========== */
+main,
+.flex-container {
+  background: transparent;
+}
+
+/* ========== Classes ========== */
+.flex-container {
+  display: flex;
+  margin: 0 0.5rem;
+}
+
+.flex-cols {
+  flex-direction: column;
+}
+
+/* ========== Queries & misc. ========== */
