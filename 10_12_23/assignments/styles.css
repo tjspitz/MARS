@@ -7,11 +7,6 @@
 
 * {
   box-sizing: border-box;
-  background-color: var(--lightBread);
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -21,17 +16,17 @@ body {
   background-image: url("https://image.freepik.com/free-vector/hand-drawn-wallpaper-background-various-sandwiches_54006-787.jpg");
 }
 
+header,
+footer,
+.main-content,
+.secondary-content {
+  background-color: var(--lightBread);
+}
+
 /* ========== Elements ========== */
-article {
-  max-width: 80%;
-}
-
-dd::before {
-  content: '🥪';
-}
-
-dd:last-of-type > ul {
-  border-bottom: none;
+main,
+.flex-container {
+  background: transparent;
 }
 
 details {
@@ -39,15 +34,8 @@ details {
   font-size: 0.8rem;
 }
 
+header,
 footer {
-  width: max-content;
-  margin: 3rem auto 1rem auto;
-  padding: 0.7rem;
-  font: italic 1rem 'Rubik', sans-serif;
-}
-
-footer,
-header {
   border: 0.25rem solid var(--darkBread);
   border-radius: 1rem 3rem;
 }
@@ -59,9 +47,11 @@ header {
   font: 600 2rem 'Rubik', sans-serif;
 }
 
-main,
-.flex-container {
-  background: transparent;
+footer {
+  width: max-content;
+  margin: 3rem auto 1rem auto;
+  padding: 0.7rem;
+  font: italic 1rem 'Rubik', sans-serif;
 }
 
 summary {
@@ -78,15 +68,6 @@ summary:hover {
 }
 
 /* ========== Classes ========== */
-
-
-.article-img {
-  max-width: 30%;
-  border: transparent;
-  border-radius: 2rem;
-  margin: 1rem 0;
-}
-
 .flex-container {
   display: flex;
   margin: 0 0.5rem;
@@ -96,15 +77,8 @@ summary:hover {
   flex-direction: column;
 }
 
-.img-container {
-  justify-content: space-around;
-}
-
-.indent {
-  margin-left: 1rem;
-}
-
 .main-content {
+  max-width: 80%;
   font-size: 1.1rem;
   line-height: 1.4rem;
 }
@@ -118,17 +92,31 @@ summary:hover {
   line-height: 1.4rem;
 }
 
+.secondary-content {
+  margin-right: 1rem;
+}
+
+.img-container {
+  justify-content: space-around;
+}
+
+.article-img {
+  max-width: 30%;
+  border: transparent;
+  border-radius: 2rem;
+  margin: 1rem 0;
+}
+
+.indent {
+  margin-left: 1rem;
+}
+
 .pacman {
   width: 50px;
   height: auto;
   background-color: transparent;
   position: fixed;
   animation: scroll 5s linear infinite;
-}
-
-.secondary-content {
-  margin-right: 1rem;
-  max-height: calc();
 }
 
 .strike {
