@@ -21,6 +21,7 @@ footer,
 .main-content,
 .secondary-content {
   background-color: var(--lightBread);
+  z-index: 2;
 }
 
 /* ========== Elements ========== */
@@ -42,7 +43,7 @@ footer {
 
 header {
   max-width: max-content;
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 1.5rem auto;
   padding: 0.5rem 2rem;
   font: 600 2rem 'Rubik', sans-serif;
 }
@@ -111,12 +112,12 @@ summary:hover {
   margin-left: 1rem;
 }
 
-.pacman {
-  width: 50px;
+.scrolling-sub {
+  width: 25%;
   height: auto;
   background-color: transparent;
-  position: fixed;
-  animation: scroll 5s linear infinite;
+  position: absolute;
+  animation: scroll 10s linear infinite;
 }
 
 .strike {
@@ -126,7 +127,7 @@ summary:hover {
 /* ========== Queries & misc. ========== */
 @keyframes scroll {
   0% {
-    transform: translateX(-10vw);
+    transform: translateX(-30vw);
   }
   100% {
     transform: translateX(98vw);
