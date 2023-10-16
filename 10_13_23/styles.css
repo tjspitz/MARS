@@ -17,6 +17,18 @@ body {
 }
 
 /* ========== Elements ========== */
+footer {
+  width: 33vw;
+  height: 10vh;
+  margin: 1rem auto;
+  background-color: var(--lightBread);
+  border: 0.3rem solid var(--darkBread);
+  border-radius: 1rem;
+  animation-name: color-changer;
+  animation-duration: 4s;
+  animation-iteration-count: infinite
+}
+
 img {
   max-width: 25vw;
   border: transparent;
@@ -54,3 +66,15 @@ img {
 }
 
 /* ========== Queries & misc. ========== */
+@keyframes color-changer {
+  0% {
+    background-color: var(--lightBread);
+    transform: rotate(0deg);
+  } 50% {
+    background-color: var(--darkBread);
+    transform: rotate(180deg);
+  } 100% {
+    background-color: var(--lightBread);
+    transform: rotate(359deg);
+  }
+}
