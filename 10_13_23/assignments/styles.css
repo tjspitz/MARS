@@ -24,20 +24,89 @@ footer,
   z-index: 2;
 }
 
-/* ========== Elements ========== */
-main,
-.flex-container {
+.grid-container {
+  display: grid;
   background: transparent;
+  gap: 0.5rem;
 }
 
-/* ========== Classes ========== */
-.flex-container {
-  display: flex;
-  margin: 0 0.5rem;
+main.grid-container {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+  "header header header header"
+  "sidebar article article article"
+  "sidebar article article article"
+  "sidebar article article article"
+  "footer footer footer footer";
 }
 
-.flex-cols {
-  flex-direction: column;
+article.grid-container {
+  grid-template-rows: 1fr, 1fr;
+  grid-template-areas:
+  "content"
+  "pic-container";
+}
+
+.grid-container.pic-container {
+  grid-area: pic-container;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+  "pic pic pic"
+}
+
+.grid-item {
+  background-color: var(--lightBread);
+  padding: 0.4rem;
+  border: 0.3rem solid var(--mediumBread);
+  border-radius: 1.5rem;
+}
+
+.header,
+.footer {
+  padding: 0.5rem 1.5rem;
+  margin: 1rem auto 1.5rem auto;
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.article {
+  grid-area: article;
+}
+
+.content {
+  grid-area: content;
+}
+
+.pic {
+  border: transparent;
+  width: 30vw;
+  grid-area: pic;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.scrolling-sub {
+  width: 25%;
+  height: auto;
+  background-color: transparent;
+  position: absolute;
+  animation: scroll 10s linear infinite;
 }
 
 /* ========== Queries & misc. ========== */
+@keyframes scroll {
+  0% {
+    transform: translateX(-30vw);
+  }
+  100% {
+    transform: translateX(98vw);
+  }
+}
