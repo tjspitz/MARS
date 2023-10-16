@@ -47,7 +47,7 @@ const additionAns = () => {
   console.log('input1: ', input1);
   console.log('input1.value: ', input1.value);
 
-  ans.innerText = Number(input1.value) + Number(input2.value);
+  ans.innerText = Number(input1.value) + Number(input2.value) + ' 🥪';
 };
 
 const subtractionAns = () => {
@@ -55,7 +55,7 @@ const subtractionAns = () => {
   const input2 = document.querySelector('.subtraction.problem > input:nth-child(2)');
   const ans = document.querySelector('.subtraction.problem .ans');
 
-  ans.innerText = Number(input1.value) - Number(input2.value);
+  ans.innerText = Number(input1.value) - Number(input2.value)  + ' 🥪';
 };
 
 const multiplicationAns = () => {
@@ -63,7 +63,7 @@ const multiplicationAns = () => {
   const input2 = document.querySelector('.multiplication.problem > input:nth-child(2)');
   const ans = document.querySelector('.multiplication.problem .ans');
 
-  ans.innerText = Number(input1.value) * Number(input2.value);
+  ans.innerText = Number(input1.value) * Number(input2.value)  + ' 🥪';
 };
 
 const exponentAns = () => {
@@ -71,5 +71,5 @@ const exponentAns = () => {
   const input2 = document.querySelector('.exponent.problem > input:nth-child(2)');
   const ans = document.querySelector('.exponent.problem .ans');
 
-  ans.innerText = Number(input1.value) ** Number(input2.value);
+  ans.innerText = Number(input1.value) ** Number(input2.value)  + ' 🥪';
 };
