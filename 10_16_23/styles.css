@@ -1,0 +1,49 @@
+:root {
+  --lightBread: #e6e0d8;
+  --mediumBread: #b3896c;
+  --darkBread: #8b4513;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  padding: 2rem 0 1rem 0;
+  background-image: url("https://image.freepik.com/free-vector/hand-drawn-wallpaper-background-various-sandwiches_54006-787.jpg");
+}
+
+header {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+footer {
+  font-style: italic;
+}
+
+header,
+footer {
+  margin: 1rem auto;
+  max-width: max-content;
+}
+
+header,
+footer,
+.main-content {
+  background-color: var(--lightBread);
+  border: 0.3rem solid var(--darkBread);
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.problem {
+  border-bottom: 0.1rem dashed var(--mediumBread);
+  margin: 0.8rem 0;
+  padding-bottom: 0.5rem;
+}
+
+.problem:last-child {
+  border-bottom: transparent;
+}
