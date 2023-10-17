@@ -9,7 +9,7 @@ const checkNumber = () => {
   if (guess === theSecretNumber) {
     makeAnswer(true, attemptsMade);
   } else {
-    makeAnswer(false);
+    makeAnswer(false, attemptsMade);
   }
 };
 
@@ -24,7 +24,7 @@ const makeAnswer = (isCorrect, attempts) => {
     message = `Congratulations! You guessed correctly with ${attempts} try.`;
     attemptsMade = 0;
   } else {
-    message = `Good guess, but not quite. Try again...`;
+    message = `Good guess, but not quite. Try number ${attempts + 1} will be the lucky one!`;
   }
   targetDiv.innerHTML = message;
 };
