@@ -11,7 +11,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
   padding: 2rem 0 1rem 0;
-  background-image: url("https://image.freepik.com/free-vector/hand-drawn-wallpaper-background-various-sandwiches_54006-787.jpg");
+  background-image: url("https://imgix.ranker.com/list_og_img/121/2419748/original/crazy-string-theory-facts-u8?fm=pjpg&q=80");
 }
 
 button {
@@ -21,6 +21,7 @@ button {
   margin-left: 1.5rem;
   padding: 0.4rem 0.8rem;
   font-size: 1rem;
+  font-variant: small-caps;
   color:var(--lightBread);
   transition: transform 0.3s;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
