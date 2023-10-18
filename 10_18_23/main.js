@@ -1,5 +1,9 @@
-const theSecretNumber = 2;
 let attemptsMade = 0;
+let theSecretNumber = makeSecretNumber(1, 10);
+
+function makeSecretNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 const checkNumber = () => {
   const guess = Number(document.querySelector('#guess').value);
@@ -8,6 +12,8 @@ const checkNumber = () => {
 
   if (guess === theSecretNumber) {
     makeAnswer(true, attemptsMade);
+    reset();
+    notifyUser();
   } else {
     makeAnswer(false, attemptsMade);
   }
@@ -19,14 +25,17 @@ const makeAnswer = (isCorrect, attempts) => {
 
   if (isCorrect && attempts > 1) {
     message = `Congratulations! You guessed correctly with ${attempts} tries.`;
-    attemptsMade = 0;
   } else if (isCorrect) {
     message = `Congratulations! You guessed correctly with ${attempts} try.`;
-    attemptsMade = 0;
   } else {
     message = `Good guess, but not quite. Try number ${attempts + 1} will be the lucky one!`;
   }
   targetDiv.innerHTML = message;
+};
+
+const reset = () => {
+  attemptsMade = 0;
+  theSecretNumber = makeSecretNumber(1, 10);
 };
 
 document.addEventListener('DOMContentLoaded', () => {
