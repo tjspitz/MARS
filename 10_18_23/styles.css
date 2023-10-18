@@ -1,0 +1,76 @@
+:root {
+  --lightBread: #e6e0d8;
+  --mediumBread: #b3896c;
+  --darkBread: #8b4513;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  padding: 2rem 0 1rem 0;
+  background-image: url("https://image.freepik.com/free-vector/hand-drawn-wallpaper-background-various-sandwiches_54006-787.jpg");
+}
+
+button {
+  background-color: var(--mediumBread);
+  border: 0.5rem solid var(--lightBread);
+  border-radius: 2rem;
+  margin-left: 1.5rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  color:var(--lightBread);
+  transition: transform 0.3s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button:active {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px -50px 100px -20px, rgba(0, 0, 0, 0.3) 0px -30px 60px -30px, rgba(10, 37, 64, 0.35) 0px 2px 6px 0px inset;
+}
+
+header {
+  font: 700 1.5rem 'Montserrat';
+}
+
+footer {
+  font: italic 1rem 'Rubik';
+}
+
+header,
+footer {
+  margin: 1rem auto;
+  max-width: max-content;
+}
+
+header,
+footer,
+.main-content {
+  background-color: var(--lightBread);
+  border: 0.3rem solid var(--darkBread);
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.main-content {
+  font-size: 1.3rem;
+
+}
+
+.problem {
+  border-bottom: 0.1rem dashed var(--mediumBread);
+  margin: 0.8rem 0;
+  padding-bottom: 0.5rem;
+}
+
+.ans {
+  color: var(--darkBread);
+  max-width: max-content;
+  margin: auto;
+  padding: 1.5rem;
+}
