@@ -1,11 +1,8 @@
-const measureMessage = () => {
-  const msg = document.querySelector('#msg').value;
-  const ans = document.querySelector('.ans');
+const measureMessage = (message) => {
   const charCount = {};
-  let charCountHTML = "<ul>";
 
-  for (let i = 0; i < msg.length; i ++) {
-    let currentChar = msg[i];
+  for (let i = 0; i < message.length; i ++) {
+    let currentChar = message[i];
 
     if (currentChar === ' ') {
       continue;
@@ -18,12 +15,22 @@ const measureMessage = () => {
     }
   }
 
-  for (const char in charCount) {
-    let currHTML = `<li>${char}: ${charCount[char]}</li>`;
+  return charCount;
+};
+
+const renderMessage = () => {
+  const msg = document.querySelector('#msg').value;
+  const ans = document.querySelector('.ans');
+  const chars = measureMessage(msg);
+  let charCountHTML = "<ul>";
+
+  for (const char in chars) {
+    let currHTML = `<li>${char}: ${chars[char]}</li>`;
     charCountHTML += currHTML;
   }
 
   charCountHTML += "</ul>"
+  ans.innerHTML = "Your message contains the following characters:"
   ans.innerHTML += charCountHTML;
 };
 
