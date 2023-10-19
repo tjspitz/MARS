@@ -80,7 +80,8 @@ footer,
 
 .btn-render {
   background-color: var(--mediumBread);
-
+  margin-top: 1rem;
+  padding: 0.8rem;
 }
 
 .ans {

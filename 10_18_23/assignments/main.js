@@ -50,10 +50,45 @@ const setCases = () => {
 };
 
 const resetOptions = () => {
-  countSpaces = false;
-  countNums = false;
-  counSymbols = false;
-  countCases = false;
+  if (countSpaces) {
+    setSpaces();
+  }
+  if (countNums) {
+    setNums();
+  }
+  if (countSymbols) {
+    setSymbols();
+  }
+  if (countCases) {
+    setCases();
+  }
+};
+
+const getCharType = (charCode) => {
+  if (charCode === 32) {
+    return 'space';
+  } else if (charCode > 47 && charCode < 58) {
+    return 'num';
+  } else if (
+    charCode > 64 && charCode < 91 ||
+    charCode > 96 && charCode < 123
+    ) {
+      return 'char';
+  } else {
+    return 'symbol';
+  }
+};
+
+const formatChar = (type) => {
+  if (countSpaces && type === 'space') {
+    return 'SPACE';
+  } else if (countNums && type === 'num') {
+    return 'NUM_';
+  } else if (countSymbols && type === 'symbol') {
+    return 'SYMBOL_';
+  } else {
+    return undefined;
+  }
 };
 
 const measureMessage = (message) => {
@@ -66,27 +101,14 @@ const measureMessage = (message) => {
   for (let i = 0; i < message.length; i ++) {
     let currentChar = message[i];
     let curCharCode = currentChar.charCodeAt(0);
+    let curCharType = getCharType(curCharCode);
 
-    if (!countSpaces && curCharCode === 32) {
+    if (curCharType !== 'char') {
+      currentChar = formatChar(curCharType) + currentChar;
+    }
+
+    if (!currentChar) {
       continue;
-    } else {
-      currentChar = 'space_chars';
-    }
-
-    if (!countNums)  {
-      if (curCharCode > 47 && curCharCode < 58) {
-        continue;
-      }
-    }
-
-    if (!countSymbols) {
-      if (
-        curCharCode < 65 ||
-        (curCharCode >  90 && curCharCode < 97) ||
-        curCharCode > 122
-        ) {
-          continue;
-        }
     }
 
     if (charCount[currentChar]) {
@@ -95,8 +117,6 @@ const measureMessage = (message) => {
       charCount[currentChar] = 1;
     }
   }
-
-  console.log(charCount);
   return charCount;
 };
 

@@ -23,6 +23,9 @@
         <label for="msg">Enter a message:
           <input id="msg" name="msg" type="text" size="50" />
         </label>
+        <button class="btn-render" onclick="renderMessage()">
+          Measure My Message!
+        </button>
       </div>
       <div class="options">
         <p>I only measure letters by default. What else should I measure?</p>
@@ -38,8 +41,7 @@
         <div>Treat upper and lower cases as same? <i>(e.g., 'n' same as 'N')</i>
           <button id="count-cases" onclick="setCases()">YES</button>
         </div>
-        </div>
-        <button class="btn-render" onclick="renderMessage()">Measure My Message!</button>
+      </div>
       <div class="ans">Your message contains the following characters:</div>
     </main>
 
