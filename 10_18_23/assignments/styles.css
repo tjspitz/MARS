@@ -15,7 +15,6 @@ body {
 }
 
 button {
-  background-color: var(--mediumBread);
   border: 0.5rem solid var(--lightBread);
   border-radius: 2rem;
   margin-left: 1.5rem;
@@ -65,8 +64,23 @@ footer,
 
 .problem {
   border-bottom: 0.1rem dashed var(--mediumBread);
-  margin: 0.8rem 0;
-  padding-bottom: 0.5rem;
+  margin: 1rem 0;
+  padding-bottom: 1rem;
+}
+
+.options {
+  border-bottom: 0.1rem dashed var(--mediumBread);
+}
+
+.options > * {
+  display: block;
+  margin-bottom: 2rem;
+
+}
+
+.btn-render {
+  background-color: var(--mediumBread);
+
 }
 
 .ans {

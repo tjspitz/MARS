@@ -21,10 +21,25 @@
       <h2>Enter a message!</h2>
       <div class="problem">
         <label for="msg">Enter a message:
-          <input id="msg" name="msg" type="text" size="50"/>
+          <input id="msg" name="msg" type="text" size="50" />
         </label>
-        <button onclick="renderMessage()">Measure My Message!</button>
       </div>
+      <div class="options">
+        <p>I only measure letters by default. What else should I measure?</p>
+        <div>Count spaces?
+          <button id="count-spaces" onclick="setSpaces()">YES</button>
+        </div>
+        <div>Count numbers?
+          <button id="count-nums" onclick="setNums()">YES</button>
+        </div>
+        <div>Count symbols?
+          <button id="count-symbols" onclick="setSymbols()">YES</button>
+        </div>
+        <div>Treat upper and lower cases as same? <i>(e.g., 'n' same as 'N')</i>
+          <button id="count-cases" onclick="setCases()">YES</button>
+        </div>
+        </div>
+        <button class="btn-render" onclick="renderMessage()">Measure My Message!</button>
       <div class="ans">Your message contains the following characters:</div>
     </main>
 
