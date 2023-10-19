@@ -14,11 +14,15 @@ body {
   background-image: url("https://imgix.ranker.com/list_og_img/121/2419748/original/crazy-string-theory-facts-u8?fm=pjpg&q=80");
 }
 
+button,
+input {
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+}
+
 button {
   border: 0.5rem solid var(--lightBread);
-  border-radius: 2rem;
   margin-left: 1.5rem;
-  padding: 0.4rem 0.8rem;
   font-size: 1rem;
   font-variant: small-caps;
   color:var(--lightBread);
@@ -32,6 +36,12 @@ button:hover {
 
 button:active {
   box-shadow: rgba(50, 50, 93, 0.25) 0px -50px 100px -20px, rgba(0, 0, 0, 0.3) 0px -30px 60px -30px, rgba(10, 37, 64, 0.35) 0px 2px 6px 0px inset;
+}
+
+.btn-render {
+  background-color: var(--mediumBread);
+  margin-top: 1rem;
+  padding: 0.8rem;
 }
 
 header {
@@ -76,12 +86,6 @@ footer,
   display: block;
   margin-bottom: 2rem;
 
-}
-
-.btn-render {
-  background-color: var(--mediumBread);
-  margin-top: 1rem;
-  padding: 0.8rem;
 }
 
 .ans {
