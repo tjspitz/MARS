@@ -44,7 +44,7 @@
             </label>
             <label for="blood-type" >
               Blood type:
-              <select>
+              <select id="blood-type">
                 <option value="null">--Please Choose--</option>
                 <option value="a+">A-Positive</option>
                 <option value="b+">B-Positive</option>
@@ -104,9 +104,17 @@
                 <!-- main.js will inject <option> tags for each state here -->
               </select>
             </label>
+            <label for="zip">
+              Zip: <input id="zip" type="text" placeholder="12345" />
+            </label>
           </fieldset>
         </fieldset>
-        <button type="submit">Submit Form</button>
+        <!--
+          since we are not actually calling an API,
+          the button is generic rather than of type "submit"
+        -->
+        <button type="button" onclick="MAKE_RECORD()">Submit Form</button>
+        <button type="reset">Clear Form</button>
       </form>
     </main>
 
