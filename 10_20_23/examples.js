@@ -2,7 +2,7 @@
   Feel free to run any of this code
   Just comment out the code you do not wish to run...
   Especially since some of the code are examples of BROKEN code!
-    hint: lines 57, and 141-152
+    hint: lines 57, and 141-153
   ...just highlight everything you do NOT want to run, and press 'cmd' and  '/' on a Mac
   (same thing to un-comment things)
 */
@@ -103,13 +103,14 @@ setTimeout(function() {
 // not an IIFE, will be read/defined but not called yet
 let normalFunc = function() {
   console.log('Hello from a normal function!');
-}
+};
 
-// an IIFE, it is called as soon as it is read by the interpreter
+
+// an IIFE it is called as soon as it is read by the interpreter
   // so there's really no point in naming an IIFE
 (function() {
-  console.log('Hello from an Immediately Invoked Function Expression!');
-})
+  console.log('Hello from an IIFE!');
+})(); // don't forget the () at the end...
 
 // calling the normal function...
 normalFunc()
