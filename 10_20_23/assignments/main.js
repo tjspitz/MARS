@@ -7,26 +7,18 @@ const MAKE_RECORD = () => {
   const NEW_RECORD = {};
   let inputs = [...document.querySelectorAll('input')];
   let selects = [...document.querySelectorAll('select')];
+  let allEntries = [...inputs, ...selects];
 
-  inputs = inputs.map((nodeLike) => {
+  allEntries = allEntries.map((nodeLike) => {
     return {
-      id: CAMELIZE_KEY(nodeLike.id),
-      value: nodeLike.value,
-    };
-  });
-  selects = selects.map((nodeLike) =>  {
-    return {
-      id: CAMELIZE_KEY(nodeLike.id),
+      key: CAMELIZE_KEY(nodeLike.id),
       value: nodeLike.value,
     };
   });
 
-  inputs.forEach((item) => {
-    NEW_RECORD[item.id] = item.value;
-  })
-  selects.forEach((item) => {
-    NEW_RECORD[item.id] = item.value;
-  })
+  allEntries.forEach((entry) => {
+    NEW_RECORD[entry.key] = entry.value;
+  });
 
   console.log('new record is complete: ', NEW_RECORD);
 };
