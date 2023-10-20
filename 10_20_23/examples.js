@@ -176,12 +176,14 @@ let result3 = nums.map(function(num) {
   // THEN and only then you can abbreviate it like this:
 let result4 = nums.map((num) => num * num); // [2, 4, 9, 16]
 
-// this works due to the 'only 1 param' rule, but consistency
-  // with how you write your code is, in my opinion, better
-      // than leaving out the ( ) just because you can
-  // furthermore, the ( ) are REQUIRED for 2 or more params
-      // so why confuse yourself or others by writing code
-      // in differing ways
+/*
+  this works due to the 'only 1 param' rule, but consistency
+    with how you write your code is, in my opinion, better
+      than leaving out the ( ) just because you can
+    furthermore, the ( ) are REQUIRED for 2 or more params AS WELL AS 0 params
+      so why confuse yourself or others by writing code
+      in differing ways
+*/
 let result6 = nums.map(num => num * num); // [2, 4, 9, 16]
 
 // otherwise, follow the typical pattern...
