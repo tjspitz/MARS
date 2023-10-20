@@ -1,3 +1,36 @@
+const CAMELIZE_KEY = (kebabKey) => {
+  let regex = /-(.)/g;
+  return kebabKey.replaceAll(regex, (match) => match[1].toUpperCase());
+};
+
+const MAKE_RECORD = () => {
+  const NEW_RECORD = {};
+  let inputs = [...document.querySelectorAll('input')];
+  let selects = [...document.querySelectorAll('select')];
+
+  inputs = inputs.map((nodeLike) => {
+    return {
+      id: CAMELIZE_KEY(nodeLike.id),
+      value: nodeLike.value,
+    };
+  });
+  selects = selects.map((nodeLike) =>  {
+    return {
+      id: CAMELIZE_KEY(nodeLike.id),
+      value: nodeLike.value,
+    };
+  });
+
+  inputs.forEach((item) => {
+    NEW_RECORD[item.id] = item.value;
+  })
+  selects.forEach((item) => {
+    NEW_RECORD[item.id] = item.value;
+  })
+
+  console.log('new record is complete: ', NEW_RECORD);
+};
+
 const MAKE_STATE_OPTIONS = () => {
   const SELECT_TAG = document.querySelector('#state');
   const STATES = [
@@ -52,11 +85,9 @@ const MAKE_STATE_OPTIONS = () => {
     ['wi', 'Wisconsin'],
     ['wy', 'Wyoming'],
   ];
-
   const BUILD_HTML = (statePair) => {
     return `<option value=${statePair[0]}>${statePair[1]}</option>`;
   };
-
   const OPTION_TAGS = STATES.map(BUILD_HTML);
 
   return OPTION_TAGS.join('');
