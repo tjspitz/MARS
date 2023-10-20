@@ -149,8 +149,8 @@ let badFunc2 = () {
   // needs to be () => { } for it to be an arrow function
 };
 
-let badIIFE1 = (function() => { }); // not a function
-let badIIFE2 = (() { }); // not a function
+let badIIFE1 = (function() => { })(); // not a function
+let badIIFE2 = (() { })(); // not a function
 
 // ========== providing callbacks of many flavors ==========
 const nums = [1, 2, 3, 4];
