@@ -1,4 +1,4 @@
-const MAKE_STATES = () => {
+const MAKE_STATE_OPTIONS = () => {
   const SELECT_TAG = document.querySelector('#state');
   const STATES = [
     ['al', 'Alabama'],
@@ -59,7 +59,7 @@ const MAKE_STATES = () => {
 
   const OPTION_TAGS = STATES.map(BUILD_HTML);
 
-  SELECT_TAG.innerHTML = OPTION_TAGS.join('');
+  return OPTION_TAGS.join('');
 };
 
 const MAKE_FOOTER = () => {
@@ -96,10 +96,13 @@ const MAKE_FOOTER = () => {
   let copyright = FOOTER.innerHTML;
   let newText = `${DAY}, ${MONTH} ${DATE}, ${YEAR} by EDP Systems, Inc.`
 
-  FOOTER.innerHTML = copyright + newText;
+  return copyright + newText;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  MAKE_STATES();
-  MAKE_FOOTER();
+  const STATE_SELECT_TAG = document.querySelector('#state');
+  const FOOTER = document.querySelector('footer');
+
+  STATE_SELECT_TAG.innerHTML = MAKE_STATE_OPTIONS();
+  FOOTER.innerHTML = MAKE_FOOTER();
 });
