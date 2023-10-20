@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&family=Rubik:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link href="./styles.css" rel="stylesheet" type="text/css" />
+    <title>EDP Systems</title>
+  </head>
+
+  <body>
+    <header>Employee Data Processing</header>
+
+    <main class="main-content">
+      <h3>To expedite onboarding, please complete this form:</h3>
+      <form action="" method="post">
+        <fieldset>
+          <legend>Name</legend>
+          <label for="first-name">
+            First: <input id="first-name" type="text" />
+          </label>
+          <label for="middle-name">
+            Middle: <input id="middle-name" type="text" />
+          </label>
+          <label for="last-name">
+            Last: <input id="last-name" type="text" />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Biometrics</legend>
+            <label for="height" >
+              Height (inches):
+              <input id="height" type="number" value="0"/>
+            </label>
+            <label for="weight" >
+              Weight (lbs):
+              <input id="weight" type="number" value="0"/>
+            </label>
+            <label for="blood-type" >
+              Blood type:
+              <select>
+                <option value="null">--Please Choose--</option>
+                <option value="a+">A-Positive</option>
+                <option value="b+">B-Positive</option>
+                <option value="ab+">AB-Positive</option>
+                <option value="o+">O-Positive</option>
+                <option value="a-">A-Negative</option>
+                <option value="b-">B-Negative</option>
+                <option value="ab-">AB-Negative</option>
+                <option value="o-">O-Negative</option>
+              </select>
+            </label>
+            <label for="dob">
+              Date of birth:
+              <input id="dob" type="date" />
+            </label>
+        </fieldset>
+        <fieldset>
+          <legend>Contact Information</legend>
+          <label for="phone">
+            Phone number: <input id="phone" type="text" placeholder="123-456-7890" />
+          </label>
+          <label for="email">
+            Email address: <input id="email" type="email" placeholder="bob@bobmail.com" />
+          </label>
+          <fieldset>
+            <legend>Address</legend>
+            <label for="street-num">
+              Street: <input id="street-num" type="text" placeholder="1234" />
+            </label>
+            <label for="street-dir">
+              <select id="street-dir">
+                <option value="n">N</option>
+                <option value="s">S</option>
+                <option value="e">E</option>
+                <option value="w">W</option>
+              </select>
+            </label>
+            <label for="street-name">
+              <input id="street-name" type="text" placeholder="Sunny" />
+              <select id="street-suffix">
+                <option value="st">Street</option>
+                <option value="rd">Road</option>
+                <option value="ave">Avenue</option>
+                <option value="pl">Place</option>
+                <option value="blvd">Boulevard</option>
+                <option value="pkwy">Parkway</option>
+                <option value="cr">Circle</option>
+                <option value="way">Way</option>
+              </select>
+            </label>
+            <label for="city">
+              City: <input id="city" type="text" placeholder="Manhattan" />
+            </label>
+            <label for="state">
+              State:
+              <select id="state">
+                <!-- main.js will inject <option> tags for each state here -->
+              </select>
+            </label>
+          </fieldset>
+        </fieldset>
+        <button type="submit">Submit Form</button>
+      </form>
+    </main>
+
+    <footer>&copy;&nbsp;</footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

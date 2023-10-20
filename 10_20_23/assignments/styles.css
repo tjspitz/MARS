@@ -1,0 +1,43 @@
+:root {
+  --lightTheme: #d8e6e6;
+  --mediumTheme: #924981;
+  --darkTheme: #3f276a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 600 1rem 'Montserrat', sans-serif;
+  padding: 2rem 0 1rem 0;
+  background-image: url("https://storage.pixteller.com/designs/designs-images/2019-03-27/04/business-background-backgrounds-business-1-5c9b8f75536e8.png");
+}
+
+header,
+footer {
+  font-size: 2rem;
+  max-width: max-content;
+  margin: 2rem auto;
+}
+
+header,
+footer,
+.main-content {
+  background-color: var(--lightTheme);
+  border: 0.3rem solid var(--darkTheme);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+footer {
+  font-size: 0.8rem;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* margin: auto; */
+  /* text-align: center; */
+}
