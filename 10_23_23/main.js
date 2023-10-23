@@ -60,7 +60,7 @@ Manager.prototype.constructor = Manager;
 
 // these are methods specific to 'Manager'
 Manager.prototype.getDetails = function() {
-  `${this.id}: ${this.name}`;
+  return `${this.id}: ${this.name}`;
 }
 Manager.prototype.getRaise = function(amt) {
   this.salary = this.salary + amt;
