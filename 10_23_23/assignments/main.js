@@ -3,13 +3,6 @@ const CAMELIZE_KEY = (kebabKey) => {
   return kebabKey.replaceAll(regex, (match) => match[1].toUpperCase());
 };
 
-/*
-  Once you got the data, you need to calculate the salary based on designation and hours worked as follows:
-    If designation is ‘Manager’ then salary = hours worked * $90;
-    If designation is ‘Consultant’ then salary = hours worked * $70
-    If designation is ‘Trainee’ then salary = hours worked * $45
-    e.g. "John who is a ‘Manager’ will get $9000"
-*/
 const CALC_PAY = (employee) => {
   const { hoursWorked, role } = employee;
   if (role === 'Manager') {
@@ -60,13 +53,6 @@ const MAKE_RECORD = () => {
   let inputs = [...document.querySelectorAll('input')];
   let selects = [...document.querySelectorAll('select')];
   let allEntries = [...inputs, ...selects];
-
-  // allEntries = allEntries.map((nodeLike) => {
-  //   return {
-  //     key: CAMELIZE_KEY(nodeLike.id),
-  //     value: nodeLike.value,
-  //   };
-  // });
 
   allEntries.forEach((entry) => {
     let key = CAMELIZE_KEY(entry.id);
