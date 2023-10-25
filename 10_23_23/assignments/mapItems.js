@@ -61,16 +61,12 @@ const SALES = [
 // storing this specific case to a variable (as a function)
 const MOD_SALES = (sales) => {
   return sales.map((product) => {
-    const { item, stock, original, discount } = product;
-    let sale = Number((original * (1 - discount)).toFixed(2)) || original;
-    let total = stock * sale;
-    return {
-      item,
-      stock,
-      original,
-      sale,
-      total,
-    };
+    const { stock, original, discount } = product;
+    let newItem = { ...product };
+    newItem.sale = Number((original * (1 - discount)).toFixed(2)) || original;
+    newItem.total = stock * newItem.sale;
+
+    return newItem;
   });
 };
 
