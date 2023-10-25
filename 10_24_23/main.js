@@ -114,3 +114,38 @@ let mySavings = new SavingsAcount(100, 200, 0.1); // 100 = checking, 200 = savin
 
 console.log(mySavings.showBalance()); // delegates to Account method
 console.log('\nmy total savings: ', mySavings.calcTotal()); // calls SavingsAccount method
+
+// =========== NOODLING WITH DESTRUCTURING ===========
+// arrays
+var numbers1 = [1, 2, 3, 4, 5];
+
+// declare variables which point to elements in the array
+var num1 = numbers[0]; // 1
+var num2 = numbers[1]; // 2
+var num3 = numbers[2]; // 3
+var num4 = numbers[3]; // 4
+var num5 = numbers[4]; // 5
+console.log(num1, num2, num3, num4, num5); // 12345 (indiv. nums, but printed all in a row)
+
+// destructure the array... essentially declaring variables in a more brief fashion
+var [ num1, num2, num3, num4, num5 ] = numbers1; // SAME EFFECT AS ABOVE, but one line
+console.log(num1, num2, num3, num4, num5); // 12345
+
+// objects
+var numbers2 = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4,
+  e: 5,
+};
+
+var num1 = numbers.a; // 1
+var num2 = numbers.b; // 2
+var num3 = numbers.c; // 3
+var num4 = numbers.d; // 4
+var num5 = numbers.e; // 5
+console.log(num1, num2, num3, num4, num5); // 12345
+
+var { num1, num2, num3, num4, num5 } = numbers2; // SAME EFFECT AS ABOVE, but one line
+console.log(num1, num2, num3, num4, num5); // 12345
