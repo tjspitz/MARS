@@ -60,17 +60,17 @@ let genericEmployee1 = new Employee('George', 'Genericman');
   // pass in variables which point to the vales I want for the name
 let firstName = 'Bob';
 let lastName = 'Boringman';
-let role = 'Manager';
-let hours = 80;
 
 let genericEmployee2 = new Employee(firstName, lastName);
 
 // instantiate a new, distinct object in the Manager class
-  // pass in variables that will give her a name
-    // omit values that would give her a role or hours
-      // (making a mistake on purpose)
+// pass in variables that will give her a name
+// omit values that would give her a role or hours
+// (making a mistake on purpose)
 firstName = 'Lisa';
 lastName = 'Linkerson';
+let role = 'Manager';
+let hours = 80;
 
 let specificManager1 = new Manager(firstName, lastName);
 
