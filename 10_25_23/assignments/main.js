@@ -50,9 +50,9 @@ const RENDER_RECORDS = () => {
 
 const MAKE_RECORD = () => {
   const NEW_RECORD = {};
-  let inputs = [...$('input')]; // document.querySelectorAll('input');
-  let selects = [...$('select')]; // document.querySelectorAll('select');
-  let allEntries = [...inputs, ...selects];
+  let $inputs = [...$('input')]; // document.querySelectorAll('input');
+  let $selects = [...$('select')]; // document.querySelectorAll('select');
+  let allEntries = [...$inputs, ...$selects];
 
   allEntries.forEach((entry) => {
     let key = CAMELIZE_KEY(entry.id);
@@ -126,7 +126,7 @@ const MAKE_STATE_OPTIONS = () => {
 };
 
 const MAKE_FOOTER = () => {
-  const FOOTER = $('footer'); // document.querySelector('footer');
+  const $FOOTER = $('footer'); // document.querySelector('footer');
   const MONTHS = [
     'January',
     'February',
@@ -156,7 +156,7 @@ const MAKE_FOOTER = () => {
   const DATE = NOW.getDate();
   const YEAR = NOW.getFullYear()
 
-  let copyright = FOOTER.html(); // FOOTER.innerHTML
+  let copyright = $FOOTER.html(); // FOOTER.innerHTML
   let newText = `${DAY}, ${MONTH} ${DATE}, ${YEAR} by EPP Systems, Inc.`
 
   return copyright + newText;
@@ -173,14 +173,19 @@ $(document).ready(() => { // document.addEventListener('DOMContentLoaded', () =>
   });
   // =================
 
-  const PAY_DATA_TAG = $('#pay-data'); // document.querySelector('#pay-data');
-  const STATE_SELECT_TAG = $('#state'); // document.querySelector('#state');
-  const FOOTER = $('footer'); // document.querySelector('footer');
-  if (PAY_DATA_TAG) {
-    PAY_DATA_TAG.html(RENDER_RECORDS()); // PAY_DATA_TAG.innerHTML = RENDER_RECORDS();
+  const $FORM_TAG = $('form');
+  const $PAY_DATA_TAG = $('#pay-data'); // document.querySelector('#pay-data');
+  const $STATE_SELECT_TAG = $('#state'); // document.querySelector('#state');
+  const $FOOTER = $('footer'); // document.querySelector('footer');
+
+  if ($FORM_TAG) {
+    $FORM_TAG.attr('onsubmit', 'MAKE_RECORD()')
   }
-  if (STATE_SELECT_TAG) {
-    STATE_SELECT_TAG.html(MAKE_STATE_OPTIONS()); // STATE_SELECT_TAG.innerHTML = MAKE_STATE_OPTIONS();
+  if ($PAY_DATA_TAG) {
+    $PAY_DATA_TAG.html(RENDER_RECORDS()); // PAY_DATA_TAG.innerHTML = RENDER_RECORDS();
   }
-  FOOTER.html(MAKE_FOOTER()); // FOOTER.innerHTML = MAKE_FOOTER();
+  if ($STATE_SELECT_TAG) {
+    $STATE_SELECT_TAG.html(MAKE_STATE_OPTIONS()); // STATE_SELECT_TAG.innerHTML = MAKE_STATE_OPTIONS();
+  }
+  $FOOTER.html(MAKE_FOOTER()); // FOOTER.innerHTML = MAKE_FOOTER();
 });
