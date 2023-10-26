@@ -3,6 +3,9 @@
   // then comment it back out, and do the next section
 
 // ================== ORIGINAL ========================
+// by declaring the "sales" array inside the function...
+  // your function can only do what you stick inside of it
+  // it cannot perform a useful operation if you were provided a different array
 function calcSales() {
   const sales = [
       { item: "PS4 Pro", stock: 3, original: 399.99 },
