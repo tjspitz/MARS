@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&family=Rubik:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link href="./styles.css" rel="stylesheet" type="text/css" />
+    <title>EDP Systems</title>
+  </head>
+
+  <body>
+    <header>Employee Pay Processing</header>
+
+    <main class="main-content">
+      <!-- The <p> and <button> tags were an in-class problem to solve -->
+      <p class="hide-p">Am I hidden???</p>
+      <button class="hide-btn">Hide!</button>
+      <!-- =========================================================== -->
+      <h3>Please complete this form so we can calculate your pay:</h3>
+      <form action="./salary-report.html" method="post">
+        <fieldset>
+          <legend>Name &amp; ID</legend>
+          <label for="first-name">
+            First: <input id="first-name" type="text" required />
+          </label>
+          <label for="last-name">
+            Last: <input id="last-name" type="text" required />
+          </label>
+          <label for="employee-id">
+            Employee ID: <input id="employee-id" type="text" required />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Timecard Information</legend>
+            <label for="hire-date">
+              Hire Date:
+              <input id="hire-date" type="date" required />
+            </label>
+            <label for="hours-worked" >
+              Hours Worked:
+              <input id="hours-worked" type="number" value="0" required />
+            </label>
+            <label for="role">
+              Role Description:
+              <select id="role">
+                <option value="Manager">Manager</option>
+                <option value="Consultant">Consultant</option>
+                <option value="Trainee">Trainee</option>
+              </select>
+            </label>
+        </fieldset>
+        <fieldset>
+          <legend>Contact Information</legend>
+          <label for="phone">
+            Phone number: <input id="phone" type="text" placeholder="123-456-7890" required />
+          </label>
+          <label for="email">
+            Email address: <input id="email" type="email" placeholder="bob@bobmail.com" required />
+          </label>
+          <fieldset>
+            <legend>Address</legend>
+            <label for="street-num">
+              Street: <input id="street-num" type="text" placeholder="1234" required />
+            </label>
+            <label for="street-dir">
+              <select id="street-dir">
+                <option value="n">N</option>
+                <option value="s">S</option>
+                <option value="e">E</option>
+                <option value="w">W</option>
+              </select>
+            </label>
+            <label for="street-name">
+              <input id="street-name" type="text" placeholder="Sunny" required />
+              <select id="street-suffix">
+                <option value="st">Street</option>
+                <option value="rd">Road</option>
+                <option value="ave">Avenue</option>
+                <option value="pl">Place</option>
+                <option value="blvd">Boulevard</option>
+                <option value="pkwy">Parkway</option>
+                <option value="cr">Circle</option>
+                <option value="way">Way</option>
+              </select>
+            </label>
+            <label for="city">
+              City: <input id="city" type="text" placeholder="Manhattan" required />
+            </label>
+            <label for="state">
+              State:
+              <select id="state">
+                <!-- main.js will inject <option> tags for each state here -->
+              </select>
+            </label>
+            <label for="zip">
+              Zip: <input id="zip" type="text" placeholder="12345" required />
+            </label>
+          </fieldset>
+        </fieldset>
+        <button type="submit">Submit Form</button>
+        <button type="reset">Clear Form</button>
+      </form>
+    </main>
+
+    <footer>&copy;&nbsp;</footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
