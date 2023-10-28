@@ -100,7 +100,7 @@ function deleteBook(key) {
 
   localStorage.setItem('totalBooks', JSON.stringify(newTotal));
   localStorage.removeItem(`book${oldTotal}`);
-
+  showAll();
 }
 
 $(document).ready(() => showAll());
