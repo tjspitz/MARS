@@ -1,49 +1,106 @@
-function showAll() {
-  let $unreadTableBody = $('#unread-table-body');
-  let $readTableBody = $('#read-table-body');
-
-  // right now is dummy data (obviously)
-  let unreadHtml =
-  `<tr>
-    <td>dummy number</td>
-    <td>dummy title</td>
-    <td>dummy author</td>
-    <td>dummy year</td>
-    <td>
-      <button class="btn btn-sm btn-warning">✔️</button>
-    </td>
-    <td>
-      <button class="btn btn-sm btn-success">📝</button>
-    </td>
-    <td>
-      <button class="btn btn-sm btn-danger">X</button>
-    </td>
-  </tr>`;
-
-  $unreadTableBody.html(unreadHtml)
-
+let checkbox = false;
+function toggleCheckbox() {
+  checkbox = !checkbox;
 }
 
-function saveBook() {
-  const book = formatBook([...$('inputs')]);
-  const totalBooks = Number(localStorage.getItem('totalBooks')) + 1 || 1;
-  const storageKey = 'book' + totalBooks;
+function getBooks() {
+  const books = [];
+  let limit = Number(localStorage.getItem('totalBooks')) + 1 || 1;
 
-  localStorage.setItem('totalBooks', totalBooks);
-  localStorage.setItem(storageKey, JSON.stringify(book));
-  showAll()
+  while (--limit) {
+    books.push(JSON.parse(localStorage.getItem(`book${limit}`)));
+  }
+
+  return books;
+}
+
+function showAll(newBook) {
+  const $unreadTableBody = $('#unread-table-body');
+  const $readTableBody = $('#read-table-body');
+  const books = getBooks();
+
+  const makeHtml = (book) => {
+    const prefix =
+      `<tr id="${book.storageKey}" class="book">
+        <td>${book.storageKey.slice(4)}</td>
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.year}</td>`;
+    const unread =
+        `<td>
+          <button type="button" class="btn btn-sm btn-warning" onclick="toggleRead('${book.storageKey}')">🔲</button>
+        </td>`;
+    const read =
+        `<td>
+          <button type="button" class="btn btn-sm btn-warning" onclick="toggleRead('${book.storageKey}')">✅</button>
+        </td>`;
+    const suffix =
+      `<td>
+        <button type="button" class="btn btn-sm btn-success">📝</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-sm btn-danger" onclick="deleteBook('${book.storageKey}')">X</button>
+      </td>
+      </tr>`;
+
+    return book.finished ? prefix + read + suffix : prefix + unread + suffix;
+  };
+
+  const unreadBooks = books.filter((book) => !book.finished).map(makeHtml).join('');
+  const readBooks = books.filter((book) => book.finished).map(makeHtml).join('');
+
+  $unreadTableBody.html(unreadBooks);
+  $readTableBody.html(readBooks);
 }
 
 function formatBook(formEntries) {
-  const bookData = {};
+
+  const bookData = { book: {}, totalBooks: null };
+  bookData.totalBooks = Number(localStorage.getItem('totalBooks')) + 1 || 1;
+  bookData.book.storageKey = 'book' + bookData.totalBooks;
+
   formEntries.forEach((input) => {
-    bookData[input.id] = input.value;
+    bookData.book[input.id] = input.value;
   })
-  bookData.finished ? bookData.finished = true : bookData.finished = false;
+
+  bookData.book.finished = checkbox;
+
   return bookData;
 }
 
-function toggleRead() {
-  // sets a 'read' property on the item
-  // moves it to the correct display
+function saveBook() {
+  const bookData = formatBook([...$('input')]);
+
+  localStorage.setItem('totalBooks', JSON.stringify(bookData.totalBooks));
+  localStorage.setItem(bookData.book.storageKey, JSON.stringify(bookData.book));
+  showAll()
 }
+
+function toggleRead(key) {
+  const book = JSON.parse(localStorage.getItem(key));
+  book.finished = !book.finished;
+  localStorage.setItem(key, JSON.stringify(book));
+  showAll();
+}
+
+function deleteBook(key) {
+  const keyNum = Number(key.slice(4));
+  let decrementKeyBooks = getBooks().filter((book) => Number(book.storageKey.slice(4)) > keyNum);
+  const oldTotal = Number(localStorage.getItem('totalBooks'));
+  const newTotal = oldTotal - 1;
+
+  decrementKeyBooks = decrementKeyBooks.map((book) => {
+    const decKeyBook = { ...book };
+    decKeyBook.storageKey = 'book' + (decKeyBook.storageKey - 1);
+  });
+
+  decrementKeyBooks.forEach((book => {
+    localStorage.setItem(book.storageKey, JSON.stringify(book));
+  }))
+
+  localStorage.setItem('totalBooks', JSON.stringify(newTotal));
+  localStorage.removeItem(`book${oldTotal}`);
+
+}
+
+$(document).ready(() => showAll());
