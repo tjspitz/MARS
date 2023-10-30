@@ -10,12 +10,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     >
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&family=Rubik:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap"
-      rel="stylesheet"
-    /> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <link href="./styles.css" rel="stylesheet" type="text/css" />
     <title>A Page Title</title>
@@ -34,25 +29,28 @@
           <div class="card">
             <div class="card-body">
               <form id="new-book">
-                <label for="title">Title:</label>
+                <label for="new-title">Title:</label>
                 <input
-                  id="title"
+                  id="new-title"
+                  name="title"
                   type="text"
                   class="form-control"
                   placeholder="enter a title"
                   required
                 />
-                <label for="author">Author:</label>
+                <label for="new-author">Author:</label>
                 <input
-                  id="author"
+                  id="new-author"
+                  name="author"
                   type="text"
                   class="form-control"
                   placeholder="enter an author"
                   required
                 />
-                <label for="year">Year:</label>
+                <label for="new-year">Year:</label>
                 <input
-                  id="year"
+                  id="new-year"
+                  name="year"
                   type="text"
                   class="form-control"
                   placeholder="e.g. 2023"
@@ -60,15 +58,20 @@
                 />
                 <br>
 
-                <label for="finished">Finished?</label>
+                <label for="new-finished">Finished?</label>
                 <input
-                  id="finished"
+                  id="new-finished"
+                  name="finished"
                   type="checkbox"
                   onclick="toggleCheckbox()"
                 />
                 <hr>
 
-                <button type="button" class="btn btn-sm btn-primary" onclick="saveBook()">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-primary"
+                  onclick="saveBook('#new-book')"
+                >
                   Save
                 </button>
                 <button type="reset" class="btn btn-sm btn-primary">
@@ -123,21 +126,64 @@
                 </table>
               </div>
 
+              <!-- editing Modal -->
+              <div
+                class="modal fade"
+                id="edit-modal"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="edit-modal-label"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="edit-modal-label">
+                        <!-- inject book title -->
+                      </h1>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <!-- inject form -->
+                    </div>
+                    <div class="modal-footer">
+                      <!-- inject onclick w/ specific key to button -->
+                      <button
+                        type="button"
+                        class="btn btn-primary modal-save"
+                        data-bs-dismiss="modal"
+                      >
+                        Save
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end editing modal -->
+
               <!-- end card-body -->
             </div>
-
             <!-- end card -->
           </div>
-
           <!-- end col-lg-8 -->
         </div>
-
         <!-- end row -->
       </div>
-
       <!-- end container -->
     </div>
-
     <script src="./main.js"></script>
   </body>
 </html>

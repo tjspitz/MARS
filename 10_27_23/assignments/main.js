@@ -14,7 +14,7 @@ function getBooks() {
   return books;
 }
 
-function showAll(newBook) {
+function showAll() {
   const $unreadTableBody = $('#unread-table-body');
   const $readTableBody = $('#read-table-body');
   const books = getBooks();
@@ -28,18 +28,44 @@ function showAll(newBook) {
         <td>${book.year}</td>`;
     const unread =
         `<td>
-          <button type="button" class="btn btn-sm btn-warning" onclick="toggleRead('${book.storageKey}')">🔲</button>
+          <button
+            type="button"
+            class="btn btn-sm btn-warning"
+            onclick="toggleRead('${book.storageKey}')"
+          >
+            🔲
+          </button>
         </td>`;
     const read =
         `<td>
-          <button type="button" class="btn btn-sm btn-warning" onclick="toggleRead('${book.storageKey}')">✅</button>
+          <button
+            type="button"
+            class="btn btn-sm btn-warning"
+            onclick="toggleRead('${book.storageKey}')"
+          >
+            ✅
+          </button>
         </td>`;
     const suffix =
       `<td>
-        <button type="button" class="btn btn-sm btn-success">📝</button>
+        <button
+          type="button"
+          class="btn btn-sm btn-success"
+          data-bs-toggle="modal"
+          data-bs-target="#edit-modal"
+          onclick="editModal('${book.storageKey}')"
+        >
+          📝
+        </button>
       </td>
       <td>
-        <button type="button" class="btn btn-sm btn-danger" onclick="deleteBook('${book.storageKey}')">X</button>
+        <button
+          type="button"
+          class="btn btn-sm btn-danger"
+          onclick="deleteBook('${book.storageKey}')"
+        >
+          X
+        </button>
       </td>
       </tr>`;
 
@@ -53,23 +79,32 @@ function showAll(newBook) {
   $readTableBody.html(readBooks);
 }
 
-function formatBook(formEntries) {
+function formatBook(formEntries, editKey) { // 'editKey' is undefined for a new book
+  const totalBooks = Number(localStorage.getItem('totalBooks'));
+  let bookData;
 
-  const bookData = { book: {}, totalBooks: null };
-  bookData.totalBooks = Number(localStorage.getItem('totalBooks')) + 1 || 1;
-  bookData.book.storageKey = 'book' + bookData.totalBooks;
+  if (editKey) {
+    const oldBook = JSON.parse(localStorage.getItem(editKey));
+    bookData = { book: { ...oldBook }, totalBooks: totalBooks };
+  } else {
+    bookData = { book: {}, totalBooks: null };
+    bookData.totalBooks = totalBooks + 1 || 1;
+    bookData.book.storageKey = 'book' + bookData.totalBooks;
+  }
 
   formEntries.forEach((input) => {
-    bookData.book[input.id] = input.value;
+    bookData.book[input.name] = input.value;
   })
 
-  bookData.book.finished = checkbox;
+  if (!editKey) {
+    bookData.book.finished = checkbox;
+  }
 
   return bookData;
 }
 
-function saveBook() {
-  const bookData = formatBook([...$('input')]);
+function saveBook(formId, editId) { // 'editKey' is undefined for a new book
+  const bookData = formatBook([...$(`${formId} input`)], editId);
 
   localStorage.setItem('totalBooks', JSON.stringify(bookData.totalBooks));
   localStorage.setItem(bookData.book.storageKey, JSON.stringify(bookData.book));
@@ -83,6 +118,45 @@ function toggleRead(key) {
   showAll();
 }
 
+function editModal(key) {
+  const book = JSON.parse(localStorage.getItem(key));
+
+  const modalTitle = `Editing ${book.title}...`;
+  const formHtml =
+    `<form id="edit-book">
+      <label for="edit-title">Title:</label>
+        <input
+          id="edit-title"
+          name="title"
+          type="text"
+          class="form-control"
+          value="${book.title}"
+        />
+      <label for="edit-author">Author:</label>
+        <input
+          id="edit-author"
+          name="author"
+          type="text"
+          class="form-control"
+          value="${book.author}"
+        />
+      <label for="edit-year">Year:</label>
+        <input
+          id="edit-year"
+          name="year"
+          type="text"
+          class="form-control"
+          value="${book.year}"
+        />
+    </form>`
+
+    const btnHtml = `saveBook('#edit-book', '${book.storageKey}')`;
+
+    $('.modal-title').html(`Editing ${book.title}...`);
+    $('.modal-body').html(formHtml);
+    $('.modal-save').attr("onclick", btnHtml);
+}
+
 function deleteBook(key) {
   const keyNum = Number(key.slice(4));
   let decrementKeyBooks = getBooks().filter((book) => Number(book.storageKey.slice(4)) > keyNum);
@@ -94,13 +168,13 @@ function deleteBook(key) {
     decKeyBook.storageKey = 'book' + (decKeyBook.storageKey - 1);
   });
 
-  decrementKeyBooks.forEach((book => {
+  decrementKeyBooks.forEach((book) => {
     localStorage.setItem(book.storageKey, JSON.stringify(book));
-  }))
+  })
 
   localStorage.setItem('totalBooks', JSON.stringify(newTotal));
   localStorage.removeItem(`book${oldTotal}`);
   showAll();
 }
 
-$(document).ready(() => showAll());
+$(document).ready(() => showAll())
