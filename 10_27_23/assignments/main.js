@@ -33,7 +33,7 @@ function showAll() {
             class="btn btn-sm btn-warning"
             onclick="toggleRead('${book.storageKey}')"
           >
-            🔲
+            &nbsp;&nbsp;&nbsp;
           </button>
         </td>`;
     const read =
@@ -43,7 +43,7 @@ function showAll() {
             class="btn btn-sm btn-warning"
             onclick="toggleRead('${book.storageKey}')"
           >
-            ✅
+            ✔️
           </button>
         </td>`;
     const suffix =
@@ -64,7 +64,7 @@ function showAll() {
           class="btn btn-sm btn-danger"
           onclick="deleteBook('${book.storageKey}')"
         >
-          X
+        &nbsp;X&nbsp;
         </button>
       </td>
       </tr>`;
