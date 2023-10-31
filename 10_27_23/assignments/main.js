@@ -79,36 +79,44 @@ function showAll() {
   $readTableBody.html(readBooks);
 }
 
-function formatBook(formEntries, editKey) { // 'editKey' is undefined for a new book
-  const totalBooks = Number(localStorage.getItem('totalBooks'));
-  let bookData;
+function formatBook(entries, editKey) { // 'editKey' is undefined for a new book
+  // const totalBooks = Number(localStorage.getItem('totalBooks'));
+  const bookData = {};
 
-  if (editKey) {
-    const oldBook = JSON.parse(localStorage.getItem(editKey));
-    bookData = { book: { ...oldBook }, totalBooks: totalBooks };
-  } else {
-    bookData = { book: {}, totalBooks: null };
-    bookData.totalBooks = totalBooks + 1 || 1;
-    bookData.book.storageKey = 'book' + bookData.totalBooks;
-  }
+  // if (editKey) {
+  //   const oldBook = JSON.parse(localStorage.getItem(editKey));
+  //   bookData = { book: { ...oldBook }, totalBooks: totalBooks };
+  // } else {
+  //   bookData = { book: {}, totalBooks: null };
+  //   bookData.totalBooks = totalBooks + 1 || 1;
+  //   bookData.book.storageKey = 'book' + bookData.totalBooks;
+  // }
 
-  formEntries.forEach((input) => {
-    bookData.book[input.name] = input.value;
+  entries.forEach((input) => {
+    bookData[input.name] = input.value;
   })
 
-  if (!editKey) {
-    bookData.book.finished = checkbox;
-  }
+  bookData.finished ? bookData.finished = true : bookData.finished = false;
+
+  // if (!editKey) {
+  //   bookData.book.finished = checkbox;
+  // }
 
   return bookData;
 }
 
 function saveBook(formId, editId) { // 'editKey' is undefined for a new book
-  const bookData = formatBook([...$(`${formId} input`)], editId);
+  const $data = $(formId).serializeArray();
+  const book = formatBook($data);
+  // const bookData = formatBook([...$(`${formId} input`)], editId);
 
-  localStorage.setItem('totalBooks', JSON.stringify(bookData.totalBooks));
-  localStorage.setItem(bookData.book.storageKey, JSON.stringify(bookData.book));
-  showAll()
+  const books = JSON.parse(localStorage.getItem('theBookshelf')) || [];
+  books.push(book);
+  localStorage.setItem('theBookshelf', JSON.stringify(books));
+
+  // localStorage.setItem('totalBooks', JSON.stringify(bookData.totalBooks));
+  // localStorage.setItem(bookData.book.storageKey, JSON.stringify(bookData.book));
+  // showAll()
 }
 
 function toggleRead(key) {
