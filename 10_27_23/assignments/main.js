@@ -165,7 +165,8 @@ function deleteBook(key) {
 
   decrementKeyBooks = decrementKeyBooks.map((book) => {
     const decKeyBook = { ...book };
-    decKeyBook.storageKey = 'book' + (decKeyBook.storageKey - 1);
+    decKeyBook.storageKey = 'book' + (Number(book.storageKey.slice(4)) - 1);
+    return decKeyBook;
   });
 
   decrementKeyBooks.forEach((book) => {
