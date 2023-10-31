@@ -1,47 +1,47 @@
-let checkbox = false;
-function toggleCheckbox() {
-  checkbox = !checkbox;
-}
+// Upside: CRUD functions are more readable
+// Downside: possibly worse on Big-O (would need to verify)
+// Maybe: store theBookshelf, aka useState(), to reduce localStorage calls
+  // except we're not using React, but the concept ++
 
 function getBooks() {
-  const books = [];
-  let limit = Number(localStorage.getItem('totalBooks')) + 1 || 1;
-
-  while (--limit) {
-    books.push(JSON.parse(localStorage.getItem(`book${limit}`)));
-  }
-
-  return books;
+  return JSON.parse(localStorage.getItem('theBookshelf'));
 }
 
 function showAll() {
   const $unreadTableBody = $('#unread-table-body');
   const $readTableBody = $('#read-table-body');
   const books = getBooks();
+  const noBooksHtml =
+    `<tr>
+      <td>There are no books here yet...</td>
+    </tr>`;
+  let booksHtml;
+  let unreadHtml = '';
+  let readHtml = '';
 
-  const makeHtml = (book) => {
+  const makeHtml = (book, idx) => {
     const prefix =
-      `<tr id="${book.storageKey}" class="book">
-        <td>${book.storageKey.slice(4)}</td>
+      `<tr id="${idx}" class="book">
+        <td>${idx + 1}</td>
         <td>${book.title}</td>
         <td>${book.author}</td>
         <td>${book.year}</td>`;
     const unread =
-        `<td>
+        `<td class="unread">
           <button
             type="button"
             class="btn btn-sm btn-warning"
-            onclick="toggleRead('${book.storageKey}')"
+            onclick="toggleRead('${idx}')"
           >
             &nbsp;&nbsp;&nbsp;
           </button>
         </td>`;
     const read =
-        `<td>
+        `<td class="read">
           <button
             type="button"
             class="btn btn-sm btn-warning"
-            onclick="toggleRead('${book.storageKey}')"
+            onclick="toggleRead('${idx}')"
           >
             ✔️
           </button>
@@ -53,7 +53,7 @@ function showAll() {
           class="btn btn-sm btn-success"
           data-bs-toggle="modal"
           data-bs-target="#edit-modal"
-          onclick="editModal('${book.storageKey}')"
+          onclick="editModal('${idx}')"
         >
           📝
         </button>
@@ -62,7 +62,7 @@ function showAll() {
         <button
           type="button"
           class="btn btn-sm btn-danger"
-          onclick="deleteBook('${book.storageKey}')"
+          onclick="deleteBook('${idx}')"
         >
         &nbsp;X&nbsp;
         </button>
@@ -72,62 +72,66 @@ function showAll() {
     return book.finished ? prefix + read + suffix : prefix + unread + suffix;
   };
 
-  const unreadBooks = books.filter((book) => !book.finished).map(makeHtml).join('');
-  const readBooks = books.filter((book) => book.finished).map(makeHtml).join('');
+  if (books) {
+    booksHtml = books.map(makeHtml);
 
-  $unreadTableBody.html(unreadBooks);
-  $readTableBody.html(readBooks);
+    booksHtml.forEach((snippet) => {
+      if (snippet.includes('unread')) {
+        unreadHtml += snippet;
+      } else {
+        readHtml += snippet;
+      }
+    })
+  }
+
+  if (unreadHtml) {
+    $unreadTableBody.html(unreadHtml);
+  } else {
+    $unreadTableBody.html(noBooksHtml);
+  }
+  if (readHtml) {
+    $readTableBody.html(readHtml);
+  } else {
+    $readTableBody.html(noBooksHtml);
+  }
 }
 
-function formatBook(entries, editKey) { // 'editKey' is undefined for a new book
-  // const totalBooks = Number(localStorage.getItem('totalBooks'));
+function formatBook(entries) {
   const bookData = {};
-
-  // if (editKey) {
-  //   const oldBook = JSON.parse(localStorage.getItem(editKey));
-  //   bookData = { book: { ...oldBook }, totalBooks: totalBooks };
-  // } else {
-  //   bookData = { book: {}, totalBooks: null };
-  //   bookData.totalBooks = totalBooks + 1 || 1;
-  //   bookData.book.storageKey = 'book' + bookData.totalBooks;
-  // }
 
   entries.forEach((input) => {
     bookData[input.name] = input.value;
   })
 
   bookData.finished ? bookData.finished = true : bookData.finished = false;
-
-  // if (!editKey) {
-  //   bookData.book.finished = checkbox;
-  // }
-
   return bookData;
 }
 
-function saveBook(formId, editId) { // 'editKey' is undefined for a new book
+function saveBook(formId, editIdx) { // editIdx is undefined for a new book
   const $data = $(formId).serializeArray();
   const book = formatBook($data);
-  // const bookData = formatBook([...$(`${formId} input`)], editId);
-
   const books = JSON.parse(localStorage.getItem('theBookshelf')) || [];
-  books.push(book);
-  localStorage.setItem('theBookshelf', JSON.stringify(books));
 
-  // localStorage.setItem('totalBooks', JSON.stringify(bookData.totalBooks));
-  // localStorage.setItem(bookData.book.storageKey, JSON.stringify(bookData.book));
-  // showAll()
+  if (editIdx) { // replace the book
+    books[editIdx] = book;
+  } else {
+    books.push(book);
+  }
+  localStorage.setItem('theBookshelf', JSON.stringify(books));
+  showAll()
 }
 
-function toggleRead(key) {
-  const book = JSON.parse(localStorage.getItem(key));
+function toggleRead(bookIdx) {
+  const books = JSON.parse(localStorage.getItem('theBookshelf'));
+  const book = books[bookIdx];
   book.finished = !book.finished;
-  localStorage.setItem(key, JSON.stringify(book));
+  localStorage.setItem('theBookshelf', JSON.stringify(books));
   showAll();
 }
 
-function editModal(key) {
-  const book = JSON.parse(localStorage.getItem(key));
+function editModal(bookIdx) {
+  const books = JSON.parse(localStorage.getItem('theBookshelf'));
+  const book = books[bookIdx];
 
   const modalTitle = `Editing ${book.title}...`;
   const formHtml =
@@ -156,33 +160,29 @@ function editModal(key) {
           class="form-control"
           value="${book.year}"
         />
+        <br>
+
+        <label for="edit-finished">Finished?</label>
+        <input
+          id="edit-finished"
+          name="finished"
+          type="checkbox"
+        />
     </form>`
 
-    const btnHtml = `saveBook('#edit-book', '${book.storageKey}')`;
+    const btnHtml = `saveBook('#edit-book', '${bookIdx}')`;
 
     $('.modal-title').html(`Editing ${book.title}...`);
     $('.modal-body').html(formHtml);
     $('.modal-save').attr("onclick", btnHtml);
 }
 
-function deleteBook(key) {
-  const keyNum = Number(key.slice(4));
-  let decrementKeyBooks = getBooks().filter((book) => Number(book.storageKey.slice(4)) > keyNum);
-  const oldTotal = Number(localStorage.getItem('totalBooks'));
-  const newTotal = oldTotal - 1;
+function deleteBook(bookIdx) {
+  bookIdx = Number(bookIdx);
+  const oldBooks = JSON.parse(localStorage.getItem('theBookshelf'));
+  const newBooks = oldBooks.filter((book, i) => bookIdx !== i);
 
-  decrementKeyBooks = decrementKeyBooks.map((book) => {
-    const decKeyBook = { ...book };
-    decKeyBook.storageKey = 'book' + (Number(book.storageKey.slice(4)) - 1);
-    return decKeyBook;
-  });
-
-  decrementKeyBooks.forEach((book) => {
-    localStorage.setItem(book.storageKey, JSON.stringify(book));
-  })
-
-  localStorage.setItem('totalBooks', JSON.stringify(newTotal));
-  localStorage.removeItem(`book${oldTotal}`);
+  localStorage.setItem('theBookshelf', JSON.stringify(newBooks));
   showAll();
 }
 
