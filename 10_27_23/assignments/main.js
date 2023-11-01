@@ -119,6 +119,7 @@ function saveBook(formId, editIdx) { // editIdx is undefined for a new book
   }
   localStorage.setItem('theBookshelf', JSON.stringify(books));
   showAll()
+  $('button[type=reset]').click()
 }
 
 function toggleRead(bookIdx) {
