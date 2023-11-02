@@ -109,6 +109,7 @@ function saveBook(formId, editId) { // 'editKey' is undefined for a new book
   localStorage.setItem('totalBooks', JSON.stringify(bookData.totalBooks));
   localStorage.setItem(bookData.book.storageKey, JSON.stringify(bookData.book));
   showAll()
+  $('button[type=reset]').click()
 }
 
 function toggleRead(key) {
