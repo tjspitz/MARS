@@ -32,15 +32,21 @@ const formatData = (people) => {
 const renderPeople = () => {
   let $selector;
   const errorHtml =
-  `<div class="card">
-    <div class="card-body">
-      <h3>Error</h3>
-        <p>
-          Bobo here is trying really hard to find your data, but so far is coming up empty. Please accept our apologies.
-        </p>
-        <iframe src="https://giphy.com/embed/yXBqba0Zx8S4" width="480" height="324" frameBorder="0"></iframe>
-    </div>
-  </div>`;
+    `<div class="card">
+      <div class="card-body">
+        <h3>Error</h3>
+          <p>
+            Bobo here is trying really hard to find your data,
+            but so far he is coming up empty. Please accept our apologies.
+          </p>
+          <iframe
+            src="https://giphy.com/embed/yXBqba0Zx8S4"
+            width="480"
+            height="324"
+            frameBorder="0">
+          </iframe>
+      </div>
+    </div>`;
 
   getData(url)
     .then((data) => {
@@ -53,7 +59,6 @@ const renderPeople = () => {
     .catch((e) => {
       console.error(e)
       $selector = $('#main-content');
-
       $selector.append(errorHtml);
     });
 };
