@@ -1,25 +1,59 @@
-const url = 'https://gorest.co.in/public/v2/users';
+const url = 'https://gorest.co.in/public/v2/users'; // comment out to see Bobo!
+// const url = ''; // comment in to see Bobo!
 
 const getData = (target) => {
-  // fetch the data from https://gorest.co.in/public/v2/users via jQuery ajax
-  // return the resolved Promise, an arr of objects (the data we're getting)
+  return $.ajax({
+    url: target,
+    method: 'GET',
+    data: { key: 'value' },
+    dataType: 'json',
+  })
 };
 
-const formatData = () => {
-  // prepare the fetched data
-  // return an array of html w/ each el as a complete <tr><td></td>...</tr> string
+const formatData = (people) => {
+  // sort by asc. id number, just for fun
+    // we could write more formatPeople params to sort dynamically!
+      // but maybe some other time...
+    people.sort((a, b) => a.id - b.id);
 
+    return people.map((person) => {
+      return (
+        `<tr>
+          <td>${person.id}</td>
+          <td>${person.name}</td>
+          <td>${person.email}</td>
+          <td>${person.gender}</td>
+          <td>${person.status}</td>
+        </tr>`
+      );
+    });
 };
 
 const renderPeople = () => {
-  // store getData()
-  // map it to an array via formatData()
-  // set the table's HTML as either one giant string
-    // OR iterate over the formatted data, appending each el to the table
-  const $selector = $('#emp-data-body');
-  const data = getData(url);
-  const formattedData = formatData(data);
+  let $selector;
+  const errorHtml =
+  `<div class="card">
+    <div class="card-body">
+      <h3>Error</h3>
+        <p>
+          Bobo here is trying really hard to find your data, but so far is coming up empty. Please accept our apologies.
+        </p>
+        <iframe src="https://giphy.com/embed/yXBqba0Zx8S4" width="480" height="324" frameBorder="0"></iframe>
+    </div>
+  </div>`;
 
-  formattedData.forEach((snippet) => $selector.append(snippet));
+  getData(url)
+    .then((data) => {
+      return formatData(data);
+    })
+    .then((snippets) => {
+      $selector = $('#emp-data-body');
+      snippets.forEach((snippet) => $selector.append(snippet));
+    })
+    .catch((e) => {
+      console.error(e)
+      $selector = $('#main-content');
 
+      $selector.append(errorHtml);
+    });
 };
