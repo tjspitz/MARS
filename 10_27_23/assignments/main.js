@@ -187,4 +187,19 @@ function deleteBook(bookIdx) {
   showAll();
 }
 
-$(document).ready(() => showAll())
+$(document).ready(() => {
+  // quick customization of background while using Bootstrap
+  // comment out if using stylesheet
+  $('html').css({
+    'background': 'url("https://cdn.wallpapersafari.com/80/0/VsQT7z.jpg") no-repeat center center fixed',
+    '-webkit-background-size': 'cover',
+    '-moz-background-size': 'cover',
+    '-o-background-size': 'cover',
+    'background-size': 'cover',
+  });
+
+  $('body').css('background-color', 'transparent');
+
+  // never comment out
+  showAll()
+})
