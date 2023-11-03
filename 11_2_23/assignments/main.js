@@ -49,9 +49,7 @@ const renderPeople = () => {
     </div>`;
 
   getData(url)
-    .then((data) => {
-      return formatData(data);
-    })
+    .then((data) => formatData(data))
     .then((snippets) => {
       $selector = $('#emp-data-body');
       snippets.forEach((snippet) => $selector.append(snippet));
