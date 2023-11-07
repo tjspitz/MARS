@@ -5,10 +5,10 @@ class ClassComponent extends Component {
   constructor() {
     super();
     this.state = { id: 1, name: 'Cerulean Steve' };
-    this.handleUpdateClick = this.handleUpdateClick.bind(this);
+    this.handleIncrement = this.handleIncrement.bind(this);
   }
 
-  handleUpdateClick(e) {
+  handleIncrement(e) {
     e.preventDefault();
     this.setState({ id: this.state.id + 1 });
   }
@@ -25,7 +25,7 @@ class ClassComponent extends Component {
         <p>My location is: {this.props.dummyProp}</p>
         <button
           className="btn"
-          onClick={this.handleUpdateClick}
+          onClick={this.handleIncrement}
         >
           Increment my id!
         </button>
