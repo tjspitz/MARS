@@ -97,7 +97,7 @@ class TempMainComponent extends Component {
             <p>My id is: {this.state.person.id}</p>
             <p>My name is: {this.state.person.name}</p>
             <p>My job is: {this.state.person.job}</p>
-            <p>In my free time, I enjoy some {this.state.hobby}</p>
+            <p>In my free time, I enjoy {this.state.person.hobby}.</p>
             <button
               className="btn"
               onClick={this.handleNameChange}
