@@ -119,7 +119,9 @@ class TempMainComponent extends Component {
                 className="btn"
                 onClick={this.handleWordSubmit}
               >
-                See my word in a child component!
+                {this.state.showChildren.word
+                  ? 'Hide this child component!'
+                  : 'See this word in a child component!'}
               </button>
             </div>
             <div className="input-container">
@@ -135,7 +137,9 @@ class TempMainComponent extends Component {
                 className="btn"
                 onClick={this.handleFoodSubmit}
               >
-                See my word in a child component!
+                {this.state.showChildren.food
+                  ? 'Hide this child component!'
+                  : 'See this food in a child component!'}
               </button>
             </div>
             {this.state.showChildren.word && (
