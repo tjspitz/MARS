@@ -17,7 +17,7 @@ code {
   margin: 0.5rem;
   border: 0.5rem solid #6a5acd;
   border-radius: 2rem;
-  max-width: 66%;
+  max-width: 80%;
 }
 
 .link {
@@ -27,6 +27,29 @@ code {
 .btn {
   max-width: fit-content;
   margin: 0.5rem auto;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+}
+
+/* ======== FOR TEMP ASSIGNMENT ======== */
+.inputs,
+.btn-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.inputs {
+  flex-direction: column;
+}
+
+.input-container {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+input {
+  margin-left: 1rem;
+  margin-right: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 2rem;
 }

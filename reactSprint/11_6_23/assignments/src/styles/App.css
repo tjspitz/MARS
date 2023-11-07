@@ -24,10 +24,12 @@
   color: white;
 }
 
+/* ======== COMMENTED OUT FOR TEMP ASSIGNMENT ========
 .btn-list {
   display: flex;
   justify-content: space-around;
 }
+*/
 
 @keyframes app-logo-spin {
   from {
