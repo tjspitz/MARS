@@ -24,6 +24,7 @@ class RemainingCC extends Component {
         } else {
           setRemainingState(`Consider filing for bakruptcy...`);
           this.setState({ negative: true });
+        }
       } else {
         setRemainingState('');
       }
