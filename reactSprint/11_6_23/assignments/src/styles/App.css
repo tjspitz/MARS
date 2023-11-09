@@ -10,7 +10,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .app-logo {
     /* 20s original, 5s for 11/8/23 */
-    animation: app-logo-spin infinite 5s linear;
+    animation: app-logo-spin infinite 20s linear;
   }
 }
 
@@ -25,12 +25,11 @@
   color: white;
 }
 
-/* ======== 11_7_23 TEMP ASSIGNMENT ========
 .btn-list {
   display: flex;
   justify-content: space-around;
 }
-*/
+
 
 @keyframes app-logo-spin {
   from {
