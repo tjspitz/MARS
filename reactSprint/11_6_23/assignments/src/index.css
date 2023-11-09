@@ -49,6 +49,7 @@ input {
 .negative {
   border-color: #ff0000;
   color: #ff0000;
+  min-width: 20vw;
 }
 
 /* ======== 11_7_23 TEMP ASSIGNMENT ========

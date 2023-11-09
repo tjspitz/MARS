@@ -18,8 +18,11 @@ class RemainingCC extends Component {
         if (result > -1) {
           setRemainingState(String(result));
           this.setState({ negative: false });
-        } else {
+        } else if (result > -10000000) {
           setRemainingState(`You're in the red: ${result}`);
+          this.setState({ negative: true });
+        } else {
+          setRemainingState(`Consider filing for bakruptcy...`);
           this.setState({ negative: true });
         }
       } else {
