@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
 // import TempMainComponent from './TempMainComponent';
-import Account from './Account';
+// import Account from './Account';
+import AccountCC from './AccountCC';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -11,7 +12,8 @@ root.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <TempMainComponent /> */}
-    <Account />
+    {/* <Account /> */}
+    <AccountCC />
   </React.StrictMode>
 );
 
