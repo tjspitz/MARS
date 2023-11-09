@@ -30,6 +30,26 @@ code {
   padding: 0.5rem 1rem;
   border-radius: 2rem;
 }
+/* ======== 11_7_23 TEMP ASSIGNMENT ======== */
+.input-container {
+  display: block;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+input {
+  background-color: rgb(255, 255, 255);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  border: 0.3rem solid #9e2fff;
+  border-radius: 2rem;
+}
+
+.negative {
+  border-color: #ff0000;
+  color: #ff0000;
+}
 
 /* ======== 11_7_23 TEMP ASSIGNMENT ========
 .inputs,

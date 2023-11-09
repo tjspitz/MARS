@@ -9,7 +9,8 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .app-logo {
-    animation: app-logo-spin infinite 20s linear;
+    /* 20s original, 5s for 11/8/23 */
+    animation: app-logo-spin infinite 5s linear;
   }
 }
 
