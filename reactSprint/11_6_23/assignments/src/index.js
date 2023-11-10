@@ -4,10 +4,11 @@ import './index.css';
 // import App from './App';
 // import TempMainComponent from './TempMainComponent';
 // import AccountCC from './AccountCC';
-import Parent from './components/context/Parent';
+// import Parent from './components/context/Parent';
 // import CounterTwo from './components/ref/CounterTwo';
 // import InputRef from './components/ref/InputRef';
 // import RefPrevCurrent from './components/ref/RefPrevCurrent';
+import Hobbies from './Hobbies';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,10 +18,11 @@ root.render(
     {/* <Context /> */}
     {/* <TempMainComponent /> */}
     {/* <AccountCC /> */}
-    <Parent />
+    {/* <Parent /> */}
     {/* <CounterTwo /> */}
     {/* <InputRef /> */}
     {/* <RefPrevCurrent /> */}
+    <Hobbies />
   </React.StrictMode>
 );
 
