@@ -10,6 +10,6 @@ insert them into the `reactSprint/11_6_23/assignments` directory
 in their appropriate directory.
 <br>
 <br>
-You may also need to modify `index.js`, `index.css`, and `styles/App.css`
+You may also need to modify `index.js` and `index.css`
 within the `reactSprint/11_6_23/assignments` directory
 in order for the correct components to render, and proper styles to be applied.
