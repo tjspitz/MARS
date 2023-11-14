@@ -8,7 +8,11 @@ import './index.css';
 // import CounterTwo from './components/ref/CounterTwo';
 // import InputRef from './components/ref/InputRef';
 // import RefPrevCurrent from './components/ref/RefPrevCurrent';
-import Hobbies from './Hobbies';
+// import Hobbies from './Hobbies';
+// import FirstComponent from './components/customHooks/FirstComponent';
+// import SecondComponent from './components/customHooks/SecondComponent';
+// import Parent from './components/childToParent/Parent';
+import TwoWayBinding from './components/twoWay/TwoWayBinding';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,7 +26,11 @@ root.render(
     {/* <CounterTwo /> */}
     {/* <InputRef /> */}
     {/* <RefPrevCurrent /> */}
-    <Hobbies />
+    {/* <Hobbies /> */}
+    {/* <FirstComponent />
+    <SecondComponent /> */}
+    {/* <Parent /> */}
+    <TwoWayBinding />
   </React.StrictMode>
 );
 
