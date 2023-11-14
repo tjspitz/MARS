@@ -12,7 +12,8 @@ import './index.css';
 // import FirstComponent from './components/customHooks/FirstComponent';
 // import SecondComponent from './components/customHooks/SecondComponent';
 // import Parent from './components/childToParent/Parent';
-import TwoWayBinding from './components/twoWay/TwoWayBinding';
+// import TwoWayBinding from './components/twoWay/TwoWayBinding';
+import DynamicParent from './components/dynamicRender/DynamicParent';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -30,7 +31,8 @@ root.render(
     {/* <FirstComponent />
     <SecondComponent /> */}
     {/* <Parent /> */}
-    <TwoWayBinding />
+    {/* <TwoWayBinding /> */}
+    <DynamicParent />
   </React.StrictMode>
 );
 
