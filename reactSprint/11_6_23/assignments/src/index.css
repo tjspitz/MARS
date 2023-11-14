@@ -24,9 +24,6 @@ code {
     monospace;
 }
 
-/* ======== FROM APP.CSS ======== */
-/* got tired of multiple imports */
-
 .app {
   text-align: center;
 }
@@ -93,6 +90,15 @@ code {
   border-radius: 2rem;
 }
 
+/* ======== 11_14_23 TEMP ASSIGNMENT ========  */
+.success {
+  background-color: #006400;
+}
+
+.fail {
+  background-color: #8b0000;
+}
+
 /* ======== 11_9_23 TEMP ASSIGNMENT ========  */
 .capitalize {
   text-transform: capitalize;
@@ -139,14 +145,7 @@ input[type="checkbox"] {
   color: var(--lightBtnText);
 }
 
-
 /* ======== 11_7_23 TEMP ASSIGNMENT ======== */
-.input-container {
-  display: block;
-  margin: 0.5rem;
-  padding: 0.5rem;
-}
-
 input {
   background-color: rgb(255, 255, 255);
   margin-left: 1rem;
@@ -161,7 +160,6 @@ input {
   color: #ff0000;
   min-width: 20vw;
 }
-*/
 
 /* ======== 11_7_23 TEMP ASSIGNMENT ======== */
 .inputs,
@@ -172,16 +170,4 @@ input {
 
 .inputs {
   flex-direction: column;
-}
-
-.input-container {
-  margin: 0.5rem;
-  padding: 0.5rem;
-}
-
-input {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
 }
