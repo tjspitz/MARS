@@ -13,7 +13,8 @@ import './index.css';
 // import SecondComponent from './components/customHooks/SecondComponent';
 // import Parent from './components/childToParent/Parent';
 // import TwoWayBinding from './components/twoWay/TwoWayBinding';
-import DynamicParent from './components/dynamicRender/DynamicParent';
+// import DynamicParent from './components/dynamicRender/DynamicParent';
+import HomeComponent from './components/reactRouting/HomeComponent';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -32,7 +33,8 @@ root.render(
     <SecondComponent /> */}
     {/* <Parent /> */}
     {/* <TwoWayBinding /> */}
-    <DynamicParent />
+    {/* <DynamicParent /> */}
+    <HomeComponent />
   </React.StrictMode>
 );
 
