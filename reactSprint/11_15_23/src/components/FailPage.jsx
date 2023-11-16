@@ -1,12 +1,12 @@
 import HomeButton from "./HomeButton";
 
-const ComponentTwo = () => {
+const FailPage = () => {
 
   return (
     <div className="app">
       <main className="app-container">
-        <div className="content">
-          <h2>Component Two</h2>
+        <div className="content fail">
+          Incorrect credentials. Sad for you.
           <HomeButton />
         </div>
       </main>
@@ -14,4 +14,4 @@ const ComponentTwo = () => {
   );
 };
 
-export default ComponentTwo;
+export default FailPage;

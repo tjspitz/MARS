@@ -1,7 +1,7 @@
-import { BrowserRouter, Link, Routes, Route, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import ComponentOne from './ComponentOne';
-import ComponentTwo from './ComponentTwo';
+// import ComponentOne from './ComponentOne';
+// import ComponentTwo from './ComponentTwo';
 // import ComponentThree from './ComponentThree';
 
 const secrets = {
@@ -19,32 +19,14 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username === secrets.username && password === secrets.password) {
-      navigate('/comp-one')
+      navigate('/success')
     } else {
-      navigate('/comp-two');
+      navigate('/fail');
     }
   };
 
   return (
     <>
-      <>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/comp-one"
-              element={<ComponentOne />}
-            />
-            <Route
-              path="/comp-two"
-              element={<ComponentTwo />}
-            />
-            {/* <Route
-              path="/comp-three"
-              element={<ComponentThree />}
-            /> */}
-          </Routes>
-        </BrowserRouter>
-      </>
       <main className="app app-container">
         <div className="content">
           <h1>Please enter your credentials...</h1>

@@ -14,7 +14,8 @@ import './index.css';
 // import Parent from './components/childToParent/Parent';
 // import TwoWayBinding from './components/twoWay/TwoWayBinding';
 // import DynamicParent from './components/dynamicRender/DynamicParent';
-import LoginPage from './components/reactRouting/LoginPage';
+// import HomeComponent from './components/reactRouting/HomeComponent';
+import AuthApp from './components/reactRouting/AuthApp';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -34,7 +35,8 @@ root.render(
     {/* <Parent /> */}
     {/* <TwoWayBinding /> */}
     {/* <DynamicParent /> */}
-    <LoginPage />
+    {/* <HomeComponent /> */}
+    < AuthApp />
   </React.StrictMode>
 );
 
