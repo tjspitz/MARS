@@ -4,7 +4,7 @@ const HomeButton = () => {
   const navigate = useNavigate();
 
   return (
-    <button onClick={() => navigate('/')}>Back to Home</button>
+    <button className="btn" onClick={() => navigate('/')}>Back to Home</button>
 
   );
 };

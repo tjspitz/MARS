@@ -1,11 +1,11 @@
 import HomeButton from './HomeButton';
 
-const ComponentThree = () => {
+const SuccessPage = () => {
   return (
     <div className="app">
       <main className="app-container">
-        <div className="content">
-          <h2>Component Three</h2>
+        <div className="content success">
+          You have successfully logged in. Hooray for you!
           <HomeButton />
         </div>
       </main>
@@ -13,4 +13,4 @@ const ComponentThree = () => {
   );
 };
 
-export default ComponentThree;
+export default SuccessPage;
