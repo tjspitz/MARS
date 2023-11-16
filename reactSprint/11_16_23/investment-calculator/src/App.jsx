@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
 import Records from './components/Records';
+import './styles/App.css';
 
 const initialState = {
   curSavings: '',

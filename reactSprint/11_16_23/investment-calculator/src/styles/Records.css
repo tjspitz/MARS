@@ -1,0 +1,14 @@
+.table-container {
+  margin: 1rem auto;
+  font-size: x-large;
+}
+
+th,
+td {
+  padding: 0.2rem 0.75rem;
+  text-align: left;
+}
+
+td {
+  text-align: right;
+}

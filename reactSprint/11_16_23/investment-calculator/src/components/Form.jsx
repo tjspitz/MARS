@@ -1,27 +1,4 @@
-const buildRecords = (prevRecord, records) => {
-  const { duration, yrSavings, yrInterest, totalInterest, rate, total } =
-    prevRecord;
-
-  if (!duration) {
-    return records;
-  }
-
-  const thisYearInterest = (total + yrSavings) * (rate / 100);
-  const thisYearTotalInterest = totalInterest + thisYearInterest;
-  const thisYearTotal = (total + yrSavings) * (1 + rate / 100);
-
-  const thisYear = {
-    duration: duration - 1,
-    curSavings: total, // 'total savings TD
-    yrSavings,
-    yrInterest: thisYearInterest, // ''annual interest' TD
-    totalInterest: thisYearTotalInterest, // 'total interest' TD
-    rate,
-    total: thisYearTotal, // 'invested capital' TD
-  };
-
-  return buildRecords(thisYear, [...records, prevRecord]);
-};
+import '../styles/Form.css';
 
 const Form = ({ form, setForm, setRecords }) => {
   const { curSavings, yrSavings, rate, duration } = form;
@@ -76,71 +53,107 @@ const Form = ({ form, setForm, setRecords }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <div>
-          <p>
-            <label htmlFor="current-savings">
-              Current Savings
-              <input
-                id="current-savings"
-                type="number"
-                value={curSavings}
-                onChange={handleCurSavingsChange}
-              />{' '}
-              USD
-            </label>
-          </p>
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <div className="inputs">
+          <div className="input-container">
+            <p>
+              <label htmlFor="current-savings">
+                Current Savings:
+                <input
+                  id="current-savings"
+                  type="number"
+                  value={curSavings}
+                  onChange={handleCurSavingsChange}
+                />{' '}
+                <span className="hint">(USD)</span>
+              </label>
+            </p>
+          </div>
+          <div className="input-container">
+            <p>
+              <label htmlFor="yearly-savings">
+                Yearly Savings:
+                <input
+                  id="yearly-savings"
+                  type="number"
+                  value={yrSavings}
+                  onChange={handleYrSavingsChange}
+                />{' '}
+              </label>
+              <span className="hint">(USD)</span>
+            </p>
+          </div>
+          <div className="input-container">
+            <p>
+              <label htmlFor="interest-rate">
+                Interest Rate:
+                <input
+                  id="interest-rate"
+                  type="number"
+                  value={rate}
+                  onChange={handleRateChange}
+                />{' '}
+              </label>
+              <span className="hint">(annual %)</span>
+            </p>
+          </div>
+          <div className="input-container">
+            <p>
+              <label htmlFor="investment-duration">
+                Investment Duration:
+                <input
+                  id="investment-duration"
+                  type="number"
+                  value={duration}
+                  onChange={handleDurationChange}
+                />{' '}
+                <span className="hint">(years)</span>
+              </label>
+            </p>
+          </div>
         </div>
-        <div>
-          <p>
-            <label htmlFor="yearly-savings">
-              Yearly Savings
-              <input
-                id="yearly-savings"
-                type="number"
-                value={yrSavings}
-                onChange={handleYrSavingsChange}
-              />{' '}
-              USD
-            </label>
-          </p>
+        <div className="btn-list">
+          <button
+            className="btn"
+            type="reset"
+          >
+            Reset
+          </button>
+          <button
+            className="btn"
+            type="submit"
+          >
+            Calculate
+          </button>
         </div>
-        <div>
-          <p>
-            <label htmlFor="interest-rate">
-              Interest Rate
-              <input
-                id="interest-rate"
-                type="number"
-                value={rate}
-                onChange={handleRateChange}
-              />{' '}
-              annual %
-            </label>
-          </p>
-        </div>
-        <div>
-          <p>
-            <label htmlFor="investment-duration">
-              Investment Duration
-              <input
-                id="investment-duration"
-                type="number"
-                value={duration}
-                onChange={handleDurationChange}
-              />{' '}
-              years
-            </label>
-          </p>
-        </div>
-      </div>
-      <div>
-        <button type="reset">Reset</button>
-        <button type="submit">Calculate</button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
+
+function buildRecords(prevRecord, records) {
+  const { duration, yrSavings, totalInterest, rate, total } = prevRecord;
+
+  if (!duration) {
+    return records;
+  }
+
+  const thisYearInterest = (total + yrSavings) * (rate / 100);
+  const thisYearTotalInterest = totalInterest + thisYearInterest;
+  const thisYearTotal = (total + yrSavings) * (1 + rate / 100);
+
+  const thisYear = {
+    duration: duration - 1,
+    curSavings: total, // 'total savings' TD
+    yrSavings,
+    yrInterest: thisYearInterest, // ''annual interest' TD
+    totalInterest: thisYearTotalInterest, // 'total interest' TD
+    rate,
+    total: thisYearTotal, // 'invested capital' TD
+  };
+
+  return buildRecords(thisYear, [...records, prevRecord]);
+}
 
 export default Form;
