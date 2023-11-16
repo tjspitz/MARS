@@ -1,6 +1,6 @@
 import '../styles/Form.css';
 
-const Form = ({ form, setForm, setRecords }) => {
+const Form = ({ form, setForm, initialFormState, setRecords }) => {
   const { curSavings, yrSavings, rate, duration } = form;
 
   // MULTIPLE HANDLER VERSION
@@ -52,9 +52,16 @@ const Form = ({ form, setForm, setRecords }) => {
     setRecords(allRecords);
   };
 
+  const handleReset = () => {
+    setForm({ ...initialFormState });
+  };
+
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        onReset={handleReset}
+      >
         <div className="inputs">
           <div className="input-container">
             <p>

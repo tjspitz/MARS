@@ -4,7 +4,7 @@ import Form from './components/Form';
 import Records from './components/Records';
 import './styles/App.css';
 
-const initialState = {
+const initialFormState = {
   curSavings: '',
   yrSavings: '',
   rate: '',
@@ -12,7 +12,7 @@ const initialState = {
 };
 
 const App = () => {
-  const [form, setForm] = useState({ ...initialState });
+  const [form, setForm] = useState({ ...initialFormState });
   const [records, setRecords] = useState([]);
 
   return (
@@ -22,6 +22,7 @@ const App = () => {
         <Form
           form={form}
           setForm={setForm}
+          initialFormState={initialFormState}
           setRecords={setRecords}
         />
         <Records records={records} />
