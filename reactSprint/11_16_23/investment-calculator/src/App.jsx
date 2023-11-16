@@ -4,10 +4,10 @@ import Form from './components/Form';
 import Records from './components/Records';
 
 const initialState = {
-  curSavings: null,
-  yrSavings: null,
-  rate: null,
-  duration: null,
+  curSavings: '',
+  yrSavings: '',
+  rate: '',
+  duration: '',
 };
 
 const App = () => {
@@ -23,9 +23,7 @@ const App = () => {
           setForm={setForm}
           setRecords={setRecords}
         />
-        <Records
-          records={records}
-        />
+        <Records records={records} />
       </div>
     </main>
   );

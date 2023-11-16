@@ -1,5 +1,7 @@
+import OneRecord from './OneRecord';
+
 const Records = ({ records }) => {
-  return (
+  return records.length ? (
     <table className="">
       <thead>
         <tr>
@@ -11,29 +13,20 @@ const Records = ({ records }) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>hard-coded 1</td>
-          <td>hard-coded 1</td>
-          <td>hard-coded 1</td>
-          <td>hard-coded 1</td>
-          <td>hard-coded 1</td>
-        </tr>
-        <tr>
-          <td>hard-coded 2</td>
-          <td>hard-coded 2</td>
-          <td>hard-coded 2</td>
-          <td>hard-coded 2</td>
-          <td>hard-coded 2</td>
-        </tr>
-        <tr>
-          <td>hard-coded 3</td>
-          <td>hard-coded 3</td>
-          <td>hard-coded 3</td>
-          <td>hard-coded 3</td>
-          <td>hard-coded 3</td>
-        </tr>
+        {records.map((record, i) => (
+          <OneRecord
+            record={record}
+            year={i + 1}
+            key={i + '-' + record.duration}
+          />
+        ))}
       </tbody>
     </table>
+  ) : (
+    <div>
+      <h3>Please complete the fields above</h3>
+      <p>Data is shown upon clicking "calculate"</p>
+    </div>
   );
 };
 

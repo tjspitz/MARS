@@ -1,16 +1,23 @@
 const buildRecords = (prevRecord, records) => {
-  const { yrSavings, rate, duration, total } = prevRecord;
+  const { duration, yrSavings, yrInterest, totalInterest, rate, total } =
+    prevRecord;
 
   if (!duration) {
     return records;
   }
 
+  const thisYearInterest = (total + yrSavings) * (rate / 100);
+  const thisYearTotalInterest = totalInterest + thisYearInterest;
+  const thisYearTotal = (total + yrSavings) * (1 + rate / 100);
+
   const thisYear = {
-    curSavings: total,
-    yrSavings,
-    rate,
     duration: duration - 1,
-    total: total + yrSavings * (1 + rate / 100),
+    curSavings: total, // 'total savings TD
+    yrSavings,
+    yrInterest: thisYearInterest, // ''annual interest' TD
+    totalInterest: thisYearTotalInterest, // 'total interest' TD
+    rate,
+    total: thisYearTotal, // 'invested capital' TD
   };
 
   return buildRecords(thisYear, [...records, prevRecord]);
@@ -21,29 +28,30 @@ const Form = ({ form, setForm, setRecords }) => {
 
   // MULTIPLE HANDLER VERSION
   // could also do each setForm() inline for each input
-  const handleCurSavingsChange = () => {
-    setForm((s) => ({ ...s, curSavings: curSavings }));
+  const handleCurSavingsChange = (e) => {
+    setForm((s) => ({ ...s, curSavings: Number(e.target.value) }));
   };
-  const handleYrSavingsChange = () => {
-    setForm((s) => ({ ...s, yrSavings: yrSavings }));
+  const handleYrSavingsChange = (e) => {
+    setForm((s) => ({ ...s, yrSavings: Number(e.target.value) }));
   };
-  const handleRateChange = () => {
-    setForm((s) => ({ ...s, rate: rate }));
+  const handleRateChange = (e) => {
+    setForm((s) => ({ ...s, rate: Number(e.target.value) }));
   };
-  const handleDurationChange = () => {
-    setForm((s) => ({ ...s, duration: duration }));
+  const handleDurationChange = (e) => {
+    setForm((s) => ({ ...s, duration: Number(e.target.value) }));
   };
 
   // SINGLE HANDLER VERSION
+  // like a miniature useReducer()
   // const handleInputChange = (id, val) => {
   //   if (id === 'current-savings') {
-  //     setForm((s) => ({ ...s, curSavings: curSavings }));
+  //     setForm((s) => ({ ...s, curSavings: val }));
   //   } else if (id === 'yearly-savings') {
-  //     setForm((s) => ({ ...s, yrSavings: yrSavings }));
+  //     setForm((s) => ({ ...s, yrSavings: val }));
   //   } else if (id === 'interest-rate') {
-  //     setForm((s) => ({ ...s, rate: rate }));
+  //     setForm((s) => ({ ...s, rate: val }));
   //   } else if (id === 'investment-duration') {
-  //     setForm((s) => ({ ...s, duration: duration }));
+  //     setForm((s) => ({ ...s, duration: val }));
   //   } else {
   //     console.error('inaccessible input');
   //   }
@@ -51,18 +59,18 @@ const Form = ({ form, setForm, setRecords }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // calculate each value year by year
-    // each value is one obj in the records array
-    /*
-      I have c$ upfront
-      I will add y$ each year
-      My total t$ each year will be c$ + (y$ * 1.r)
-        I will add all these values to a single obj in records
-      I will do the previous calculation 'duration' times, for 'duration' objects in my records array
-    */
-
-    const total = curSavings + yrSavings * (1 + rate / 100);
-    const thisYear = { curSavings, yrSavings, rate, duration, total };
+    const yrInterest = (curSavings + yrSavings) * (rate / 100);
+    const totalInterest = yrInterest;
+    const total = (curSavings + yrSavings) * (1 + rate / 100);
+    const thisYear = {
+      duration,
+      curSavings,
+      yrSavings,
+      yrInterest,
+      totalInterest,
+      rate,
+      total,
+    };
     const allRecords = buildRecords(thisYear, []);
     setRecords(allRecords);
   };
@@ -79,7 +87,6 @@ const Form = ({ form, setForm, setRecords }) => {
                 type="number"
                 value={curSavings}
                 onChange={handleCurSavingsChange}
-                // onChange={(e) => handleInputChange('current-savings', e.target.value)}
               />{' '}
               USD
             </label>

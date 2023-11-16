@@ -19,11 +19,12 @@ code {
 .app-logo {
   height: 20vmin;
   pointer-events: none;
+  background-color: transparent;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .app-logo {
-    animation: app-logo-spin infinite 20s linear;
+    animation: app-logo-spin infinite 10s linear;
   }
 }
 
