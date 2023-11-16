@@ -1,7 +1,6 @@
 import HomeButton from "./HomeButton";
 
 const FailPage = () => {
-
   return (
     <div className="app">
       <main className="app-container">

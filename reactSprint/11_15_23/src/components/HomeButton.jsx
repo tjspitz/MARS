@@ -5,7 +5,6 @@ const HomeButton = () => {
 
   return (
     <button className="btn" onClick={() => navigate('/')}>Back to Home</button>
-
   );
 };
 
