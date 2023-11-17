@@ -8,48 +8,16 @@ const initialState = {
   duration: '',
 };
 
-const Form = ({ setRecords }) => {
+const Form = ({ calculate }) => {
   const [form, setForm] = useState({ ...initialState });
-
   const { curSavings, yrSavings, rate, duration } = form;
-
-  // MULTIPLE HANDLER VERSION
-  // could also do each setForm() inline for each input
-  const handleCurSavingsChange = (e) => {
-    setForm((s) => ({ ...s, curSavings: Number(e.target.value) }));
-  };
-  const handleYrSavingsChange = (e) => {
-    setForm((s) => ({ ...s, yrSavings: Number(e.target.value) }));
-  };
-  const handleRateChange = (e) => {
-    setForm((s) => ({ ...s, rate: Number(e.target.value) }));
-  };
-  const handleDurationChange = (e) => {
-    setForm((s) => ({ ...s, duration: Number(e.target.value) }));
-  };
-
-  // SINGLE HANDLER VERSION
-  // like a miniature useReducer()
-  // const handleInputChange = (id, val) => {
-  //   if (id === 'current-savings') {
-  //     setForm((s) => ({ ...s, curSavings: val }));
-  //   } else if (id === 'yearly-savings') {
-  //     setForm((s) => ({ ...s, yrSavings: val }));
-  //   } else if (id === 'interest-rate') {
-  //     setForm((s) => ({ ...s, rate: val }));
-  //   } else if (id === 'investment-duration') {
-  //     setForm((s) => ({ ...s, duration: val }));
-  //   } else {
-  //     console.error('inaccessible input');
-  //   }
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const yrInterest = (curSavings + yrSavings) * (rate / 100);
     const totalInterest = yrInterest;
     const total = (curSavings + yrSavings) * (1 + rate / 100);
-    const thisYear = {
+    const firstYear = {
       duration,
       curSavings,
       yrSavings,
@@ -58,8 +26,7 @@ const Form = ({ setRecords }) => {
       rate,
       total,
     };
-    const allRecords = buildRecords(thisYear, []);
-    setRecords(allRecords);
+    calculate(firstYear);
     handleReset();
   };
 
@@ -82,7 +49,12 @@ const Form = ({ setRecords }) => {
                   id="current-savings"
                   type="number"
                   value={curSavings}
-                  onChange={handleCurSavingsChange}
+                  onChange={(e) =>
+                    setForm((s) => ({
+                      ...s,
+                      curSavings: Number(e.target.value),
+                    }))
+                  }
                 />{' '}
                 <span className="hint">(USD)</span>
               </label>
@@ -96,7 +68,12 @@ const Form = ({ setRecords }) => {
                   id="yearly-savings"
                   type="number"
                   value={yrSavings}
-                  onChange={handleYrSavingsChange}
+                  onChange={(e) =>
+                    setForm((s) => ({
+                      ...s,
+                      yrSavings: Number(e.target.value),
+                    }))
+                  }
                 />{' '}
               </label>
               <span className="hint">(USD)</span>
@@ -110,7 +87,9 @@ const Form = ({ setRecords }) => {
                   id="interest-rate"
                   type="number"
                   value={rate}
-                  onChange={handleRateChange}
+                  onChange={(e) =>
+                    setForm((s) => ({ ...s, rate: Number(e.target.value) }))
+                  }
                 />{' '}
               </label>
               <span className="hint">(annual %)</span>
@@ -124,7 +103,9 @@ const Form = ({ setRecords }) => {
                   id="investment-duration"
                   type="number"
                   value={duration}
-                  onChange={handleDurationChange}
+                  onChange={(e) =>
+                    setForm((s) => ({ ...s, duration: Number(e.target.value) }))
+                  }
                 />{' '}
                 <span className="hint">(years)</span>
               </label>
@@ -149,29 +130,5 @@ const Form = ({ setRecords }) => {
     </div>
   );
 };
-
-function buildRecords(prevRecord, records) {
-  const { duration, yrSavings, totalInterest, rate, total } = prevRecord;
-
-  if (!duration) {
-    return records;
-  }
-
-  const thisYearInterest = (total + yrSavings) * (rate / 100);
-  const thisYearTotalInterest = totalInterest + thisYearInterest;
-  const thisYearTotal = (total + yrSavings) * (1 + rate / 100);
-
-  const thisYear = {
-    duration: duration - 1,
-    curSavings: total, // 'total savings' TD
-    yrSavings,
-    yrInterest: thisYearInterest, // ''annual interest' TD
-    totalInterest: thisYearTotalInterest, // 'total interest' TD
-    rate,
-    total: thisYearTotal, // 'invested capital' TD
-  };
-
-  return buildRecords(thisYear, [...records, prevRecord]);
-}
 
 export default Form;
