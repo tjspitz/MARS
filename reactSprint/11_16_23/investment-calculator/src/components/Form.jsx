@@ -1,20 +1,34 @@
+import { useState } from 'react';
 import '../styles/Form.css';
 
-const Form = ({ form, setForm, initialFormState, setRecords }) => {
+const initialState = {
+  curSavings: '',
+  yrSavings: '',
+  rate: '',
+  duration: '',
+};
+
+const Form = ({ setRecords }) => {
+  const [form, setForm] = useState({ ...initialState });
+
   const { curSavings, yrSavings, rate, duration } = form;
 
   // MULTIPLE HANDLER VERSION
   // could also do each setForm() inline for each input
   const handleCurSavingsChange = (e) => {
+    // setForm((s) => ({ ...s, curSavings: Number(e.target.value) }));
     setForm((s) => ({ ...s, curSavings: Number(e.target.value) }));
   };
   const handleYrSavingsChange = (e) => {
+    // setForm((s) => ({ ...s, yrSavings: Number(e.target.value) }));
     setForm((s) => ({ ...s, yrSavings: Number(e.target.value) }));
   };
   const handleRateChange = (e) => {
+    // setForm((s) => ({ ...s, rate: Number(e.target.value) }));
     setForm((s) => ({ ...s, rate: Number(e.target.value) }));
   };
   const handleDurationChange = (e) => {
+    // setForm((s) => ({ ...s, duration: Number(e.target.value) }));
     setForm((s) => ({ ...s, duration: Number(e.target.value) }));
   };
 
@@ -50,10 +64,11 @@ const Form = ({ form, setForm, initialFormState, setRecords }) => {
     };
     const allRecords = buildRecords(thisYear, []);
     setRecords(allRecords);
+    handleReset();
   };
 
   const handleReset = () => {
-    setForm({ ...initialFormState });
+    setForm({ ...initialState });
   };
 
   return (
