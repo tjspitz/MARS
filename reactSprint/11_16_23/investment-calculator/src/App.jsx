@@ -11,9 +11,7 @@ const App = () => {
     <main className="app">
       <div className="app-container">
         <Header />
-        <Form
-          setRecords={setRecords}
-        />
+        <Form setRecords={setRecords} />
         <Records records={records} />
       </div>
     </main>
