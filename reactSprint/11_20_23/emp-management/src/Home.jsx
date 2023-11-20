@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Employees from './Employees';
-import EditEmployee from './EditEmployee';
-import AddEmployee from './AddEmployee';
+import Employees from './components/Employees';
+import EditEmployee from './components/EditEmployee';
+import AddEmployee from './components/AddEmployee';
 
 const Home = () => {
   return (
