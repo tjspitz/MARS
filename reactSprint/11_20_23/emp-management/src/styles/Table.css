@@ -1,0 +1,19 @@
+.table-container {
+  margin: 1rem auto;
+  font-size: 1.5rem;
+}
+
+table,
+th,
+td {
+  margin: 2rem auto;
+  padding: 0.2rem 0.75rem;
+  text-align: left;
+  border: 1px solid;
+  border-collapse: collapse;
+  background-color: #458a7368;
+}
+
+th {
+  text-align: center;
+}

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import EmpDetails from './EmpDetails';
+import Employees from './Employees';
 import EditEmployee from './EditEmployee';
 import AddEmployee from './AddEmployee';
 
@@ -10,7 +10,7 @@ const Home = () => {
         <Routes>
           <Route
             path="/"
-            element={<EmpDetails />}
+            element={<Employees />}
           />
           <Route
             path="/edit"

@@ -1,0 +1,13 @@
+.form-container {
+  background-color: #458a7368;
+  margin: 1rem auto;
+  padding: 1rem 3rem;
+  border-radius: 1rem;
+}
+
+input {
+  margin-left: 1rem;
+  margin-right: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}

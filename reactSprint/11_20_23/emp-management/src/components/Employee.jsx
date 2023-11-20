@@ -13,11 +13,11 @@ const Employee = ({ employee, i, handleDelete }) => {
       <td>{age}</td>
       <td>
         <Link to="/edit">
-          <button onClick={handleEdit}>(edit)</button>
+          <button className="btn" onClick={handleEdit}>EDIT</button>
         </Link>
       </td>
       <td>
-        <button onClick={() => handleDelete(i)}>(delete)</button>
+        <button className="btn" onClick={() => handleDelete(i)}>DELETE</button>
       </td>
     </tr>
   );

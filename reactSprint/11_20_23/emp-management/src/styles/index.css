@@ -12,8 +12,15 @@ code {
     monospace;
 }
 
-table,
-th,
-td {
-  
+.btn {
+  color: #282c34;
+  max-width: fit-content;
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.btn:hover {
+  color: #E3D3CB;
+  background-color: #6a5acd;
 }

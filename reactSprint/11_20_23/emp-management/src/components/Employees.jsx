@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { empData } from '../lib/db/mockData';
 import { Link } from 'react-router-dom';
+import Header from './Header';
 import Employee from './Employee';
+import '../styles/Table.css';
 
-const EmpDetails = () => {
+const Employees = () => {
   const [employees, setEmployees] = useState(empData);
   const handleDelete = (idx) => {
     const newEmployees = employees.slice();
@@ -13,7 +15,8 @@ const EmpDetails = () => {
 
   return (
     <main className="app app-container">
-      <form>
+      <Header />
+      <div className="table-container">
         <table>
           <thead>
             <tr>
@@ -35,12 +38,12 @@ const EmpDetails = () => {
             })}
           </tbody>
         </table>
-      </form>
+      </div>
       <Link to="/create">
-        <button>Add New Employee</button>
+        <button className="btn">Add New Employee</button>
       </Link>
     </main>
   );
 };
 
-export default EmpDetails;
+export default Employees;

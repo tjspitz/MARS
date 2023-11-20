@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { empData } from '../lib/db/mockData';
 import { useNavigate } from 'react-router-dom';
+import '../styles/App.css';
+import '../styles/Form.css';
 
 const initialState = {
   id: '',
@@ -30,26 +32,34 @@ const EditEmployee = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter name"
-          value={form.name}
-          onChange={(e) => {
-            setForm((s) => ({ ...s, name: e.target.value }));
-          }}
-        />
-        <input
-          type="number"
-          placeholder="Enter Age"
-          value={form.age}
-          onChange={(e) => {
-            setForm((s) => ({ ...s, age: Number(e.target.value) }));
-          }}
-        />
-        <button type="submit">Submit</button>
-      </form>
+    <div className="app app-container">
+      <h2>Please enter new employee information</h2>
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Enter name"
+              value={form.name}
+              onChange={(e) => {
+                setForm((s) => ({ ...s, name: e.target.value }));
+              }}
+            />
+            <input
+              type="number"
+              placeholder="Enter Age"
+              value={form.age}
+              onChange={(e) => {
+                setForm((s) => ({ ...s, age: Number(e.target.value) }));
+              }}
+            />
+          <button
+            className="btn"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
