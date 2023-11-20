@@ -1,31 +1,24 @@
 import { Link } from 'react-router-dom';
 
-const Employee = ({ employee }) => {
-  const { id, name, age } = employee;
+const Employee = ({ employee, i, handleDelete }) => {
+  const { name, age } = employee;
 
-  const handleEdit = (emp) => {
-    const {id, name, age} = emp;
-
-    console.log(
-      `Employee details:
-      id: ${id},
-      name: ${name},
-      age: ${age}`
-    );
-
-    localStorage.setItem(id, JSON.stringify(emp));
+  const handleEdit = () => {
+    localStorage.setItem('employee', JSON.stringify(employee));
   };
 
   return (
-    <tr key={id}>
+    <tr>
       <td>{name}</td>
       <td>{age}</td>
       <td>
         <Link to="/edit">
-          <button onClick={() => handleEdit(employee)}>(edit)</button>
+          <button onClick={handleEdit}>(edit)</button>
         </Link>
       </td>
-      <td>(action button)</td>
+      <td>
+        <button onClick={() => handleDelete(i)}>(delete)</button>
+      </td>
     </tr>
   );
 };

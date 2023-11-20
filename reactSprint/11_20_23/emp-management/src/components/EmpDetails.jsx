@@ -5,9 +5,14 @@ import Employee from './Employee';
 
 const EmpDetails = () => {
   const [employees, setEmployees] = useState(empData);
+  const handleDelete = (idx) => {
+    const newEmployees = employees.slice();
+    newEmployees.splice(idx, 1);
+    setEmployees(newEmployees);
+  };
+
   return (
-    <main className='app app-container'>
-      <h1>Hi, here are some employee details:</h1>
+    <main className="app app-container">
       <form>
         <table>
           <thead>
@@ -18,11 +23,13 @@ const EmpDetails = () => {
             </tr>
           </thead>
           <tbody>
-            {employees.map((employee) => {
+            {employees.map((employee, i) => {
               return (
                 <Employee
+                  i={i}
                   key={employee.id}
                   employee={employee}
+                  handleDelete={handleDelete}
                 />
               );
             })}
