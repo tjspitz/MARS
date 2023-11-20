@@ -19,16 +19,9 @@ const AddEmployee = () => {
       age: form.age,
     };
 
-    console.log(
-      `Employee details:
-      id: ${newEmployee.id},
-      name: ${newEmployee.name},
-      age: ${newEmployee.age}`
-      );
     empData.push(newEmployee);
     navigate('/');
   };
-
 
   return (
     <div>
