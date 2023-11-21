@@ -1,4 +1,4 @@
-export const empData = [
+export const employeeData = [
   {
     id: 1,
     name: 'Kate Morris',

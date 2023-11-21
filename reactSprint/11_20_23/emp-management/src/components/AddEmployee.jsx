@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { empData } from '../lib/db/mockData';
-import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 import uuid from 'react-uuid';
 import '../styles/App.css';
 import '../styles/Form.css';
@@ -9,9 +8,10 @@ const initialState = {
   name: '',
   age: '',
 };
-const AddEmployee = () => {
+
+const AddEmployee = ({ saveChanges }) => {
+  const [showAdd, setShowAdd] = useState(false);
   const [form, setForm] = useState({ ...initialState });
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,14 +20,13 @@ const AddEmployee = () => {
       name: form.name,
       age: form.age,
     };
-
-    empData.push(newEmployee);
-    navigate('/');
+    saveChanges('add', newEmployee);
+    setShowAdd(!showAdd);
   };
 
-  return (
-    <div className="app app-container">
-      <h2>Please enter new employee information</h2>
+  return showAdd ? (
+    <section className="content">
+      <Header text={'Please enter new employee information'} />
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <input
@@ -46,13 +45,27 @@ const AddEmployee = () => {
           />
           <button
             className="btn"
+            type="button"
+            onClick={() => setShowAdd(!showAdd)}
+          >
+            Cancel
+          </button>
+          <button
+            className="btn"
             type="submit"
           >
-            Submit
+            Save
           </button>
         </form>
       </div>
-    </div>
+    </section>
+  ) : (
+    <button
+      className="btn"
+      onClick={() => setShowAdd(!showAdd)}
+    >
+      Add New Employee
+    </button>
   );
 };
 

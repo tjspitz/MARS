@@ -24,3 +24,10 @@ code {
   color: #E3D3CB;
   background-color: #6a5acd;
 }
+
+.content {
+  margin: 1rem;
+  padding: 1rem;
+  border: 0.1rem solid #E3D3CB;
+  border-radius: 1rem;
+}

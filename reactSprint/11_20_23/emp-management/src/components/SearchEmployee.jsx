@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { empData } from '../lib/db/mockData';
+import { employeeData } from '../lib/db/mockData';
 import Header from './Header';
 import '../styles/Form.css';
 
@@ -20,14 +20,14 @@ const SearchEmployee = ({ setEmployees }) => {
 
   const findEmployees = () => {
     const query = searchRef.current.toLowerCase();
-    const foundEmployees = empData.filter((emp) =>
+    const foundEmployees = employeeData.filter((emp) =>
       emp.name.toLowerCase().includes(query)
     );
     setEmployees(foundEmployees);
   };
 
   return (
-    <>
+    <section className="content">
       <Header text={'Employee Search'} />
       <div className="form-container">
         <input
@@ -36,7 +36,7 @@ const SearchEmployee = ({ setEmployees }) => {
           onChange={handleSearchChange}
         />
       </div>
-    </>
+    </section>
   );
 };
 

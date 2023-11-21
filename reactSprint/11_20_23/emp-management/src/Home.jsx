@@ -1,28 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { employeeData } from './lib/db/mockData';
 import Employees from './components/Employees';
-import EditEmployee from './components/EditEmployee';
-import AddEmployee from './components/AddEmployee';
 
 const Home = () => {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={<Employees />}
-          />
-          <Route
-            path="/edit"
-            element={<EditEmployee />}
-          />
-          <Route
-            path='/create'
-            element={<AddEmployee />}
-          />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <main className="app app-container">
+      <Employees employeeData={employeeData} />
+    </main>
   );
 };
 

@@ -1,29 +1,35 @@
 import { useState } from 'react';
-import { empData } from '../lib/db/mockData';
-import { Link } from 'react-router-dom';
 import Header from './Header';
 import Employee from './Employee';
 import SearchEmployee from './SearchEmployee';
 import '../styles/Table.css';
 
-const Employees = () => {
-  const [employees, setEmployees] = useState(empData);
+import AddEmployee from './AddEmployee';
 
-  const handleDelete = (idx) => {
-    const newEmployees = employees.slice();
-    newEmployees.splice(idx, 1);
-    setEmployees(newEmployees);
+const Employees = ({ employeeData }) => {
+  const [employees, setEmployees] = useState(employeeData);
+
+  const saveChanges = (change, data, idx) => {
+    if (change === 'add') {
+      setEmployees([...employees, data]);
+    } else if (change === 'edit') {
+      const newEmployees = [...employees];
+      newEmployees[idx].name = data.name;
+      newEmployees[idx].age = data.age;
+      setEmployees(newEmployees);
+    } else if (change === 'delete') {
+      const newEmployees = [...employees];
+      newEmployees.splice(idx, 1);
+      setEmployees(newEmployees);
+    } else {
+      throw new Error('Unsupported change request!');
+    }
   };
 
   return (
     <>
-      <section>
-        <SearchEmployee
-          employees={employees}
-          setEmployees={setEmployees}
-        />
-      </section>
-      <main className="app app-container">
+      <SearchEmployee setEmployees={setEmployees} />
+      <section className="content">
         <Header text={'Employee Details'} />
         <div className="table-container">
           <table>
@@ -41,17 +47,15 @@ const Employees = () => {
                     i={i}
                     key={employee.id}
                     employee={employee}
-                    handleDelete={handleDelete}
+                    saveChanges={saveChanges}
                   />
                 );
               })}
             </tbody>
           </table>
         </div>
-        <Link to="/create">
-          <button className="btn">Add New Employee</button>
-        </Link>
-      </main>
+      </section>
+      <AddEmployee saveChanges={saveChanges} />
     </>
   );
 };
