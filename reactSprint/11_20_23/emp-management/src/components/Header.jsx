@@ -1,7 +1,7 @@
 import '../styles/Header.css';
 
-const Header = () => {
-  return <header>Employee Details</header>;
+const Header = ({ text }) => {
+  return <header>{text}</header>;
 };
 
 export default Header;
