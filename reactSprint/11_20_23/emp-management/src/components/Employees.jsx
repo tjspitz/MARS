@@ -2,9 +2,8 @@ import { useState } from 'react';
 import Header from './Header';
 import Employee from './Employee';
 import SearchEmployee from './SearchEmployee';
-import '../styles/Table.css';
-
 import AddEmployee from './AddEmployee';
+import '../styles/Table.css';
 
 const Employees = ({ employeeData }) => {
   const [employees, setEmployees] = useState(employeeData);
