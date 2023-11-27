@@ -2,6 +2,8 @@
 // reducer => update the store
 // action => dispatched to reducer along w/ state
 // action creators => create the action(s)
+
+/*
 import { createStore } from 'redux';
 
 const initialState = {
@@ -109,4 +111,4 @@ function payLoan() {
 }
 store.dispatch(payLoan());
 console.log('state after loan payment: ', store.getState());
-
+*/
