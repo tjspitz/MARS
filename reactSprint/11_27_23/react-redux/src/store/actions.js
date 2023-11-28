@@ -24,3 +24,17 @@ export function payLoan() {
     type: 'PAY_LOAN',
   };
 }
+
+export function createCustomer(name, id) {
+  return {
+    type: 'CREATE_CUSTOMER',
+    payload: { name, id },
+  };
+}
+
+export function updateName(name) {
+  return {
+    type: 'UPDATE_NAME',
+    payload: name,
+  };
+}
