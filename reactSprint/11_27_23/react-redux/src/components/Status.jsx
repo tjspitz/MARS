@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import '../styles/components.css';
 
 export default function Status() {
   const stateValues = useSelector((state) => state);

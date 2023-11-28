@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { reqLoan } from '../store/actions';
+import '../styles/components.css';
 
 export default function ReqLoan({ ops, setOps }) {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ export default function ReqLoan({ ops, setOps }) {
       <label>
         Request loan{' '}
         <input
-          id="loan-amt"
+          className="input-num"
           type="number"
           value={ops.amount}
           onChange={(e) =>
@@ -17,7 +18,7 @@ export default function ReqLoan({ ops, setOps }) {
           }
         />
         <input
-          id="loan-purpose"
+          className="input-text"
           type="text"
           placeholder='e.g. "mortgage payment"'
           value={ops.purpose}

@@ -1,0 +1,23 @@
+.operation {
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+}
+
+.btn {
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.input-num {
+  width: 3rem;
+}
+
+.input-text {
+  width: 14rem;
+}
+
+input {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}

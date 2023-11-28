@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { payLoan } from '../store/actions';
+import '../styles/components.css';
 
 export default function PayLoan({ ops, setOps }) {
   const loanStateValue = useSelector((state) => state.loan);

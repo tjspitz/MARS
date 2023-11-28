@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { withdraw } from '../store/actions';
+import '../styles/components.css';
 
 export default function Withdraw({ ops, setOps }) {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ export default function Withdraw({ ops, setOps }) {
       <label>
         Withdraw{' '}
         <input
-          id="withdraw-amt"
+          className="input-num"
           type="number"
           value={ops.withdraw}
           onChange={(e) =>
