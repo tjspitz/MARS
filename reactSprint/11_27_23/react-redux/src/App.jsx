@@ -6,7 +6,7 @@ import PayLoan from './components/PayLoan';
 import Status from './components/Status';
 import './styles/App.css';
 
-const initialState = {
+export const initialState = {
   deposit: 0,
   withdraw: 0,
   amount: 0,

@@ -1,9 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { reqLoan } from '../store/actions';
+import { initialState } from '../App';
 import '../styles/components.css';
 
 export default function ReqLoan({ ops, setOps }) {
   const dispatch = useDispatch();
+  const handleClick = (e) => {
+    e.preventDefault();
+    setOps({ ...initialState });
+    dispatch(reqLoan(ops.amount, ops.purpose))
+  };
 
   return (
     <div className="operation">
@@ -27,7 +33,7 @@ export default function ReqLoan({ ops, setOps }) {
       </label>
       <button
         className="btn"
-        onClick={() => dispatch(reqLoan(ops.amount, ops.purpose))}
+        onClick={handleClick}
       >
         REQUEST LOAN
       </button>

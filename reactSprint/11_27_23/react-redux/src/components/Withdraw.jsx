@@ -1,9 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { withdraw } from '../store/actions';
+import { initialState } from '../App';
 import '../styles/components.css';
 
 export default function Withdraw({ ops, setOps }) {
   const dispatch = useDispatch();
+  const handleClick = (e) => {
+    e.preventDefault();
+    setOps({ ...initialState });
+    dispatch(withdraw(ops.withdraw));
+  };
 
   return (
     <div className="operation">
@@ -20,7 +26,7 @@ export default function Withdraw({ ops, setOps }) {
       </label>
       <button
         className="btn"
-        onClick={() => dispatch(withdraw(ops.withdraw))}
+        onClick={handleClick}
       >
         WITHDRAW
       </button>

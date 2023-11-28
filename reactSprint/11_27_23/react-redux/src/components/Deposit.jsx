@@ -1,9 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { deposit } from '../store/actions';
+import { initialState } from '../App';
 import '../styles/components.css';
 
 export default function Deposit({ ops, setOps }) {
   const dispatch = useDispatch();
+  const handleClick = (e) => {
+    e.preventDefault();
+    setOps({ ...initialState });
+    dispatch(deposit(ops.deposit));
+  };
 
   return (
     <div className="operation">
@@ -20,7 +26,7 @@ export default function Deposit({ ops, setOps }) {
       </label>
       <button
         className="btn"
-        onClick={() => dispatch(deposit(ops.deposit))}
+        onClick={handleClick}
       >
         DEPOSIT
       </button>
