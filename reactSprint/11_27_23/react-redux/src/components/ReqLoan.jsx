@@ -12,7 +12,7 @@ export default function ReqLoan({ ops, setOps }) {
   };
 
   return (
-    <div className="operation">
+    <div className="operation" data-testid="reqLoan">
       <label>
         Request loan{' '}
         <input
@@ -24,7 +24,7 @@ export default function ReqLoan({ ops, setOps }) {
           }
         />
         <input
-          className="input-text"
+          className="input-text-reqLoan"
           type="text"
           placeholder='e.g. "mortgage payment"'
           value={ops.purpose}

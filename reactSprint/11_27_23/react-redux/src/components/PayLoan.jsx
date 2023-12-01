@@ -13,7 +13,7 @@ export default function PayLoan({ ops, setOps }) {
   };
 
   return (
-    <div className="operation">
+    <div className="operation" data-testid="payLoan">
       Repay loan (${loanStateValue})
       <button
         className="btn"

@@ -12,7 +12,7 @@ export default function Withdraw({ ops, setOps }) {
   };
 
   return (
-    <div className="operation">
+    <div className="operation" data-testid="withdraw">
       <label>
         Withdraw{' '}
         <input

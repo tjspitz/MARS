@@ -5,7 +5,7 @@ export default function Status() {
   const stateValues = useSelector((state) => state.bankReducer);
 
   return (
-    <div className="account">
+    <div className="account" data-testid="status">
       Your account status is currently:
       <p>Balance: ${stateValues.balance}</p>
       <p>Loan amount: ${stateValues.loan}</p>

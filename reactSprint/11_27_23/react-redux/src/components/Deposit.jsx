@@ -7,12 +7,12 @@ export default function Deposit({ ops, setOps }) {
   const dispatch = useDispatch();
   const handleClick = (e) => {
     e.preventDefault();
-    setOps({ ...initialState });
     dispatch(deposit(ops.deposit));
+    setOps({ ...initialState });
   };
 
   return (
-    <div className="operation">
+    <div className="operation" data-testid="deposit">
       <label>
         Deposit{' '}
         <input
