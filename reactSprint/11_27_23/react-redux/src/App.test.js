@@ -7,7 +7,6 @@ import App from './App';
 import { createStore } from 'redux';
 import { rootReducer } from './store/rootReducer';
 import { Provider } from 'react-redux';
-import { wait } from '@testing-library/user-event/dist/utils';
 
 const testIds = ['deposit', 'withdraw', 'payLoan', 'reqLoan', 'status'];
 
