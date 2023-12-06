@@ -125,14 +125,45 @@ SELECT
 FROM orders_2
 GROUP BY customer_id;
 
--- -- 14) display highest purchase amount for each customer on an arbitrary date w/ customer id, order date, and highest purchase amt
+-- -- 14a) display highest purchase amount for each customer on an arbitrary date -- -- w/ customer id, order date, and highest purchase amt
 SELECT customer_id, MAX(purch_amt) as max_purch_amt, order_date
 FROM orders_2
 WHERE order_date = '2016-09-10'
 GROUP BY customer_id;
+-- -- 14b) display highest purchase amount for each customer on each order_date
+-- -- w/ customer id, order date, and highest purchase amt cols
+SELECT
+  o1.customer_id,
+  o1.order_date,
+  MAX(o2.purch_amt) AS max_purchase_amt
+FROM
+  orders_2 o1
+LEFT JOIN
+  orders_2 o2 ON o1.customer_id = o2.customer_id
+              AND o1.order_date = o2.order_date
+GROUP BY
+  o1.customer_id, o1.order_date
+ORDER BY customer_id ASC;
 
 -- -- 15) display highest purchase amount, w/ customer id and order date, for customers whose highest purchase amount is > 2000 on an arbitrary date
 SELECT customer_id, MAX(purch_amt) as max_purch_amt, order_date
 FROM orders_2
 WHERE order_date = '2016-09-10' AND purch_amt > 2000
 GROUP BY customer_id;
+-- -- 15b) display highest purchase amount for each day,
+-- -- w/ customer id and order date,
+-- -- for customers whose highest purchase amount is > 2000
+SELECT
+  o1.customer_id,
+  o1.order_date,
+  MAX(o2.purch_amt) AS max_purch_greater_2000
+FROM
+  orders_2 o1
+LEFT JOIN
+  orders_2 o2 ON o1.customer_id = o2.customer_id
+              AND o1.order_date = o2.order_date
+              AND o2.purch_amt > 2000
+GROUP BY
+  o1.customer_id, o1.order_date
+ORDER BY customer_id ASC;
+
