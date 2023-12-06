@@ -103,32 +103,36 @@ SELECT * FROM customer WHERE grade IS NULL;
 SELECT SUM(purch_amt) AS purchase_total FROM orders_2;
 
 -- -- 12) display 3rd-highest grade for each of the cities of the customers
--- don't really understand what this is asking, there are not at least 3 different grades for each city
--- this will fetch the overall third-highest grade available in the customer table, though
-SELECT MAX(grade) FROM customer
+SELECT city, MAX(grade) AS third_highest_grade
+FROM customer
 WHERE grade < (
-	SELECT MAX(grade) FROM customer
+  SELECT MAX(grade) FROM customer
     WHERE grade < (
-		SELECT MAX(grade) FROM customer
-	)
-);
-
+    SELECT MAX(grade) FROM customer
+  )
+)
+GROUP BY city;
 -- -- 13) display 2nd-lowest purchase amount per customer, w/ customer ID as well as their lowest purchase amount
--- this is 'close but not quite', perhaps
--- returns the min purchase for each customer_id
--- but is returning the overall 2nd-lowest purchase for everyone, not the individual's 2nd-lowest
 SELECT
-	customer_id,
-	MIN(purch_amt) AS lowest_purchase,
+  customer_id,
+  MIN(purch_amt) AS lowest_purchase,
     (SELECT MIN(purch_amt)
     FROM orders_2
-		WHERE purch_amt > (
-			SELECT MIN(purch_amt) FROM orders_2
-		)
-	) AS second_lowest_purchase
+    WHERE purch_amt > (
+      SELECT MIN(purch_amt) FROM orders_2
+    )
+  ) AS second_lowest_purchase
 FROM orders_2
 GROUP BY customer_id;
 
--- -- 14) display highest purchase amount for each customer on a 'particular date' w/ customer id, order date, and highest purchase amt
+-- -- 14) display highest purchase amount for each customer on an arbitrary date w/ customer id, order date, and highest purchase amt
+SELECT customer_id, MAX(purch_amt) as max_purch_amt, order_date
+FROM orders_2
+WHERE order_date = '2016-09-10'
+GROUP BY customer_id;
 
--- -- 15) display highest purchase amount, w/ customer id and order date, for customers whose highest purchase amount is > 2000 IN ONE DAY
+-- -- 15) display highest purchase amount, w/ customer id and order date, for customers whose highest purchase amount is > 2000 on an arbitrary date
+SELECT customer_id, MAX(purch_amt) as max_purch_amt, order_date
+FROM orders_2
+WHERE order_date = '2016-09-10' AND purch_amt > 2000
+GROUP BY customer_id;
