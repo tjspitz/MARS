@@ -1,1 +1,4 @@
+MyClass.*
 /bin/
+.metadata/
+.settings/
