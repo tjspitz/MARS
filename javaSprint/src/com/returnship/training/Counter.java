@@ -40,9 +40,9 @@ public class Counter {
       winner = true;
       return "Holy cannoli, Batman! You guessed it! The lucky number is indeed " + luckyNum + "!";
     } else if (guessesLeft < 245) {
+      guessesLeft -= 1;
       return "Still incorrect... here's a hint: your last guess was only off by " + guessDiff + "!";
-    }
-    else if (guessesLeft < 1) {
+    } else if (guessesLeft < 1) {
       return "Oh dear, you've run out of guesses. Kudos on guessing 255 times, though!";
     } else {
       guessesLeft -= 1;
