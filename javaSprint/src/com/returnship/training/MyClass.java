@@ -7,7 +7,8 @@ public class MyClass {
 //        Examples_12_13_23.examples();
 //        TakeFive.playGame();
 //        CourseSearch.storeCourses();
-        CountChars.getAndSetIO();
+//        CountChars.getAndSetIO();
+        System.out.println(Examples_12_14_23.message);
     }
 
     public static String greeting() {
