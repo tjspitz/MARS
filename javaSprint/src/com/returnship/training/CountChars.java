@@ -9,7 +9,7 @@ public class CountChars {
     public static void getAndSetIO() {
         System.out.println("Please enter a word to see its character count...");
         Scanner sc = new Scanner(System.in);
-        String input = sc.next();
+        String input = sc.nextLine(); // was the only real issue...
         sc.close();
         
         String countedChars = countChars(input);
@@ -39,6 +39,8 @@ public class CountChars {
         char[] checkedChars = new char[str.length()];
         byte curCount = 1;
         
+        System.out.println("Input str is: " + str);
+        
         for (int i = 0; i < str.length(); i ++) {
             chars[i] = str.charAt(i);
         }
@@ -55,7 +57,11 @@ public class CountChars {
                 }
             }
             checkedChars[j] = chars[j];
-            result = result + chars[j] + "-" + curCount + ", ";
+            if (chars[j] == ' ') { // '' => apparently is char
+                result = result + "<space char>" + "-" + curCount + ", ";
+            } else {                
+                result = result + chars[j] + "-" + curCount + ", ";
+            }
             curCount = 1;
         }
         return result.substring(0, result.length() - 2);
