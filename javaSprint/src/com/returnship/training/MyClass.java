@@ -6,7 +6,8 @@ public class MyClass {
 //        Counter.playGame();
 //        Examples_12_13_23.examples();
 //        TakeFive.playGame();
-        CourseSearch.storeCourses();
+//        CourseSearch.storeCourses();
+        CountChars.getAndSetIO();
     }
 
     public static String greeting() {
