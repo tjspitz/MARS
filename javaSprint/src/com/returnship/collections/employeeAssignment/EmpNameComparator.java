@@ -1,4 +1,4 @@
-package com.returnship.collections;
+package com.returnship.collections.employeeAssignment;
 
 import java.util.Comparator;
 
