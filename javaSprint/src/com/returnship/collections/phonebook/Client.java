@@ -2,6 +2,7 @@ package com.returnship.collections.phonebook;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Client {
     
@@ -25,7 +26,11 @@ public class Client {
         int choice = Integer.parseInt(sc.nextLine());
         
         if (choice == 1) {
-            System.out.println(addContact(phonebook, sc));
+            try {
+                System.out.println(addContact(phonebook, sc));
+            } catch (AddContactException e) {
+                e.printStackTrace();
+            }
             
         } else if (choice == 2) {
             System.out.println(displayAll(phonebook));
@@ -53,26 +58,45 @@ public class Client {
         }
     }
     
-    private static String addContact(Phonebook phonebook, Scanner sc) {
+    private static String addContact(Phonebook phonebook, Scanner sc) throws AddContactException {
         Contact newContact = new Contact();
-        System.out.println("Please enter new name:");
-        String name = sc.nextLine();
-        newContact.setName(name);
-        
-        System.out.println("Please enter new phone number:");
-        long number = Long.parseLong(sc.nextLine());
-        newContact.setPhoneNumber(number);
-
-        System.out.println("Please enter new email address:");
-        String email = sc.nextLine();
-        newContact.setEmail(email);
-        
-        System.out.println("Please enter new organization name:");
-        String org = sc.nextLine();
-        newContact.setOrganization(org);
-        
-        phonebook.addContact(newContact);
-        return "Added new contact: " + newContact;
+        try {
+            System.out.println("Please enter new name:");
+            String name = sc.nextLine();
+            if (verifyText(name, "name") == false) {
+                throw new NameInputException("Only letters, spaces, and hyphens are allowed for name entries.");
+            }
+            newContact.setName(name);
+            
+            System.out.println("Please enter new phone number:");
+            long number = Long.parseLong(sc.nextLine());
+            if (verifyNum(number) == false) {
+                throw new NumberInputException("Phone number must contain ten digits.");
+            }
+            newContact.setPhoneNumber(number);
+            
+            System.out.println("Please enter new email address:");
+            String email = sc.nextLine();
+            if (verifyText(email, "email") == false) {
+                throw new EmailInputException("Email address must contain only letters and numbers, "
+                        + "must include a single \"@\" and a single \".\", "
+                        + "and may contain underscores (_).");
+            }
+            newContact.setEmail(email);
+            
+            System.out.println("Please enter new organization name:");
+            String org = sc.nextLine();
+            if (verifyText(org, "org") == false) {
+                throw new OrgInputException("Organization name cannot contain vertical whitespace.");
+            }
+            newContact.setOrganization(org);
+            
+            phonebook.addContact(newContact);
+            return "Added new contact:\n" + newContact;
+            
+        } catch (AddContactException e ) {
+            return "Failed to add new contact...\n" + e.getMessage();
+        }
     }
     
     private static String displayAll(Phonebook phonebook) {
@@ -104,5 +128,26 @@ public class Client {
         } else {
            return "No contact found in the phonebook matching:\n" + number;
         }
+    }
+    
+    private static boolean verifyText(String entry, String type) {
+        Pattern pattern = null;
+        boolean flag = false;
+        
+        if (type.equals("name")) {
+            pattern = Pattern.compile("[a-zA-Z- ]+");
+        }
+        if (type.equals("email")) {
+            pattern = Pattern.compile("^[a-zA-Z0-9_]*@[a-zA-Z0-9_]*\\.[a-zA-Z]*$");
+        }
+        if (type.equals("org")) {
+            pattern = Pattern.compile("[^\\n\\x0B\\f\\r\\x85\\u2028\\u2029]+");
+        }
+        flag = pattern.matcher(entry).matches();
+        return flag;
+    }
+    
+    private static boolean verifyNum(long entry) {
+        return entry > 999_999_999L && entry < 10_000_000_000L;
     }
 }
