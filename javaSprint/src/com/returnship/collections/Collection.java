@@ -1,21 +1,23 @@
 package com.returnship.collections;
 
 import java.util.Set;
-//import java.util.TreeSet;
+import java.util.TreeSet;
 import java.util.HashSet;
 import java.util.Date;
 
 public class Collection {
-//    TODO: figure out why TreeSet will only add one employee per department
-//    private static Set<Employee> allEmps = new TreeSet<Employee>(new EmpDeptComparator());
-//    private static Set<Employee> owners = new TreeSet<Employee>(new EmpIdComparator());
-//    private static Set<Employee> managers = new TreeSet<Employee>(new EmpIdComparator());
-//    private static Set<Employee> cashiers = new TreeSet<Employee>(new EmpIdComparator());
+//  TreeSet will only add one employee per department if the Comparator is EmpDept
+//      aka it will sort by and SEE departments, throwing away duplicate depts
+//            extend the thinking to any Comparator & we need to be careful with which we use
+    private static Set<Employee> allEmps = new TreeSet<Employee>(new EmpIdComparator());
+    private static Set<Employee> owners = new TreeSet<Employee>(new EmpNameComparator());
+    private static Set<Employee> managers = new TreeSet<Employee>(new EmpNameComparator());
+    private static Set<Employee> cashiers = new TreeSet<Employee>(new EmpNameComparator());
 
-    private static Set<Employee> allEmps = new HashSet<Employee>();
-    private static Set<Employee> owners = new HashSet<Employee>();
-    private static Set<Employee> managers = new HashSet<Employee>();
-    private static Set<Employee> cashiers = new HashSet<Employee>();
+//    private static Set<Employee> allEmps = new HashSet<Employee>();
+//    private static Set<Employee> owners = new HashSet<Employee>();
+//    private static Set<Employee> managers = new HashSet<Employee>();
+//    private static Set<Employee> cashiers = new HashSet<Employee>();
     
     public static void main(String[] args) {
 //        CollectionExamples.examples();

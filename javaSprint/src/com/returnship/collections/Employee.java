@@ -67,13 +67,12 @@ public class Employee {
     @Override
     public boolean equals(Object obj) {
         Employee other = (Employee) obj;
-        return id == other.id;
-//        return Objects.equals(department, other.department)
-//                && id == other.id
-//                && Objects.equals(hireDate, other.hireDate) 
-//                && Objects.equals(name, other.name)
-//                && Double.doubleToLongBits(salary) == Double
-//                        .doubleToLongBits(other.salary);
+        return Objects.equals(department, other.department)
+                && id == other.id
+                && Objects.equals(hireDate, other.hireDate) 
+                && Objects.equals(name, other.name)
+                && Double.doubleToLongBits(salary) == Double
+                        .doubleToLongBits(other.salary);
     }
 
     @Override
