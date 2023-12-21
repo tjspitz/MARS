@@ -9,6 +9,8 @@ public class Client {
 //  TreeSet will only add one employee per department if the Comparator is EmpDept
 //      aka it will sort by and SEE departments, throwing away duplicate depts
 //            extend the thinking to any Comparator & we need to be careful with which we use
+//      UPDATE: refactor the Comparator to never return 0,
+//          as this is the culprit for accidental removal    
     private static Set<Employee> allEmps = new TreeSet<Employee>(new EmpIdComparator());
     private static Set<Employee> owners = new TreeSet<Employee>(new EmpNameComparator());
     private static Set<Employee> managers = new TreeSet<Employee>(new EmpNameComparator());
@@ -20,7 +22,6 @@ public class Client {
 //    private static Set<Employee> cashiers = new HashSet<Employee>();
     
     public static void main(String[] args) {
-//        CollectionExamples.examples();
         seedAllEmployees();
         seedEmpCategory(owners, "owner");
         seedEmpCategory(managers, "manager");
