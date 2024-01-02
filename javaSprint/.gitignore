@@ -2,3 +2,4 @@ MyClass.*
 /bin/
 .metadata/
 .settings/
+/target/
