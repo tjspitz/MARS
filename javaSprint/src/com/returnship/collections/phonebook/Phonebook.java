@@ -15,7 +15,7 @@ public class Phonebook {
     public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
     }
-    
+
     public Contact getOne(long phoneNumber) {
         for (Contact contact: contacts) {
             if (contact.getPhoneNumber() == phoneNumber) {
@@ -24,31 +24,30 @@ public class Phonebook {
         }
         return null;
     }
-    
+
     public List<Contact> getAll() {
         return contacts;
     }
-    
-    
+
+
     public void addContact(Contact newContact) {
         contacts.add(newContact);
     }
-    
-//    public void updateContact(String name, Contact updateContact) {
-//        for (Contact contact: contacts) {
-//            if (contact.getName() == name) {
-//                
-//            }
-//        }
-//    }
-    
+
+    public void updateContact(Contact oldContact, String name, long number, String email, String org) {
+        oldContact.setName(name);
+        oldContact.setPhoneNumber(number);
+        oldContact.setEmail(email);
+        oldContact.setOrganization(org);
+    }
+
     public boolean deleteContact(long phoneNumber) {
-         for (Contact contact: contacts) {
-             if(contact.getPhoneNumber() == phoneNumber) {
-                 contacts.remove(contact);
-                 return true;
-             }
-         }
+        for (Contact contact: contacts) {
+            if(contact.getPhoneNumber() == phoneNumber) {
+                contacts.remove(contact);
+                return true;
+            }
+        }
         return false;
     }
 }

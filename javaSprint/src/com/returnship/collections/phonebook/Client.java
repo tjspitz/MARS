@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Client {
-    
+
     private static Phonebook phonebook = new Phonebook();
 
     public static void main(String[] args) {
@@ -13,51 +13,56 @@ public class Client {
         takeIO(sc);
         sc.close();
     }
-    
+
     private static void takeIO(Scanner sc) {
         System.out.println(
                 "Menu"
                 + "\n1) Add Contact"
                 + "\n2) Display All"
                 + "\n3) Search by phone number"
-                + "\n4) Remove a Contact"
-                + "\n5) Exit");
+                + "\n4) Update a Contact"
+                + "\n5) Remove a Contact"
+                + "\n6) Exit");
         System.out.println("Please enter a number (1-5) to indicate your choice");
         int choice = Integer.parseInt(sc.nextLine());
-        
+
         if (choice == 1) {
             try {
                 System.out.println(addContact(phonebook, sc));
             } catch (AddContactException e) {
                 e.printStackTrace();
             }
-            
+
         } else if (choice == 2) {
             System.out.println(displayAll(phonebook));
-            
+
         } else if (choice == 3) {
             System.out.println(findOne(phonebook, sc));
-            
+
         } else if (choice == 4) {
-            System.out.println(deleteOne(phonebook, sc));
-            
+            System.out.println(editOne(phonebook, sc));
+
         } else if (choice == 5) {
+            System.out.println(deleteOne(phonebook, sc));
+
+        } else if (choice == 6) {
             System.out.println("Goodbye!");
+
         } else {
             System.out.println("Invalid entry.");
         }
-        
+
         if (choice != 5) {
             System.out.println("Access the phonebook again? (y/n)");
             String contChoice = sc.nextLine();
-            
+
             if (contChoice.equalsIgnoreCase("y")) {
                 takeIO(sc);
             }
-            System.out.println("Goodbye!");            
+            System.out.println("Goodbye!");
         }
     }
-    
+
     private static String addContact(Phonebook phonebook, Scanner sc) throws AddContactException {
         Contact newContact = new Contact();
         try {
@@ -67,14 +72,14 @@ public class Client {
                 throw new NameInputException("Only letters, spaces, and hyphens are allowed for name entries.");
             }
             newContact.setName(name);
-            
+
             System.out.println("Please enter new phone number:");
             long number = Long.parseLong(sc.nextLine());
             if (verifyNum(number) == false) {
                 throw new NumberInputException("Phone number must contain ten digits.");
             }
             newContact.setPhoneNumber(number);
-            
+
             System.out.println("Please enter new email address:");
             String email = sc.nextLine();
             if (verifyText(email, "email") == false) {
@@ -83,22 +88,22 @@ public class Client {
                         + "and may contain underscores (_).");
             }
             newContact.setEmail(email);
-            
+
             System.out.println("Please enter new organization name:");
             String org = sc.nextLine();
             if (verifyText(org, "org") == false) {
                 throw new OrgInputException("Organization name cannot contain vertical whitespace.");
             }
             newContact.setOrganization(org);
-            
+
             phonebook.addContact(newContact);
             return "Added new contact:\n" + newContact;
-            
+
         } catch (AddContactException e ) {
             return "Failed to add new contact...\n" + e.getMessage();
         }
     }
-    
+
     private static String displayAll(Phonebook phonebook) {
         String allContacts = "Here are all available contacts:";
         List<Contact >contacts = phonebook.getAll();
@@ -111,29 +116,75 @@ public class Client {
     private static String findOne(Phonebook phonebook, Scanner sc) {
         System.out.println("Please enter a phone number to search for (no hyphens)");
         long number = Long.parseLong(sc.nextLine());
-        
+
         Contact contact = phonebook.getOne(number);
         return "Here is the matching contact:\n" + contact;
     }
-    
+
+    private static String editOne(Phonebook phonebook, Scanner sc) {
+        System.out.println("Please enter the phone number of the contact you wish to edit (no hyphens):");
+        long number = Long.parseLong(sc.nextLine());
+
+        Contact newContact;
+        Contact contact = phonebook.getOne(number);
+
+        String confirmation = "You have updated your contact:\n" + contact;
+        String name = contact.getName();
+        String email = contact.getEmail();
+        String org = contact.getOrganization();
+
+        System.out.println("Would you like to change " + name + "'s name? (y/n)");
+        String contChoice = sc.nextLine();
+        if (contChoice.equalsIgnoreCase("y")) {
+            System.out.println("Please enter the edited name:");
+            name = sc.nextLine();
+        }
+
+        System.out.println("Would you like to change " + name + "'s phone number? (y/n)");
+        contChoice = sc.nextLine();
+        if (contChoice.equalsIgnoreCase("y")) {
+            System.out.println("Please enter the edited phone number:");
+            number = Long.parseLong(sc.nextLine());
+        }
+
+        System.out.println("Would you like to change " + name + "'s email address? (y/n)");
+        contChoice = sc.nextLine();
+        if (contChoice.equalsIgnoreCase("y")) {
+            System.out.println("Please enter the edited email address:");
+            email = sc.nextLine();
+        }
+
+        System.out.println("Would you like to change " + name + "'s organization name? (y/n)");
+        contChoice = sc.nextLine();
+        if (contChoice.equalsIgnoreCase("y")) {
+            System.out.println("Please enter the edited organization name:");
+            org = sc.nextLine();
+        }
+
+        phonebook.updateContact(contact, name, number, email, org);
+        newContact = phonebook.getOne(number);
+
+        return confirmation += "\nIt is now:\n" + newContact;
+    }
+
     private static String deleteOne(Phonebook phonebook, Scanner sc) {
         System.out.println("Please enter a phone number to search & delete the contact (no hyphens)");
         long number = Long.parseLong(sc.nextLine());
-        
+
         Contact contact = phonebook.getOne(number);
         boolean success = phonebook.deleteContact(number);
-        
+
         if (success == true) {
             return "Successfully deleted contact:\n" + contact;
         } else {
-           return "No contact found in the phonebook matching:\n" + number;
+        return "No contact found in the phonebook matching:\n" + number;
         }
     }
-    
+
     private static boolean verifyText(String entry, String type) {
         Pattern pattern = null;
         boolean flag = false;
-        
+
         if (type.equals("name")) {
             pattern = Pattern.compile("[a-zA-Z- ]+");
         }
@@ -146,7 +197,7 @@ public class Client {
         flag = pattern.matcher(entry).matches();
         return flag;
     }
-    
+
     private static boolean verifyNum(long entry) {
         return entry > 999_999_999L && entry < 10_000_000_000L;
     }
