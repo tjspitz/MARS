@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        
+    <!-- default BEAN scope is 'singleton', 
+            aka multiple instantiations point to single object
+            change SCOPE to 'prototype' for new object instatiation -->
+    <bean id="person" class="com.training.spring.Person" scope="prototype">
+        <!-- setter injection
+        <property name="firstName" value="John" /> -->
+        
+        <!-- constructor injection -->
+        <constructor-arg value="Bilbo" type="String" />
+        <constructor-arg value="Baggins" type="String" />
+        <constructor-arg value="110" type="int" />
+        
+        <!-- inject a Car object into the Person by referring to the Car bean 
+                essentially saying 'Car' is a dependency of 'Person' -->
+        <property name="car" ref="car" />
+    </bean>
+    
+    
+    <bean id="car" class="com.training.spring.Car">
+        <constructor-arg value="Honda" type="String" />
+        <constructor-arg value="Civic" type="String" />
+        <constructor-arg value="1982" type="int" />
+    </bean>
+</beans>
