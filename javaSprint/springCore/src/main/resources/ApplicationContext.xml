@@ -6,28 +6,46 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- enables annotation, negates need for AUTOWIRE attribute 
+        (see Person.java for the annotation)-->
+    <context:annotation-config />
         
     <!-- default BEAN scope is 'singleton', 
-            aka multiple instantiations point to single object
-            change SCOPE to 'prototype' for new object instatiation -->
-    <bean id="person" class="com.training.spring.Person" scope="prototype">
-        <!-- setter injection
-        <property name="firstName" value="John" /> -->
+        aka multiple instantiations point to single object
+        change SCOPE to 'prototype' for new object instatiation 
+        for AUTOWIRE, see lines 26-30 for further explanation 
+            (byName points to bean id, byType points to bean class) -->
+    <!-- Person -->
+    <bean id="person" 
+        class="com.training.spring.Person" 
+        scope="prototype"> 
+        <!-- autowire="byName" -->
         
-        <!-- constructor injection -->
+        <!-- setter injection -->
+        <property name="firstName" value="Bilbo" />
+        <property name="lastName" value="Baggins" />
+        <property name="age" value="110" />
+        
+        <!-- equivalent to above, but using params constructor
         <constructor-arg value="Bilbo" type="String" />
         <constructor-arg value="Baggins" type="String" />
-        <constructor-arg value="110" type="int" />
+        <constructor-arg value="110" type="int" /> -->
         
         <!-- inject a Car object into the Person by referring to the Car bean 
-                essentially saying 'Car' is a dependency of 'Person' -->
-        <property name="car" ref="car" />
+            essentially saying 'Car' is a dependency of 'Person'
+            but, AUTOWIRE needs identical name to the BEAN being injected
+            use of autowire negates need for object injection -->
+        <!-- <property name="car" ref="car" /> -->
     </bean>
-    
-    
-    <bean id="car" class="com.training.spring.Car">
+    <!-- Car -->
+    <bean id="car" class="com.training.spring.Car" scope="prototype">
+        <property name="make" value="Honda" />
+        <property name="model" value="Civic" />
+        <property name="year" value="1982" />
+        
+        <!--  equivalent to above, but using params constructor
         <constructor-arg value="Honda" type="String" />
         <constructor-arg value="Civic" type="String" />
-        <constructor-arg value="1982" type="int" />
+        <constructor-arg value="1982" type="int" /> -->
     </bean>
 </beans>

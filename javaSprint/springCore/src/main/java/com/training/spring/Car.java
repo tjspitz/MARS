@@ -1,13 +1,18 @@
 package com.training.spring;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 public class Car {
     private String make;
     private String model;
     private int year;
     
-    public Car() {
-        super();
-    }
+//    public Car() {
+//        super();
+//    }
 
     public Car(String make, String model, int year) {
         super();
@@ -16,29 +21,29 @@ public class Car {
         this.year = year;
     }
 
-    public String getMake() {
-        return make;
-    }
-
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
+//    public String getMake() {
+//        return make;
+//    }
+//
+//    public void setMake(String make) {
+//        this.make = make;
+//    }
+//
+//    public String getModel() {
+//        return model;
+//    }
+//
+//    public void setModel(String model) {
+//        this.model = model;
+//    }
+//
+//    public int getYear() {
+//        return year;
+//    }
+//
+//    public void setYear(int year) {
+//        this.year = year;
+//    }
 
     @Override
     public String toString() {
