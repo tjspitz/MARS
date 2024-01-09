@@ -7,6 +7,17 @@
 <body>
     <h1>Apache Web App Demo</h1>
     <p>Hello, World...</p>
-    <a href="/apacheWebDemo/home">Click me to go to the Home servlet...</a>
+    <!-- <a href="/apacheWebDemo/home">Click me to go to the Home servlet...</a> -->
+    <form action="/apacheWebDemo/home" method="post">
+        <label for="username">Username: 
+            <input type="text" placeholder="username..." name="username"/>
+        </label>
+        <hr>
+        <label for="password"> Password: 
+            <input type="password" placeholder="password..." name="password"/>
+        </label>
+        <hr>
+        <input type="submit" value="Log In" />
+    </form>
 </body>
 </html>
