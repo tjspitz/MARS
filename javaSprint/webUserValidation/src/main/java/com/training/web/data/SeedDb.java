@@ -29,11 +29,11 @@ public class SeedDb {
         String insertMany = "INSERT INTO users "
                 + "(username, password) "
                 + "VALUES "
-                + "(bob, bobbseron), "
-                + "(kat, katterson), "
-                + "(bill, billerson), "
-                + "(tom, tommerson), "
-                + "(santa claus, hohoho);";
+                + "('bob', 'bobbseron'), "
+                + "('kat', 'katterson'), "
+                + "('bill', 'billerson'), "
+                + "('tom', 'tommerson'), "
+                + "('santa claus', 'hohoho');";
         
         jdbcTemplate.execute(dropTable);
         jdbcTemplate.execute(createTable);
