@@ -1,0 +1,4 @@
+/build/
+/target/
+# circumvent CRLF - LF fatal issue
+src/main/webapp/META-INF
