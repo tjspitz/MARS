@@ -1,40 +1,41 @@
 package com.training.web.data;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-//import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Component;
 
-//@Component 
+@Component
 public class SeedDb {
 
-    private final JdbcTemplate jdbcTemplate;
+    private static JdbcTemplate jdbcTemplate;
+    private static String dropTable = "DROP TABLE IF EXISTS users CASCADE;";
+    private static String createTable = "CREATE TABLE users("
+            + "id INTEGER NOT NULL AUTO_INCREMENT, "
+            + "username VARCHAR(50) NOT NULL, "
+            + "password VARCHAR(50) NOT NULL, "
+            + "PRIMARY KEY(id)"
+        + ");";
+    private static String insertMany = "INSERT INTO users "
+            + "(username, password) "
+            + "VALUES "
+            + "('bob', 'bobberson'), "
+            + "('kat', 'katterson'), "
+            + "('bill', 'billerson'), "
+            + "('tom', 'tommerson'), "
+            + "('santa claus', 'hohoho');";
     
-    public void main(String[] args) {
+    public static void main(String[] args) {
         seedDatabase();
     }
 
     @Autowired
-    public SeedDb(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    public SeedDb(DataSource ds) {
+        jdbcTemplate = new JdbcTemplate(ds);
     }
     
-    public void seedDatabase() {
-        String dropTable = "DROP TABLE IF EXISTS users CASCADE;";
-        String createTable = "CREATE TABLE users("
-                    + "id INTEGER NOT NULL AUTO_INCREMENT, "
-                    + "username VARCHAR(50) NOT NULL, "
-                    + "password VARCHAR(50) NOT NULL, "
-                    + "PRIMARY KEY(id)"
-                + ");";
-        String insertMany = "INSERT INTO users "
-                + "(username, password) "
-                + "VALUES "
-                + "('bob', 'bobbseron'), "
-                + "('kat', 'katterson'), "
-                + "('bill', 'billerson'), "
-                + "('tom', 'tommerson'), "
-                + "('santa claus', 'hohoho');";
-        
+    public static void seedDatabase() {
         jdbcTemplate.execute(dropTable);
         jdbcTemplate.execute(createTable);
         jdbcTemplate.execute(insertMany);
