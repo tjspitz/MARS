@@ -45,12 +45,11 @@ public class HomeServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd;
-        // get the form values from the login form at root url
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
         boolean valid = service.validate(username, password);
-        request.setAttribute("name", username);
+        request.setAttribute("user", username);
 
         if (valid == true) {
             rd = request.getRequestDispatcher("home.jsp");            
