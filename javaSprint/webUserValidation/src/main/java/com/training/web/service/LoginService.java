@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.stereotype.Service;
 
 import com.training.web.config.AppConfig;
 import com.training.web.dao.LoginDAO;
 import com.training.web.model.User;
 
+@Service // <-- annotate!
 public class LoginService {
 
     public boolean validate(String username, String password) {
