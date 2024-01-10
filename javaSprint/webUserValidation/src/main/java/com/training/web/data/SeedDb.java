@@ -2,9 +2,9 @@ package com.training.web.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
+//import org.springframework.stereotype.Component;
 
-@Component
+//@Component 
 public class SeedDb {
 
     private final JdbcTemplate jdbcTemplate;
@@ -59,11 +59,11 @@ CREATE TABLE users(
 INSERT INTO users 
 (username, password) 
 VALUES 
-(bob, bobbseron),
-(kat, katterson),
-(bill, billerson),
-(tom, tommerson),
-(santa claus, hohoho);
+('bob', 'bobbseron'),
+('kat', 'katterson'),
+('bill', 'billerson'),
+('tom', 'tommerson'),
+('santa claus', 'hohoho');
 
 SELECT * FROM users;
 */
