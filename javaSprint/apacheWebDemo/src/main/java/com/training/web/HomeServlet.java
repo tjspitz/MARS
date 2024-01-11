@@ -1,7 +1,6 @@
 package com.training.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
