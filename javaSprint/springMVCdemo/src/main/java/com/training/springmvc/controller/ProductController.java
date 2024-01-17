@@ -73,6 +73,7 @@ public class ProductController {
         }
     }
     
+    // delete a product (so not RESTful)
     @GetMapping("/delete/{id}")
     public String deleteOneAndRedirect(@PathVariable(name = "id") int id) {
         if (productService.deleteOneById(id)) {
@@ -82,10 +83,3 @@ public class ProductController {
         }
     }
 }
-
-/*
-  Why would we have a single product mapped to the same route as all the products?
-  Because the .jsp file that exists expects List<Product>, so why not just...
-  return a List<User> with a single element in it, and make use of the existing products.jsp
-  rather than writing another page to handle a single product
-*/
