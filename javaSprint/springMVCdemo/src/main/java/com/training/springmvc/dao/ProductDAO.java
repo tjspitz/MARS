@@ -9,6 +9,7 @@ public interface ProductDAO {
     List<Product> getAll();
     Product getOneById(int id);
     boolean createOne(Product product);
+    boolean updateOneById(int id, Product product);
     boolean updateOneDescById(String desc, int id);
     boolean updateOnePriceById(int price, int id);
     boolean updateOneStockById(int stock, int id);

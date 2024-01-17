@@ -23,15 +23,16 @@ public class ProductDAOImpl implements ProductDAO {
             + "VALUES(?, ?, ?, ?, ?)";
     
     // sql stubs
-    private final String SQL_GET_ONE_STUB = "SELECT * FROM products WHERE ";
+    private final String SQL_GET_ONE_STUB = "SELECT * FROM products ";
     private final String SQL_UPDATE_ONE_STUB = "UPDATE products SET ";
-    private final String SQL_DELETE_ONE_STUB = "DELETE FROM products WHERE ";
+    private final String SQL_DELETE_ONE_STUB = "DELETE FROM products ";
 
     // sql stub extenders
+    private final String UPDATE_ALL = "name=?, description=?, category=?, price=?, stock=? ";
     private final String UPDATE_DESC = "description=? WHERE ";
-    private final String UPDATE_PRICE = "price=? WHERE ";
-    private final String UPDATE_STOCK = "stock=? WHERE ";
-    private final String BY_ID = "id=?";
+    private final String UPDATE_PRICE = "price=? ";
+    private final String UPDATE_STOCK = "stock=? ";
+    private final String BY_ID = "WHERE id=?";
 //    private final String BY_NAME = "name=?";
 
     // java.mysql.Types
@@ -64,6 +65,23 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
+    public boolean updateOneById(int id, Product product) {
+        String sql = SQL_UPDATE_ONE_STUB + UPDATE_ALL + BY_ID;
+        Object[] args = new Object[] { 
+                product.getName(), product.getDescription(), product.getCategory(), 
+                product.getPrice(), product.getStock(), id 
+            };
+        
+        int[] argTypes = { 
+                stringArg[0], stringArg[0], stringArg[0], 
+                intArg[0], intArg[0], intArg[0] 
+            };
+        
+        
+        return jdbcTemplate.update(sql, args, argTypes) > 0;
+    }
+    
+    @Override
     public boolean updateOneStockById(int stock, int id) {
         String sql = SQL_UPDATE_ONE_STUB + UPDATE_STOCK + BY_ID;
         int[] argTypes = { intArg[0], intArg[0] };
@@ -89,5 +107,6 @@ public class ProductDAOImpl implements ProductDAO {
         String sql = SQL_DELETE_ONE_STUB + BY_ID;
         return jdbcTemplate.update(sql, new Object[] { id }, intArg) > 0;
     }
+
 
 }

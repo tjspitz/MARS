@@ -30,18 +30,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public boolean updateOneDescById(String desc, int id) {
-        return productDao.updateOneDescById(desc, id);
+    public boolean updateOneById(int id, Product product) {
+        return productDao.updateOneById(id, product);
     }
 
     @Override
-    public boolean updateOnePriceById(int price, int id) {
-        return productDao.updateOnePriceById(price, id);
-    }
-
-    @Override
-    public boolean updateOneStockById(int stock, int id) {
-        return productDao.updateOnePriceById(stock, id);
+    public boolean deleteOneById(int id) {
+        return productDao.deleteOneById(id);
     }
 
 }

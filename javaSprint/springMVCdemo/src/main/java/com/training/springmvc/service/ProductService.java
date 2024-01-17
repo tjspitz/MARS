@@ -9,9 +9,7 @@ public interface ProductService {
     public List<Product> getAll();
     public Product getOneById(int id);
     public boolean createOne(Product product);
-    public boolean updateOneDescById(String desc, int id);
-    public boolean updateOnePriceById(int price, int id);
-    public boolean updateOneStockById(int stock, int id);
+    public boolean updateOneById(int id, Product product);
     // could add more updates by name
         // or update by taking an entire product
     
@@ -19,4 +17,5 @@ public interface ProductService {
         // this would be an example of when layers differ 
         // e.g. ProductService Interface vs. ProductDAO Interface
             // (and their implementations)
+    public boolean deleteOneById(int id);
 }
