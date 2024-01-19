@@ -57,7 +57,7 @@ public class HomeController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     
-    @DeleteMapping("user/{id}")
+    @DeleteMapping("/user/{id}")
     public ResponseEntity<User> deleteUserById(@PathVariable(name = "id") int id) {
         service.deleteUserById(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
