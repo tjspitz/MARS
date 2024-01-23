@@ -7,11 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mars.elp.springboot.entity.Course;
@@ -23,42 +23,40 @@ public class CourseController {
     
     @Autowired CourseService service;
     
-    @GetMapping("") // All course details fetched
+    @GetMapping("") // All course details fetched [X]
     public ResponseEntity<List<Course>> getCourses() {
         List<Course> courses = service.getCourses();
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
     
-    @GetMapping("/{id}") // a particular course is fetched
-    public ResponseEntity<Course> getCourseById(@PathVariable(name = "id") int id) {
+    @GetMapping("/id") // a particular course is fetched [X]
+    public ResponseEntity<Course> getCourseById(@RequestParam int id) {
         return new ResponseEntity<> (service.getCourseById(id), HttpStatus.OK);
     }
     
-    @PostMapping("") // a new Course is created
+    @PostMapping("") // a new Course is created [X]
     public ResponseEntity<Course> postCourse(@RequestBody Course course) {
         Course newCourse = service.postCourse(course);
         return new ResponseEntity<>(newCourse, HttpStatus.CREATED);
     }
     
-    @PutMapping("/{id}") // Course is updated
-    public ResponseEntity<Course> putCourseById(@RequestBody Course course) {
-        service.putCourse(course);
+    @PutMapping("/id") // Course is updated [X]
+    public ResponseEntity<Course> putCourseById(@RequestParam int id, @RequestBody Course course) {
+        service.putCourseById(id, course);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     
-    @PutMapping("/enroll/{id}") // enroll to a particular course - USER id
-    public ResponseEntity<Course> putUserInCourseById(@PathVariable(name = "id") int id) {
-        service.putUserInCourseById(id);
+    @PutMapping("/enroll") // enroll to a particular course [X]
+    public ResponseEntity<Course> putUserInCourseById(@RequestParam int userId, @RequestParam int courseId) {
+        service.putUserInCourseById(userId, courseId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     
-    @DeleteMapping("/{id}") // Course is deleted
-    public ResponseEntity<Course> deleteUserById(@PathVariable(name = "id") int id) {
+    @DeleteMapping("/id") // Course is deleted [X]
+    public ResponseEntity<Course> deleteUserById(@RequestParam int id) {
         service.deleteCourseById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    
-    // A feedback has been given - COURSE id 
 
     // ==================== UTILITY ====================
     @PostMapping("/utility")
