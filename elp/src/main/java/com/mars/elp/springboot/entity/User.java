@@ -10,7 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
@@ -22,9 +21,9 @@ import lombok.NoArgsConstructor;
 public class User {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String type = "user";
+    private String type;
     private String firstName;
     private String lastName;
     private Date registrationDate;
@@ -37,16 +36,14 @@ public class User {
     @JoinColumn(name = "contact_id", referencedColumnName = "id")
     private Address address;
     
+    // @JsonManagedReference // <-- why does POSTing break w/ this?
     @ManyToMany
-    @JoinTable(
-            name = "students_courses",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_id"))
     private List<Course> courses = new ArrayList<>();
 
-    public User(String firstName, String lastName, Date registrationDate, String phone, String photo,
+    public User(String type, String firstName, String lastName, Date registrationDate, String phone, String photo,
             String email, String password, Address address) {
         super();
+        this.type = type;
         this.firstName = firstName;
         this.lastName = lastName;
         this.registrationDate = registrationDate;

@@ -10,7 +10,7 @@ public interface UserService {
     public User getUserById(int id);
     public User getUserByLastName(String name);
     public User postUser(User user);
-    public void putUserById(User user);
+    public void putUserById(int id, User user);
     public void deleteUserById(int id);
     
     // ==================== UTILITY ====================

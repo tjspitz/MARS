@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void putUserById(User user) {
-        Optional<User> preUpdateUser = repository.findById(user.getId());
+    public void putUserById(int id, User user) { // a User is updated
+        Optional<User> preUpdateUser = repository.findById(id);
 
         if (preUpdateUser.isPresent()) {
             User postUpdateUser = preUpdateUser.get();
@@ -47,11 +47,9 @@ public class UserServiceImpl implements UserService {
             
             postUpdateUser.setFirstName(user.getFirstName());
             postUpdateUser.setLastName(user.getLastName());
-            // change registration date? maybe later
             postUpdateUser.setPhone(user.getPhone());
             postUpdateUser.setPhoto(user.getPhoto());
             postUpdateUser.setEmail(user.getEmail());
-            // change password? maybe later
             
             postUpdateAddress.setStreet(user.getAddress().getStreet());
             postUpdateAddress.setCity(user.getAddress().getCity());
@@ -70,7 +68,6 @@ public class UserServiceImpl implements UserService {
         } else {
             System.out.println("User not found; cannot delete.");
         }
-
     }
 
     // ==================== UTILITY ====================
