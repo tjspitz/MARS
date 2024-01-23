@@ -1,5 +1,7 @@
 package com.mars.elp.springboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,12 +16,14 @@ import lombok.NoArgsConstructor;
 public class Feedback {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String email;
     private String message;
+    private boolean flagged = false;
     
+    @JsonIgnore
     @ManyToOne
     private Course course;
     
@@ -28,6 +32,11 @@ public class Feedback {
         this.name = name;
         this.email = email;
         this.message = message;
+//        this.flagged = flagged;
+    }
+    
+    public boolean getFlagged() {
+        return this.flagged;
     }
     
     
