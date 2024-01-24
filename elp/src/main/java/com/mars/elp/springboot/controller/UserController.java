@@ -45,7 +45,7 @@ public class UserController {
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
     
-    @PutMapping("") // User is updated [X]
+    @PutMapping("/id") // User is updated [X]
     public ResponseEntity<User> putUserById(@RequestParam int id, @RequestBody User user) {
         service.putUserById(id, user);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -63,5 +63,4 @@ public class UserController {
         List<User> manyUsers = service.postManyUsers(users);
         return new ResponseEntity<>(manyUsers, HttpStatus.OK);
     }
-    
 }

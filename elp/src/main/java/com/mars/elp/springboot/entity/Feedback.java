@@ -32,7 +32,6 @@ public class Feedback {
         this.name = name;
         this.email = email;
         this.message = message;
-//        this.flagged = flagged;
     }
     
     public boolean getFlagged() {

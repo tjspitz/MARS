@@ -53,7 +53,7 @@ public class CourseController {
     }
     
     @DeleteMapping("/id") // Course is deleted [X]
-    public ResponseEntity<Course> deleteUserById(@RequestParam int id) {
+    public ResponseEntity<Course> deleteCourseById(@RequestParam int id) {
         service.deleteCourseById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

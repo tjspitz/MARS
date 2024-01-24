@@ -32,18 +32,18 @@ public class FeedbackController {
     }
     
     @GetMapping("/id") // a particular Feedback is fetched by ID [X]
-    public ResponseEntity<Feedback> getUserById(@RequestParam int id) {
+    public ResponseEntity<Feedback> getFeedbackById(@RequestParam int id) {
         return new ResponseEntity<> (feedbackService.getFeedbackById(id), HttpStatus.OK);
     }
     
     
-    @PostMapping("") // a feedback has been given - COURSE id [X]
+    @PostMapping("/id") // a feedback has been given - COURSE id [X]
     public ResponseEntity<Feedback> postFeedbackByCourseId(@RequestParam int courseId, @RequestBody Feedback feedback) {
         Feedback newFeedback = feedbackService.postFeedbackByCourseId(courseId, feedback);
         return new ResponseEntity<>(newFeedback, HttpStatus.CREATED);
     }
     
-    @PutMapping("") // feedback is updated [X]
+    @PutMapping("/id") // feedback is updated [X]
     public ResponseEntity<Feedback> putFeedbackById(@RequestParam int id, @RequestBody Feedback feedback) {
         feedbackService.putFeedbackById(id, feedback);
         return new ResponseEntity<>(HttpStatus.OK);
