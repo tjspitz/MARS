@@ -23,7 +23,8 @@
     "popper.js": "^1.16.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.3"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
@@ -32,6 +33,7 @@
     "@types/react": "^18.2.48",
     "@types/react-bootstrap": "^0.32.35",
     "@types/react-dom": "^18.2.18",
+    "@types/react-router-dom": "^5.3.3",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.1.3",
     "css-loader": "^6.9.1",
