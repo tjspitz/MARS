@@ -43,6 +43,7 @@ export type CourseModals = {
   editModal: boolean;
   studentsModal: boolean;
   deleteModal: boolean;
+  selectedCourse: Course;
 }
 
 // ========== INITIAL STATES ==========
@@ -94,5 +95,6 @@ export const initialModalsState = {
   enrollModal: false,
   editModal: false,
   studentsModal: false,
-  deleteModal: false
+  deleteModal: false,
+  selectedCourse: initialCourseState
 };
