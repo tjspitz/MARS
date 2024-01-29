@@ -17,7 +17,8 @@ export default function App() {
   const [updated, setUpdated] = React.useState<boolean>(false)
 
   React.useEffect(() => {
-    getUserById(1)
+    // 'user' types are ids 1-8, 'admin' are 9-10
+    getUserById(9)
       .then((user) => setUser(user))
       .catch((e) => console.error(e));
   }, [updated]);
