@@ -44,7 +44,7 @@ export default function OneCourse({
           <Button
             type="button"
             variant="success"
-            className="mx-1"
+            className="m-1"
             onClick={() => setModals((s) => ({...s, enrollModal: true, selectedCourse: course }))}
           >
             Enroll
@@ -55,7 +55,7 @@ export default function OneCourse({
             <Button
               type="button"
               variant="info"
-              className="mx-1"
+              className="m-1"
               onClick={() => setModals((s) => ({...s, studentsModal: true, selectedCourse: course }))}
             >
               Students
@@ -63,7 +63,7 @@ export default function OneCourse({
             <Button
               type="button"
               variant="warning"
-              className="mx-1"
+              className="m-1"
               onClick={() => setModals((s) => ({...s, editModal: true, selectedCourse: course }))}
             >
               Edit Course
@@ -71,7 +71,7 @@ export default function OneCourse({
             <Button
               type="button"
               variant="danger"
-              className="mx-1"
+              className="m-1"
               onClick={() => setModals((s) => ({...s, deleteModal: true, selectedCourse: course }))}
             >
               Delete Course
