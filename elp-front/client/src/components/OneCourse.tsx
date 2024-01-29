@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
+import { Button, Card } from 'react-bootstrap';
+import { Course } from '../../lib/types';
 import { UserContext } from '../App';
-import { Button, Card, Modal } from 'react-bootstrap';
-import { Course, CourseModals, initialModalsState } from '../../lib/types';
+import { ModalsContext } from './ManyCourses';
 
 export default function OneCourse({
   course,
@@ -11,9 +12,9 @@ export default function OneCourse({
   course: Course;
   isEnrolled?: boolean;
 }) {
+  const { id, name, resource, fee, description } = course;
   const userType = useContext(UserContext).type;
-  const { id, name, resource, fee, description, feedback } = course;
-  const [modals, setModals] = useState<CourseModals>({ ...initialModalsState });
+  const [modals, setModals] = useContext(ModalsContext);
 
   return (
     <Card className="m-4">
@@ -34,8 +35,8 @@ export default function OneCourse({
         <Button
           type="button"
           variant="info"
-          className="mx-1"
-          onClick={() => setModals((s) => ({...s, feedbackModal: true}))}
+          className="m-1"
+          onClick={() => setModals((s) => ({...s, feedbackModal: true, selectedCourse: course }))}
         >
           Feedback
         </Button>
@@ -44,7 +45,7 @@ export default function OneCourse({
             type="button"
             variant="success"
             className="mx-1"
-            onClick={() => setModals((s) => ({...s, enrollModal: true}))}
+            onClick={() => setModals((s) => ({...s, enrollModal: true, selectedCourse: course }))}
           >
             Enroll
           </Button>
@@ -55,7 +56,7 @@ export default function OneCourse({
               type="button"
               variant="info"
               className="mx-1"
-              onClick={() => setModals((s) => ({...s, studentsModal: true}))}
+              onClick={() => setModals((s) => ({...s, studentsModal: true, selectedCourse: course }))}
             >
               Students
             </Button>
@@ -63,7 +64,7 @@ export default function OneCourse({
               type="button"
               variant="warning"
               className="mx-1"
-              onClick={() => setModals((s) => ({...s, editModal: true}))}
+              onClick={() => setModals((s) => ({...s, editModal: true, selectedCourse: course }))}
             >
               Edit Course
             </Button>
@@ -71,7 +72,7 @@ export default function OneCourse({
               type="button"
               variant="danger"
               className="mx-1"
-              onClick={() => setModals((s) => ({...s, deleteModal: true}))}
+              onClick={() => setModals((s) => ({...s, deleteModal: true, selectedCourse: course }))}
             >
               Delete Course
             </Button>
