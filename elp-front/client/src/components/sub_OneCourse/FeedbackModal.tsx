@@ -14,11 +14,10 @@ export default function FeedbackModal({
   setModals: React.Dispatch<React.SetStateAction<CourseModals>>;
 }) {
   const { feedbackModal, selectedCourse } = modals;
-  const userName =
-    React.useContext(UserContext).firstName +
-    ' ' +
-    React.useContext(UserContext).lastName;
-  const userEmail = React.useContext(UserContext).email;
+  const user = React.useContext(UserContext);
+  const userName = user.firstName + user.lastName;
+  const { type, email } = user;
+
   const [updated, setUpdated] = React.useContext(UpdateContext);
   const [formMessage, setFormMessage] = React.useState<string>('');
 
@@ -33,13 +32,16 @@ export default function FeedbackModal({
   const handleSubmit = () => {
     const feedback = {
       name: userName,
-      email: userEmail,
+      email,
       message: formMessage,
     };
     postFeedbackByCourseId(feedback, selectedCourse.id)
-      .then((res) => console.log('post successful: ', res))
-      .catch((e) => console.error(e))
-      .finally(() => setUpdated(!updated));
+      .then((res) => {
+        console.log('post successful: ', res);
+        handleClose();
+        setUpdated(!updated);
+      })
+      .catch((e) => console.error(e));
   };
 
   return (
@@ -58,23 +60,30 @@ export default function FeedbackModal({
       <Modal.Body>
         <Row>
           <Col>
-            {selectedCourse.feedback.map((msg, i) => {
-              return (
-                <OneFeedback
-                  key={'f-' + i}
-                  msg={msg}
-                />
-              )
-            })}
+            {selectedCourse.feedback.length ? (
+              selectedCourse.feedback.map((data, i) => {
+                return (
+                  <OneFeedback
+                    key={'f-' + i}
+                    data={data}
+                  />
+                );
+              })
+            ) : (
+              <p>This course does not have any feedback yet...</p>
+            )}
+            {}
           </Col>
-          <Col>
-            <FeedbackForm
-              userName={userName}
-              userEmail={userEmail}
-              formMessage={formMessage}
-              setFormMessage={setFormMessage}
-            />
-          </Col>
+          {type === 'user' && (
+            <Col>
+              <FeedbackForm
+                userName={userName}
+                userEmail={email}
+                formMessage={formMessage}
+                setFormMessage={setFormMessage}
+              />
+            </Col>
+          )}
         </Row>
       </Modal.Body>
       <Modal.Footer>
@@ -84,12 +93,14 @@ export default function FeedbackModal({
         >
           Close
         </Button>
-        <Button
-          variant="primary"
-          onClick={handleSubmit}
-        >
-          Submit Feedback
-        </Button>
+        {type === 'student' && (
+          <Button
+            variant="primary"
+            onClick={handleSubmit}
+          >
+            Submit Feedback
+          </Button>
+        )}
       </Modal.Footer>
     </Modal>
   );
