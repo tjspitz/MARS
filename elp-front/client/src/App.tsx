@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState, useEffect, createContext } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import ManyCourses from './components/ManyCourses';
@@ -7,22 +6,24 @@ import Profile from './components/Profile';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import { User, initialUserState } from '../lib/types';
-import axios from 'axios';
+import { getUserById } from '../lib/usersApi';
 
-export const UserContext = createContext({ ...initialUserState });
+export const UserContext = React.createContext<User>({ ...initialUserState });
+export const UpdateContext = React.createContext<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>([false, () => {}])
 
 export default function App() {
-  const [user, setUser] = useState<User>({ ...initialUserState });
+  const [user, setUser] = React.useState<User>({ ...initialUserState });
+  const [updated, setUpdated] = React.useState<boolean>(false)
 
-  useEffect(() => {
-    axios
-      .get('/api/users/id?id=1')
-      .then(({ data }) => setUser(data))
+  React.useEffect(() => {
+    getUserById(1)
+      .then((user) => setUser(user))
       .catch((e) => console.error(e));
-  }, []);
+  }, [updated]);
 
   return (
     <UserContext.Provider value={user}>
+      {/* <Dashboard /> */}
       <BrowserRouter>
         <Routes>
           <Route

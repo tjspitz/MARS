@@ -1,7 +1,7 @@
 import * as React from 'react';
-import OneCourse from '../OneCourse';
-import { Button, Container, Row, Col, Card } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Courses } from '../../../lib/types';
+import OneCourse from '../OneCourse';
 
 export default function StudentCoursesNotEnrolled({
   remainingCourses,
@@ -20,7 +20,7 @@ export default function StudentCoursesNotEnrolled({
           {remainingCourses.map((course) => (
             <Col xs={12} sm={6} md={4} lg={4}>
               <OneCourse
-                key={course.id}
+                key={'scne-' + course.id}
                 course={course}
               />
             </Col>

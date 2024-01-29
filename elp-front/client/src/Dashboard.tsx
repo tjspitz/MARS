@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useContext } from 'react';
-import { UserContext } from './App';
 import { Button, Stack } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from './App';
 
 // we would only be allowed here after we're signed in
 export default function Dashboard() {
